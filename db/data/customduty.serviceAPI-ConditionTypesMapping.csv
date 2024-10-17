@@ -1,0 +1,4 @@
+ID,Identifier,Description,ConditionTable,ConditionType
+7d5e2ee9-194b-41b1-8b82-4d84ae2b589d,01,BCD %,A1000,JBCD
+0463cf5a-e88f-4c4d-b2c4-59f1aa79c691,02,IGST %,A1000,JIGS
+584b7734-61c6-43a9-baaf-ee83cbba9014,03,SWS %,A1000,JSWS

@@ -1,0 +1,60 @@
+{
+  "name": "zcustomduty_srv",
+  "version": "1.0.0",
+  "description": "Custom Duty Services",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@cap-js/postgres": "^1.10.1",
+    "@sap-cloud-sdk/http-client": "^3.22.2",
+    "@sap-cloud-sdk/resilience": "^3.22.2",
+    "@sap/cds": "^8",
+    "@sap/xssec": "^4",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.6",
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^8"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "cds": {
+    "fiori": {
+      "preview": true
+    },
+    "server": {
+      "index": true
+    },
+    "requires": {
+      "auth": "xsuaa",
+      "connectivity": true,
+      "destinations": true,
+      "html5-repo": true,
+      "application-logging": true,
+      "STIHL_B2B_K4Q100_BASIC": {
+        "kind": "odata",
+        "model": "srv/external/STIHL_B2B_K4Q100_BASIC",
+        "[production]": {
+          "credentials": {
+            "destination": "STIHL_B2B_K4Q100_BASIC",
+            "path": "/sap/opu/odata4/sap/zapi_mm_customsinvdetails_v4/srvd_a2x/sap/zapi_mm_customdutyinvdetails/0001"
+          }
+        },
+        "[hybrid]": {
+          "credentials": {
+            "destination": "STIHL_B2B_K4Q100_BASIC",
+            "path": "/sap/opu/odata4/sap/zapi_mm_customsinvdetails_v4/srvd_a2x/sap/zapi_mm_customdutyinvdetails/0001"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "[production]": {
+        "auth": "xsuaa"
+      }
+    }
+  }
+}
