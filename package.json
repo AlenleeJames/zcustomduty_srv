@@ -34,9 +34,9 @@
       "destinations": true,
       "html5-repo": true,
       "application-logging": true,
-      "STIHL_B2B_K4Q100_BASIC": {
+      "CustomDutyInvoiceSrv": {
         "kind": "odata",
-        "model": "srv/external/STIHL_B2B_K4Q100_BASIC",
+        "model": "srv/external/CustomDutyInvoiceSrv",
         "[production]": {
           "credentials": {
             "destination": "STIHL_B2B_K4Q100_BASIC",
@@ -51,6 +51,24 @@
         },
         "csrf": true,
         "csrfInBatch": true
+      },      
+      "API_SUPPLIERINVOICE_PROCESS_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_SUPPLIERINVOICE_PROCESS_SRV",
+        "csrf": true,
+        "csrfInBatch": true,
+        "[production]": {
+          "credentials": {
+            "destination": "STIHL_B2B_K4Q100_BASIC",
+            "path": "/sap/opu/odata/sap/API_SUPPLIERINVOICE_PROCESS_SRV"
+          }
+        },
+        "[hybrid]": {
+          "credentials": {
+            "destination": "STIHL_B2B_K4Q100_BASIC",
+            "path": "/sap/opu/odata/sap/API_SUPPLIERINVOICE_PROCESS_SRV"
+          }
+        }        
       },
       "[production]": {
         "auth": "xsuaa"
