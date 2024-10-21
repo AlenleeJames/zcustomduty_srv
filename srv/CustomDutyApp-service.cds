@@ -28,6 +28,10 @@ service CustomDutyAppSrv {
     entity CurrencyCodes          as projection on data.CurrencyCodes;
     entity ExchangeRates          as projection on data.ExchangeRates;
     entity CHAFileFieldsOrderList as projection on data.CHAFileFieldsOrderList;
-    entity Messages               as projection on data.Messages;    
+    entity Messages               as projection on data.Messages;  
+
+    //Calculate Logic
+    @requires: 'authenticated-user'
+    action calculateCHA_ExcelData ();
 
 }
