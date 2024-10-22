@@ -66,7 +66,7 @@ type CustomInvoiceHdr {
     action PostSupplierInvoice(InvoiceData: CustomInvoiceHdr) returns CustomInvoiceHdr;
 
 //Action to Calculate Custom Duty Based on File Input
-    action calculateDuty(fileData: DutyMaster) returns DutyMaster;
+    action calculateDuty(fileData: array of DutyMaster) returns array of DutyMaster;
 
     //Entities for CustomDuty Master Data
     //entity CustomDutyMaster as select from data.CustomDutyMaster;
