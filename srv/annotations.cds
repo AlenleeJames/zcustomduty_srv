@@ -1,20 +1,20 @@
 using {CustomDutyAppSrv as service} from './CustomDutyApp-service';
 
-annotate service.ConditionTypesMapping with @odata.draft.enabled;
+annotate service.CHAFileFieldsOrderList with @odata.draft.enabled;
 
-/*---------->>[ service.ConditionTypesMapping - Generic Actions ]<<----------*/
+/*---------->>[ service.CHAFileFieldsOrderList - Generic Actions ]<<----------*/
 
 // Create Action
-annotate service.ConditionTypesMapping with @(
+annotate service.CHAFileFieldsOrderList with @(
     Capabilities.Insertable: true
 );
 
 // update / edit Action
-annotate service.ConditionTypesMapping with @(
+annotate service.CHAFileFieldsOrderList with @(
     Capabilities.Updatable: true
 );
 
 //Delete Action
-annotate service.ConditionTypesMapping with @(
+annotate service.CHAFileFieldsOrderList with @(
     Capabilities.Deletable: true
 );

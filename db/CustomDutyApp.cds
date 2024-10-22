@@ -66,48 +66,38 @@ entity CustomDutyMaster : managed, cuid {
     status                 : String(10);
 }
 
-entity ConditionTypesMapping : cuid {
-    Identifier     : Integer;
-    Description    : String;
-    ConditionTable : String;
-    ConditionType  : String;
-}
+//Entities of Configuration tables
+entity CHAFileFieldsOrderList : managed, cuid {
+    BENumber              : String(10);
+    BEDate                : Date;
+    TotalBCD              : Decimal(13, 3);
+    TotalSWS              : Decimal(13, 3);
+    TotalIGST             : Decimal(13, 3);
+    TotalDuty             : Decimal(13, 3);
+    InvoiceNumber         : String(10);
+    InvoiceValueInFC      : Decimal(13, 3);
+    InvoiceCurrency       : Currency;
+    ExcRateForInvoice     : Decimal(9, 5);
+    OverseasFreightAmount : Decimal(13, 3);
+    FreightPercentage     : Decimal(5, 0);
+    FreightCurrency       : Currency;
+    FreightExcRate        : Decimal(9, 5);
+    InsuranceAmount       : Decimal(13, 3);
+    InsurancePercentage   : Decimal(5, 0);
+    MiscCharges           : Decimal(13, 3);
+    Material              : String(40);
+    MaterialDescription   : String(40);
+    HSNCode               : String(10);
+    UnitPrice             : Decimal(13, 3);
+    Quantity              : Decimal(13, 3);
+    Unit                  : String(3);
+    BCDAmount             : Decimal(13, 3);
+    BCDPercentage         : Decimal(5, 0);
+    SWSCharges            : Decimal(13, 3);
+    SWSPercentage         : Decimal(5, 0);
+    IGSTAmount            : Decimal(13, 3);
+    IGSTPercentage        : Decimal(5, 0);
+    AssessableValue       : Decimal(13, 3);
 
-entity DefaultTaxCodes : cuid {
-    TaxCode : String;
-}
-
-entity DefaultVendors : cuid {
-    VendorType : String;
-    VendorCode : String
-}
-
-entity PlantCodes : cuid {
-
-}
-
-entity MaterialCodes : cuid {
-    ContentName : String;
-    ContentFrom : String;
-    ContentTo   : String;
-}
-
-entity CurrencyCodes : cuid {
-
-}
-
-entity ExchangeRates : cuid {
-
-}
-
-entity CHAFileFieldsOrderList : cuid {
-    FieldName             : String;
-    CHAFileColumnPosition : String;
-
-}
-
-entity Messages : cuid {
-    ValidationCode : String;
-    WarningOrError : String;
 
 }
