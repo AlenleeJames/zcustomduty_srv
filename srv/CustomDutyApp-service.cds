@@ -7,6 +7,8 @@ using {
     Currency
 } from '@sap/cds/common';
 
+using { DutyMaster } from '../db/CustomDutyCommon';
+
 
 service CustomDutyAppSrv {
     @readonly
@@ -62,6 +64,9 @@ type CustomInvoiceHdr {
 
 //Action to Post Invoice
     action PostSupplierInvoice(InvoiceData: CustomInvoiceHdr) returns CustomInvoiceHdr;
+
+//Action to Calculate Custom Duty Based on File Input
+    action calculateDuty(fileData: DutyMaster) returns DutyMaster;
 
     //Entities for CustomDuty Master Data
     //entity CustomDutyMaster as select from data.CustomDutyMaster;
