@@ -1,13 +1,9 @@
-namespace customduty.serviceAPI;
 
 using {
-    Currency,
-    cuid,
-    managed,
-    sap
+    Currency
 } from '@sap/cds/common';
 
-entity CustomDutyMaster : managed, cuid {
+type DutyMaster : {
     CountryOfOrigin        : String(100);
     BENo                   : String(10);
     BEDate                 : Date;
@@ -63,51 +59,5 @@ entity CustomDutyMaster : managed, cuid {
     MiscChargesVen         : String(10);
     MiscChargeInvoice      : String(10);
     Remarks                : LargeString;
-    status                 : String(10);
-}
-
-entity ConditionTypesMapping : cuid {
-    Identifier     : Integer;
-    Description    : String;
-    ConditionTable : String;
-    ConditionType  : String;
-}
-
-entity DefaultTaxCodes : cuid {
-    TaxCode : String;
-}
-
-entity DefaultVendors : cuid {
-    VendorType : String;
-    VendorCode : String
-}
-
-entity PlantCodes : cuid {
-
-}
-
-entity MaterialCodes : cuid {
-    ContentName : String;
-    ContentFrom : String;
-    ContentTo   : String;
-}
-
-entity CurrencyCodes : cuid {
-
-}
-
-entity ExchangeRates : cuid {
-
-}
-
-entity CHAFileFieldsOrderList : cuid {
-    FieldName             : String;
-    CHAFileColumnPosition : String;
-
-}
-
-entity Messages : cuid {
-    ValidationCode : String;
-    WarningOrError : String;
-
-}
+    status                 : String(10);    
+};

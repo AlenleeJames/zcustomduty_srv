@@ -45,7 +45,7 @@
 }
 @Capabilities.KeyAsSegmentSupported : true
 @Capabilities.AsynchronousRequestsSupported : true
-service STIHL_B2B_K4Q100_BASIC {};
+service CustomDutyInvoiceSrv {};
 
 @cds.external : true
 @cds.persistence.skip : true
@@ -56,7 +56,7 @@ service STIHL_B2B_K4Q100_BASIC {};
 @Capabilities.DeleteRestrictions.Deletable : false
 @Capabilities.UpdateRestrictions.Updatable : false
 @Capabilities.UpdateRestrictions.QueryOptions.SelectSupported : true
-entity STIHL_B2B_K4Q100_BASIC.PlantVH {
+entity CustomDutyInvoiceSrv.PlantVH {
   @Common.Text : PlantName
   @Common.IsUpperCase : true
   @Common.Label : 'Plant'
@@ -75,7 +75,7 @@ entity STIHL_B2B_K4Q100_BASIC.PlantVH {
 @Capabilities.DeleteRestrictions.Deletable : false
 @Capabilities.UpdateRestrictions.Updatable : false
 @Capabilities.UpdateRestrictions.QueryOptions.SelectSupported : true
-entity STIHL_B2B_K4Q100_BASIC.POVendorVH {
+entity CustomDutyInvoiceSrv.POVendorVH {
   @Common.Text : BPSupplierName
   @Common.IsUpperCase : true
   @Common.Label : 'Supplier'
@@ -197,7 +197,7 @@ entity STIHL_B2B_K4Q100_BASIC.POVendorVH {
     AllowedExpressions: 'MultiValue'
   }
 ]
-entity STIHL_B2B_K4Q100_BASIC.ZA_MM_CustomDutyInvDetails {
+entity CustomDutyInvoiceSrv.ZA_MM_CustomDutyInvDetails {
   @Common.IsUpperCase : true
   @Common.Label : 'Delivery'
   key IBDNumber : String(10) not null;

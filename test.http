@@ -1,0 +1,118 @@
+
+
+###
+#
+# Get Custom master Data
+#
+GET http://localhost:4004/odata/v4/custom-duty-app-srv/CustomDutyMaster
+
+###
+#
+# Create Custom Master Data
+#
+POST http://localhost:4004/odata/v4/custom-duty-app-srv/CustomDutyMaster
+Content-Type: application/json
+
+{
+    "CountryOfOrigin": "GERMANY",
+    "BENo": "1234567",
+    "BEDate": "2024-10-01",
+    "HAWB_HBLDate": "2024-10-01",
+    "TotalBCD": 0.000,
+    "TotalSWS": 0.000,
+    "TotalIGST": 0.000,
+    "TotalAmount": 0.000,
+    "InvoiceNumber": "",
+    "Invoicedate": "2024-10-01",
+    "InvoiceValueFC": 0.000,
+    "ExcRateforInvoice": 0.00000,
+    "OverseasFreightAmount": 0.000,
+    "FreightPercentage": 0,
+    "FreightExrate": 0.00000,
+    "DomesticFreightAmount": 0.000,
+    "InsuranceAmount": 0.000,
+    "InsurancePercentage": 0,
+    "InsuranceExrate": 0.00000,
+    "MiscCharges": 0.000,
+    "Material": "",
+    "ProductDescription": "",
+    "PurchaseOrder": "",
+    "PurchaseorderItem": 0,
+    "HSNCodefromCHA": "",
+    "HSNCodeSystem": "",
+    "UnitPrice": 0.000,
+    "Quantity": 0.000,
+    "OpenPOQty": 0.000,
+    "Unit": "",
+    "BCDAmount": 0.000,
+    "RateofBCDPercent": 0,
+    "SocWelSurDutyAmt": 0.000,
+    "SocWelSurDutyPer": 0,
+    "IGST": 0.000,
+    "IGSTRateDutyPer": 0,
+    "AssessableValue": 0.000,
+    "OverFreightperitem": 0.000,
+    "DomesticFreightperitem": 0.000,
+    "Inschargesperitem": 0.000,
+    "Miscchargesperitem": 0.000,
+    "CustomInvoiceVendor": "",
+    "CustomInvoice": "",
+    "OverFreightVendor": "",
+    "OverFreighInvoice": "",
+    "DomFreightVendor": "",
+    "DomFreightInvoice": "",
+    "InsuranceVendor": "",
+    "InsInvoNum": "",
+    "MiscChargesVen": "",
+    "MiscChargeInvoice": "",
+    "Remarks": "",
+    "status": "Saved"
+}
+
+
+###
+#
+# Create Custom Master Data
+#
+POST http://localhost:4004/odata/v4/custom-duty-app-srv/PostSupplierInvoice
+Content-Type: application/json
+
+{
+    "InvoiceData": 
+    {
+    "FiscalYear": "2024",
+    "CompanyCode": "IN10",
+    "DocumentDate": "2024-10-21",
+    "PostingDate": "2024-10-21",
+    "SupplierInvoiceIDByInvcgParty": "FREIGHT",
+    "InvoicingParty": "1000011",
+    "DocumentCurrency": "INR",
+    "InvoiceGrossAmount": "2000.00",
+    "BusinessPlace": "MH01",
+    "TaxDeterminationDate": "2024-10-21",
+    "TaxReportingDate": "2024-10-21",
+    "TaxFulfillmentDate": "2024-10-21",
+    
+    "to_SuplrInvcItemPurOrdRef": [
+       {
+            "SupplierInvoiceItem": "1",
+            "PurchaseOrder": "4500000070",
+            "PurchaseOrderItem": "10",
+            "Plant": "IN10",
+            "TaxCode": "K1",
+            "DocumentCurrency": "INR",
+            "SupplierInvoiceItemAmount": "2000.00",
+            "PurchaseOrderQuantityUnit": "PC",
+            "QuantityInPurchaseOrderUnit": "10",
+            "PurchaseOrderPriceUnit": "PC",
+            "QtyInPurchaseOrderPriceUnit": "10",
+            "SuplrInvcDeliveryCostCndnType": "ZFR1",
+            "FreightSupplier": "1000011",
+            "TaxDeterminationDate": "2024-10-21"
+        }
+
+    ]
+}
+}
+
+

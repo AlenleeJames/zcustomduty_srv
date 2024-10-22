@@ -1,0 +1,1466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ODM',Version='0001',SAP__Origin='LOCAL')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.ODM.v1" Alias="SAP__ODM"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="API_SUPPLIERINVOICE_PROCESS_SRV" xml:lang="en" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="A_SuplrInvcHeaderWhldgTaxType" sap:label="Withholding Tax Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SupplierInvoice"/>
+                    <PropertyRef Name="FiscalYear"/>
+                    <PropertyRef Name="WithholdingTaxType"/>
+                </Key>
+                <Property Name="SupplierInvoice" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Invoice Document No." sap:quickinfo="Document Number of an Invoice Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FiscalYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WithholdingTaxType" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Withholding Tax Type" sap:quickinfo="Indicator for Withholding Tax Type"/>
+                <Property Name="DocumentCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="WithholdingTaxCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="W/Tax Code" sap:quickinfo="Withholding Tax Code"/>
+                <Property Name="WithholdingTaxBaseAmount" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="DocumentCurrency" sap:label="W/Tax Base FC" sap:quickinfo="Withholding Tax Base Amount in Document Currency"/>
+                <Property Name="ManuallyEnteredWhldgTaxAmount" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="DocumentCurrency" sap:label="Manual W/Tax in FC" sap:quickinfo="Withholding Tax Amount Entered Manually in Document Currency"/>
+                <Property Name="WhldgTaxIsEnteredManually" Type="Edm.Boolean" sap:label="WTax Amt Ent. Man." sap:quickinfo="Indicator: Withholding Tax Amount Entered Manually"/>
+                <Property Name="WhldgTaxBaseIsEnteredManually" Type="Edm.Boolean" sap:label="W/Tax Base Man." sap:quickinfo="Indicator: Withholding Tax Base Amount Entered Manually"/>
+            </EntityType>
+            <EntityType Name="A_SuplrInvcItemAcctAssgmtType" sap:label="Account Assignment Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SupplierInvoice"/>
+                    <PropertyRef Name="FiscalYear"/>
+                    <PropertyRef Name="SupplierInvoiceItem"/>
+                    <PropertyRef Name="OrdinalNumber"/>
+                </Key>
+                <Property Name="SupplierInvoice" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Document Number" sap:quickinfo="Document Number of an Accounting Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FiscalYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SupplierInvoiceItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Invoice Item" sap:quickinfo="Document Item in Invoice Document"/>
+                <Property Name="OrdinalNumber" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Sequence Number" sap:quickinfo="Four Character Sequential Number for Coding Block"/>
+                <Property Name="CostCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cost Center"/>
+                <Property Name="ControllingArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Controlling Area"/>
+                <Property Name="BusinessArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Business Area"/>
+                <Property Name="ProfitCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Profit Center"/>
+                <Property Name="FunctionalArea" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Functional Area"/>
+                <Property Name="GLAccount" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="G/L Account" sap:quickinfo="G/L Account Number"/>
+                <Property Name="SalesOrder" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="SD Document" sap:quickinfo="Sales and Distribution Document Number"/>
+                <Property Name="SalesOrderItem" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Sales document item"/>
+                <Property Name="CostObject" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Cost Object"/>
+                <Property Name="CostCtrActivityType" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Activity Type" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="BusinessProcess" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Business Process" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WBSElement" Type="Edm.String" MaxLength="24" sap:display-format="NonNegative" sap:label="WBS Element" sap:quickinfo="Work Breakdown Structure Element (WBS Element)"/>
+                <Property Name="DocumentCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="SuplrInvcAcctAssignmentAmount" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="DocumentCurrency" sap:label="Amount" sap:quickinfo="Amount in Document Currency"/>
+                <Property Name="PurchaseOrderQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Order Unit" sap:quickinfo="Purchase Order Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="PurchaseOrderQtyUnitSAPCode" Type="Edm.String" MaxLength="3" sap:label="Order Unit" sap:quickinfo="Purchase Order Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="PurchaseOrderQtyUnitISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Code" sap:quickinfo="ISO Code for Unit of Measurement"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="PurchaseOrderQtyUnitSAPCode" sap:label="Quantity"/>
+                <Property Name="TaxCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax Code" sap:quickinfo="Tax on Sales/Purchases Code"/>
+                <Property Name="AccountAssignmentNumber" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Account Assgmt No." sap:quickinfo="Sequential Number of Account Assignment"/>
+                <Property Name="AccountAssignmentIsUnplanned" Type="Edm.Boolean" sap:label="UAcctAssignment" sap:quickinfo="Unplanned Account Assignment from Invoice Verification"/>
+                <Property Name="PersonnelNumber" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel Number"/>
+                <Property Name="WorkItem" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Work Item ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="MasterFixedAsset" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Asset" sap:quickinfo="Main Asset Number"/>
+                <Property Name="FixedAsset" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Subnumber" sap:quickinfo="Asset Subnumber"/>
+                <Property Name="DebitCreditCode" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Debit/Credit Ind." sap:quickinfo="Debit/Credit Indicator" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="TaxJurisdiction" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Tax Jurisdiction"/>
+                <Property Name="InternalOrder" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Order" sap:quickinfo="Order Number"/>
+                <Property Name="ProjectNetworkInternalID" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Opertn Task List No." sap:quickinfo="Routing Number of Operations in the Order"/>
+                <Property Name="NetworkActivityInternalID" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Opertn Task List No." sap:quickinfo="Routing Number of Operations in the Order"/>
+                <Property Name="ProjectNetwork" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Network" sap:quickinfo="Network Number for Account Assignment"/>
+                <Property Name="NetworkActivity" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Activity" sap:quickinfo="Activity Number"/>
+                <Property Name="CommitmentItem" Type="Edm.String" MaxLength="24" sap:display-format="UpperCase" sap:label="Commitment item" sap:quickinfo="Commitment Item"/>
+                <Property Name="FundsCenter" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Funds Center"/>
+                <Property Name="Fund" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Fund"/>
+                <Property Name="GrantID" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Grant"/>
+                <Property Name="PartnerBusinessArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Trading Part.BA" sap:quickinfo="Trading Partner's Business Area" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SuplrInvcAccountAssignmentText" Type="Edm.String" MaxLength="50" sap:label="Text" sap:quickinfo="Item Text"/>
+                <Property Name="PurchaseOrderPriceUnit" Type="Edm.String" MaxLength="3" sap:label="Order Price Unit" sap:quickinfo="Order Price Unit (Purchasing)" sap:semantics="unit-of-measure"/>
+                <Property Name="PurchaseOrderPriceUnitSAPCode" Type="Edm.String" MaxLength="3" sap:label="Order Price Unit" sap:quickinfo="Order Price Unit (Purchasing)" sap:semantics="unit-of-measure"/>
+                <Property Name="PurchaseOrderPriceUnitISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Code" sap:quickinfo="ISO Code for Unit of Measurement"/>
+                <Property Name="QuantityInPurchaseOrderUnit" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="PurchaseOrderPriceUnitSAPCode" sap:label="Qty in OPUn" sap:quickinfo="Quantity in Purchase Order Price Unit"/>
+                <Property Name="ProfitabilitySegment" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Profitab. Segmt No." sap:quickinfo="Profitability Segment Number (CO-PA)"/>
+                <Property Name="BudgetPeriod" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Budget Period"/>
+                <Property Name="TaxCountry" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Tax Ctry/Reg." sap:quickinfo="Tax Reporting Country/Region"/>
+                <Property Name="TaxDeterminationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Tax Date" sap:quickinfo="Date for Determining Tax Rates" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="A_SuplrInvcItemPurOrdRefType" sap:label="Item with Purchase Order Reference" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SupplierInvoice"/>
+                    <PropertyRef Name="FiscalYear"/>
+                    <PropertyRef Name="SupplierInvoiceItem"/>
+                </Key>
+                <Property Name="SupplierInvoice" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Document Number" sap:quickinfo="Document Number of an Accounting Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FiscalYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SupplierInvoiceItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Invoice Item" sap:quickinfo="Document Item in Invoice Document"/>
+                <Property Name="PurchaseOrder" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchasing Document" sap:quickinfo="Purchasing Document Number"/>
+                <Property Name="PurchaseOrderItem" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="Item" sap:quickinfo="Item Number of Purchasing Document"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="ReferenceDocument" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Reference Document" sap:quickinfo="Document No. of a Reference Document"/>
+                <Property Name="ReferenceDocumentFiscalYear" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Year Current Period" sap:quickinfo="Fiscal Year of Current Period"/>
+                <Property Name="ReferenceDocumentItem" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Reference Doc. Item" sap:quickinfo="Item of a Reference Document"/>
+                <Property Name="IsSubsequentDebitCredit" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Subseq. Debit/Credit" sap:quickinfo="Indicator: Subsequent Debit/Credit"/>
+                <Property Name="TaxCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax Code" sap:quickinfo="Tax on Sales/Purchases Code"/>
+                <Property Name="TaxJurisdiction" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Tax Jurisdiction"/>
+                <Property Name="DocumentCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="SupplierInvoiceItemAmount" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="DocumentCurrency" sap:label="Amount" sap:quickinfo="Amount in Document Currency"/>
+                <Property Name="PurchaseOrderQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Order Unit" sap:quickinfo="Purchase Order Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="PurchaseOrderQtyUnitSAPCode" Type="Edm.String" MaxLength="3" sap:label="Order Unit" sap:quickinfo="Purchase Order Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="PurchaseOrderQtyUnitISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Code" sap:quickinfo="ISO Code for Unit of Measurement"/>
+                <Property Name="QuantityInPurchaseOrderUnit" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="PurchaseOrderQtyUnitSAPCode" sap:label="Quantity"/>
+                <Property Name="PurchaseOrderPriceUnit" Type="Edm.String" MaxLength="3" sap:label="Order Price Unit" sap:quickinfo="Order Price Unit (Purchasing)" sap:semantics="unit-of-measure"/>
+                <Property Name="PurchaseOrderPriceUnitSAPCode" Type="Edm.String" MaxLength="3" sap:label="Order Price Unit" sap:quickinfo="Order Price Unit (Purchasing)" sap:semantics="unit-of-measure"/>
+                <Property Name="PurchaseOrderPriceUnitISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Code" sap:quickinfo="ISO Code for Unit of Measurement"/>
+                <Property Name="QtyInPurchaseOrderPriceUnit" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="PurchaseOrderPriceUnitSAPCode" sap:label="Qty in OPUn" sap:quickinfo="Quantity in Purchase Order Price Unit"/>
+                <Property Name="SuplrInvcDeliveryCostCndnType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Condition Type"/>
+                <Property Name="SuplrInvcDeliveryCostCndnStep" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Step Number"/>
+                <Property Name="SuplrInvcDeliveryCostCndnCount" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Counter" sap:quickinfo="Condition Counter"/>
+                <Property Name="SupplierInvoiceItemText" Type="Edm.String" MaxLength="50" sap:label="Text" sap:quickinfo="Item Text"/>
+                <Property Name="FreightSupplier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier" sap:quickinfo="Account Number of Supplier"/>
+                <Property Name="IsNotCashDiscountLiable" Type="Edm.Boolean" sap:label="W/o Cash Dscnt" sap:quickinfo="Indicator: Line Item Not Liable to Cash Discount?"/>
+                <Property Name="PurchasingDocumentItemCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Item Category" sap:quickinfo="Item category in purchasing document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ProductType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Product Type Group" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="RetentionAmountInDocCurrency" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="DocumentCurrency" sap:label="Retent. in Doc. Crcy" sap:quickinfo="Retention Amount in Document Currency"/>
+                <Property Name="RetentionPercentage" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="Retention %" sap:quickinfo="Retention in Percent"/>
+                <Property Name="RetentionDueDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Due Date" sap:quickinfo="Due Date for Retention"/>
+                <Property Name="SuplrInvcItmIsNotRlvtForRtntn" Type="Edm.Boolean" sap:label="No Retention" sap:quickinfo="Item Not Relevant to Retention"/>
+                <Property Name="ServiceEntrySheet" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Entry Sheet" sap:quickinfo="Entry Sheet Number" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ServiceEntrySheetItem" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Line Number" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TaxCountry" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Tax Ctry/Reg." sap:quickinfo="Tax Reporting Country/Region"/>
+                <Property Name="IsFinallyInvoiced" Type="Edm.Boolean" sap:label="Final Invoice" sap:quickinfo="Final Invoice Indicator"/>
+                <Property Name="TaxDeterminationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Tax Date" sap:quickinfo="Date for Determining Tax Rates"/>
+                <Property Name="IN_HSNOrSACCode" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="HSN/SAC Code" sap:quickinfo="HSN or SAC Code"/>
+                <Property Name="IN_CustomDutyAssessableValue" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="DocumentCurrency" sap:label="Assessable Value"/>
+                <NavigationProperty Name="to_SupplierInvoiceItmAcctAssgmt" Relationship="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_7EC8C986065F1890A807A790C8F2710B" FromRole="FromRole_assoc_7EC8C986065F1890A807A790C8F2710B" ToRole="ToRole_assoc_7EC8C986065F1890A807A790C8F2710B"/>
+            </EntityType>
+            <EntityType Name="A_SuplrInvcSeldInbDeliveryNoteType" sap:label="SI Entered Delivery Notes" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SupplierInvoice"/>
+                    <PropertyRef Name="FiscalYear"/>
+                    <PropertyRef Name="InboundDeliveryNote"/>
+                </Key>
+                <Property Name="SupplierInvoice" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Document Number" sap:quickinfo="Document Number of an Accounting Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FiscalYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InboundDeliveryNote" Type="Edm.String" Nullable="false" MaxLength="16" sap:display-format="UpperCase" sap:label="Delivery Note" sap:quickinfo="Number of External Delivery Note"/>
+            </EntityType>
+            <EntityType Name="A_SuplrInvcSeldPurgDocumentType" sap:label="SI Entered Purchasing Documents" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SupplierInvoice"/>
+                    <PropertyRef Name="FiscalYear"/>
+                    <PropertyRef Name="PurchaseOrder"/>
+                    <PropertyRef Name="PurchaseOrderItem"/>
+                </Key>
+                <Property Name="SupplierInvoice" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Document Number" sap:quickinfo="Document Number of an Accounting Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FiscalYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PurchaseOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchasing Document" sap:quickinfo="Purchasing Document Number"/>
+                <Property Name="PurchaseOrderItem" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="NonNegative" sap:label="Item" sap:quickinfo="Item Number of Purchasing Document"/>
+            </EntityType>
+            <EntityType Name="A_SuplrInvcSeldSrvcEntrShtLeanType" sap:label="SI Entered Service Entry Sheets (Lean)" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SupplierInvoice"/>
+                    <PropertyRef Name="FiscalYear"/>
+                    <PropertyRef Name="ServiceEntrySheet"/>
+                    <PropertyRef Name="ServiceEntrySheetItem"/>
+                </Key>
+                <Property Name="SupplierInvoice" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Document Number" sap:quickinfo="Document Number of an Accounting Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FiscalYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ServiceEntrySheet" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Service Entry Sheet"/>
+                <Property Name="ServiceEntrySheetItem" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="NonNegative" sap:label="Item Number of SES" sap:quickinfo="Item Number of Service Entry Sheet"/>
+            </EntityType>
+            <EntityType Name="A_SuplrInvoiceAdditionalDataType" sap:label="Additional Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SupplierInvoice"/>
+                    <PropertyRef Name="FiscalYear"/>
+                </Key>
+                <Property Name="SupplierInvoice" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Invoice Document No." sap:quickinfo="Document Number of an Invoice Document"/>
+                <Property Name="FiscalYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal Year"/>
+                <Property Name="InvoicingPartyName1" Type="Edm.String" MaxLength="35" sap:label="Name"/>
+                <Property Name="InvoicingPartyName2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
+                <Property Name="InvoicingPartyName3" Type="Edm.String" MaxLength="35" sap:label="Name 3"/>
+                <Property Name="InvoicingPartyName4" Type="Edm.String" MaxLength="35" sap:label="Name 4"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="35" sap:label="City"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key"/>
+                <Property Name="StreetAddressName" Type="Edm.String" MaxLength="35" sap:label="Street" sap:quickinfo="Street and House Number"/>
+                <Property Name="POBox" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="PO Box"/>
+                <Property Name="POBoxPostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="P.O. Box Postal Code"/>
+                <Property Name="PostOfficeBankAccount" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Curr.Acct or Ref.No." sap:quickinfo="PO Bank Current Acct No. or Building Society Ref. No."/>
+                <Property Name="BankAccount" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Bank Account" sap:quickinfo="Bank Account Number"/>
+                <Property Name="Bank" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Bank Number"/>
+                <Property Name="BankCountry" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Bank Country/Region" sap:quickinfo="Bank Country/Region Key"/>
+                <Property Name="TaxID1" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Tax Number 1"/>
+                <Property Name="TaxID2" Type="Edm.String" MaxLength="11" sap:display-format="UpperCase" sap:label="Tax Number 2"/>
+                <Property Name="TaxID3" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Tax Number 3"/>
+                <Property Name="TaxID4" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Tax Number 4"/>
+                <Property Name="TaxID5" Type="Edm.String" MaxLength="60" sap:display-format="UpperCase" sap:label="Tax Number 5"/>
+                <Property Name="OneTmeAccountIsVATLiable" Type="Edm.Boolean" sap:label="Liable for VAT"/>
+                <Property Name="OneTmeAcctIsEqualizationTxSubj" Type="Edm.Boolean" sap:label="Checkbox" sap:heading=""/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="BankControlKey" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Bank Control Key"/>
+                <Property Name="DataExchangeInstructionKey" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Instruction Key" sap:quickinfo="Instruction Key for Data Medium Exchange"/>
+                <Property Name="DataMediumExchangeIndicator" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="DME Recipient Code" sap:quickinfo="Recipient Code for Data Medium Exchange"/>
+                <Property Name="LanguageCode" Type="Edm.String" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="IsOneTimeAccount" Type="Edm.Boolean" sap:label="One-Time Account" sap:quickinfo="Indicator: Is the Account a One-Time Account?"/>
+                <Property Name="PaymentRecipient" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Payment Recipient" sap:quickinfo="Payment Recipient Code"/>
+                <Property Name="AccountTaxType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax Type"/>
+                <Property Name="TaxNumberType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax Number Type"/>
+                <Property Name="IsNaturalPerson" Type="Edm.Boolean" sap:label="Checkbox" sap:heading=""/>
+                <Property Name="BankDetailReference" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Reference Details" sap:quickinfo="Reference Details for Bank Details"/>
+                <Property Name="RepresentativeName" Type="Edm.String" MaxLength="10" sap:label="Rep's Name" sap:quickinfo="Name of Representative"/>
+                <Property Name="BusinessType" Type="Edm.String" MaxLength="30" sap:label="Type of Business"/>
+                <Property Name="IndustryType" Type="Edm.String" MaxLength="30" sap:label="Type of Industry"/>
+                <Property Name="FormOfAddressName" Type="Edm.String" MaxLength="15" sap:label="Title"/>
+                <Property Name="VATRegistration" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="VAT Registration No." sap:quickinfo="VAT Registration Number"/>
+                <Property Name="OneTimeAcctCntrySpecificRef1" Type="Edm.String" MaxLength="140" sap:label="Country/Region Specific Reference 1" sap:quickinfo="Country/Region specific Ref. in the One Time Account Data"/>
+                <Property Name="IBAN" Type="Edm.String" MaxLength="34" sap:display-format="UpperCase" sap:label="IBAN" sap:quickinfo="IBAN (International Bank Account Number)" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SWIFTCode" Type="Edm.String" MaxLength="11" sap:display-format="UpperCase" sap:label="SWIFT/BIC" sap:quickinfo="SWIFT/BIC for International Payments"/>
+                <Property Name="OneTimeBusinessPartnerEmail" Type="Edm.String" MaxLength="130" sap:label="Clrk's internet add." sap:quickinfo="Internet address of partner company clerk"/>
+            </EntityType>
+            <EntityType Name="A_SupplierInvoiceType" sap:label="Header Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SupplierInvoice"/>
+                    <PropertyRef Name="FiscalYear"/>
+                </Key>
+                <Property Name="SupplierInvoice" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Invoice Document No." sap:quickinfo="Document Number of an Invoice Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FiscalYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="DocumentDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Invoice Date" sap:quickinfo="Invoice Date in Document"/>
+                <Property Name="PostingDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Posting Date" sap:quickinfo="Posting Date in the Document"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Entry Date" sap:quickinfo="Day On Which Accounting Document Was Entered" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SuplrInvcLstChgDteTmeTxt" Type="Edm.String" MaxLength="23" sap:display-format="UpperCase" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun) as Text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SupplierInvoiceIDByInvcgParty" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Reference" sap:quickinfo="Reference Document Number"/>
+                <Property Name="InvoicingParty" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Invoicing Party" sap:quickinfo="Different Invoicing Party"/>
+                <Property Name="DocumentCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="InvoiceGrossAmount" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="DocumentCurrency" sap:label="Gross Invoice Amount" sap:quickinfo="Gross Invoice Amount in Document Currency"/>
+                <Property Name="UnplannedDeliveryCost" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="DocumentCurrency" sap:label="Unplanned Del. Costs" sap:quickinfo="Unplanned Delivery Costs"/>
+                <Property Name="DocumentHeaderText" Type="Edm.String" MaxLength="25" sap:label="Document Header Text"/>
+                <Property Name="ManualCashDiscount" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="DocumentCurrency" sap:label="CD Amount" sap:quickinfo="Cash Discount Amount in Document Currency"/>
+                <Property Name="PaymentTerms" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Terms of Payment" sap:quickinfo="Key for Terms of Payment"/>
+                <Property Name="DueCalculationBaseDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Baseline Date" sap:quickinfo="Baseline Date for Due Date Calculation"/>
+                <Property Name="CashDiscount1Percent" Type="Edm.Decimal" Precision="5" Scale="3" sap:label="CD Percentage 1" sap:quickinfo="Cash Discount Percentage 1"/>
+                <Property Name="CashDiscount1Days" Type="Edm.Decimal" Precision="3" Scale="0" sap:label="Days 1" sap:quickinfo="Cash Discount Days 1"/>
+                <Property Name="CashDiscount2Percent" Type="Edm.Decimal" Precision="5" Scale="3" sap:label="CD Percentage 2" sap:quickinfo="Cash Discount Percentage 2"/>
+                <Property Name="CashDiscount2Days" Type="Edm.Decimal" Precision="3" Scale="0" sap:label="Days 2" sap:quickinfo="Cash Discount Days 2"/>
+                <Property Name="NetPaymentDays" Type="Edm.Decimal" Precision="3" Scale="0" sap:label="Days Net" sap:quickinfo="Net Payment Terms Period"/>
+                <Property Name="PaymentBlockingReason" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Payment Block" sap:quickinfo="Payment Block Key"/>
+                <Property Name="AccountingDocumentType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Document Type"/>
+                <Property Name="BPBankAccountInternalID" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Part.bank type" sap:quickinfo="Partner bank type"/>
+                <Property Name="SupplierInvoiceStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Invoice doc. status" sap:quickinfo="Invoice document status"/>
+                <Property Name="IndirectQuotedExchangeRate" Type="Edm.Decimal" Precision="9" Scale="5" sap:label="Ind. quot. exch.rate" sap:quickinfo="Indirect Quoted Exchange Rate"/>
+                <Property Name="DirectQuotedExchangeRate" Type="Edm.Decimal" Precision="9" Scale="5" sap:label="Dir. quot.exch.rate" sap:quickinfo="Direct Quoted Exchange Rate"/>
+                <Property Name="StateCentralBankPaymentReason" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="SCB Indicator" sap:quickinfo="State Central Bank Indicator"/>
+                <Property Name="SupplyingCountry" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Supply Ctry/Reg" sap:quickinfo="Supplying Country/Region"/>
+                <Property Name="PaymentMethod" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Payment Method"/>
+                <Property Name="PaymentMethodSupplement" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Pmt Meth. Supplement" sap:quickinfo="Payment method supplement"/>
+                <Property Name="PaymentReference" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Payment Reference"/>
+                <Property Name="InvoiceReference" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="InR.Reference number" sap:quickinfo="Invoice reference: Document number for invoice reference"/>
+                <Property Name="InvoiceReferenceFiscalYear" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal Year" sap:quickinfo="Fiscal Year of the Relevant Invoice (for Credit Memo)"/>
+                <Property Name="FixedCashDiscount" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Fixed" sap:quickinfo="Fixed Payment Terms"/>
+                <Property Name="UnplannedDeliveryCostTaxCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax Code"/>
+                <Property Name="UnplndDelivCostTaxJurisdiction" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Tax Jurisdiction"/>
+                <Property Name="UnplndDeliveryCostTaxCountry" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Tax Ctry/Reg." sap:quickinfo="Tax Reporting Country/Region"/>
+                <Property Name="AssignmentReference" Type="Edm.String" MaxLength="18" sap:label="Assignment" sap:quickinfo="Assignment Number"/>
+                <Property Name="SupplierPostingLineItemText" Type="Edm.String" MaxLength="50" sap:label="Item Text"/>
+                <Property Name="TaxIsCalculatedAutomatically" Type="Edm.Boolean" sap:label="Calculate Tax" sap:quickinfo="Calculate Tax Automatically"/>
+                <Property Name="BusinessPlace" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Business Place"/>
+                <Property Name="BusinessSectionCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Section Code"/>
+                <Property Name="BusinessArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Business Area"/>
+                <Property Name="SuplrInvcIsCapitalGoodsRelated" Type="Edm.Boolean" sap:label="Investment ID" sap:quickinfo="Indicator: Capital Goods Affected?"/>
+                <Property Name="SupplierInvoiceIsCreditMemo" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag" sap:heading=""/>
+                <Property Name="PaytSlipWthRefSubscriber" Type="Edm.String" MaxLength="11" sap:display-format="UpperCase" sap:label="PBC/ISR Number" sap:quickinfo="ISR Subscriber Number"/>
+                <Property Name="PaytSlipWthRefCheckDigit" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Check digit" sap:quickinfo="POR check digit"/>
+                <Property Name="PaytSlipWthRefReference" Type="Edm.String" MaxLength="27" sap:display-format="UpperCase" sap:label="ISR/QR Reference No." sap:quickinfo="ISR/QR Reference Number"/>
+                <Property Name="TaxDeterminationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Tax Date" sap:quickinfo="Date for Determining Tax Rates"/>
+                <Property Name="TaxReportingDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Tax Reporting Date"/>
+                <Property Name="TaxFulfillmentDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Tax Fulfill. Date" sap:quickinfo="Tax Fulfillment Date"/>
+                <Property Name="InvoiceReceiptDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Invoice Receipt Date"/>
+                <Property Name="DeliveryOfGoodsReportingCntry" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Reporting Ctry/Reg" sap:quickinfo="Reporting Country/Region for Delivery of Goods Within the EU"/>
+                <Property Name="SupplierVATRegistration" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="VAT Registration No." sap:quickinfo="VAT Registration Number"/>
+                <Property Name="IsEUTriangularDeal" Type="Edm.Boolean" sap:label="EU Triangular Deal" sap:quickinfo="Indicator: Triangular Deal Within the EU"/>
+                <Property Name="SuplrInvcDebitCrdtCodeDelivery" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Delivery(Inv/Cr)" sap:quickinfo="Posting logic for delivery items (invoice/credit memo)"/>
+                <Property Name="SuplrInvcDebitCrdtCodeReturns" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Returns(Inv/Cr)" sap:quickinfo="Posting logic for returns items (invoice/credit memo)"/>
+                <Property Name="RetentionDueDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Due (Default)" sap:quickinfo="Due Date for Retention (Default)"/>
+                <Property Name="PaymentReason" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Payment Reason"/>
+                <Property Name="HouseBank" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="House Bank" sap:quickinfo="Short Key for a House Bank"/>
+                <Property Name="HouseBankAccount" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Account ID" sap:quickinfo="ID for Account Details"/>
+                <Property Name="AlternativePayeePayer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Payee" sap:quickinfo="Payee/Payer"/>
+                <Property Name="SupplierInvoiceOrigin" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="IV category" sap:quickinfo="Origin of a Logistics Invoice Verification Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ReverseDocument" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Reversed by" sap:quickinfo="Reversal document number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ReverseDocumentFiscalYear" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Year" sap:quickinfo="Fiscal year of reversal document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsReversal" Type="Edm.Boolean" sap:label="Is Reversal" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IsReversed" Type="Edm.Boolean" sap:label="Is Reversed" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IN_GSTPartner" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="GST Partner"/>
+                <Property Name="IN_GSTPlaceOfSupply" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Place of Supply"/>
+                <Property Name="IN_InvoiceReferenceNumber" Type="Edm.String" MaxLength="64" sap:label="Invoice Ref. Number" sap:quickinfo="Invoice Reference Number"/>
+                <Property Name="JrnlEntryCntrySpecificRef1" Type="Edm.String" MaxLength="80" sap:label="Country/Region Specific Reference 1" sap:quickinfo="Country/Region Specific Reference 1 in the Document"/>
+                <Property Name="JrnlEntryCntrySpecificDate1" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Country/Region Specific Date 1" sap:quickinfo="Country/Region Specific Date 1 in the Document"/>
+                <Property Name="JrnlEntryCntrySpecificRef2" Type="Edm.String" MaxLength="25" sap:label="Country/Region Specific Reference 2" sap:quickinfo="Country/Region Specific Reference 2 in the Document"/>
+                <Property Name="JrnlEntryCntrySpecificDate2" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Country/Region Specific Date 2" sap:quickinfo="Country/Region Specific Date 2 in the Document"/>
+                <Property Name="JrnlEntryCntrySpecificRef3" Type="Edm.String" MaxLength="25" sap:label="Country/Region Specific Reference 3" sap:quickinfo="Country/Region Specific Reference 3 in the Document"/>
+                <Property Name="JrnlEntryCntrySpecificDate3" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Country/Region Specific Date 3" sap:quickinfo="Country/Region Specific Date 3 in the Document"/>
+                <Property Name="JrnlEntryCntrySpecificRef4" Type="Edm.String" MaxLength="50" sap:label="Country/Region Specific Reference 4" sap:quickinfo="Country/Region Specific Reference 4 in the Document"/>
+                <Property Name="JrnlEntryCntrySpecificDate4" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Country/Region Specific Date 4" sap:quickinfo="Country/Region Specific Date 4 in the Document"/>
+                <Property Name="JrnlEntryCntrySpecificRef5" Type="Edm.String" MaxLength="50" sap:label="Country/Region Specific Reference 5" sap:quickinfo="Country/Region Specific Reference 5 in the Document"/>
+                <Property Name="JrnlEntryCntrySpecificDate5" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Country/Region Specific Date 5" sap:quickinfo="Country/Region Specific Date 5 in the Document"/>
+                <Property Name="JrnlEntryCntrySpecificBP1" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ctry/Reg. Specific Business Partner 1" sap:quickinfo="Country/Region specific Business Partner 1 in the Document"/>
+                <Property Name="JrnlEntryCntrySpecificBP2" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ctry/Reg. Specific Business Partner 2" sap:quickinfo="Country/Region Specific Business Partner 2 in the Document"/>
+                <NavigationProperty Name="to_SelectedDeliveryNotes" Relationship="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_86FC7D5A328D41B09C4E06732CB0BE66" FromRole="FromRole_assoc_86FC7D5A328D41B09C4E06732CB0BE66" ToRole="ToRole_assoc_86FC7D5A328D41B09C4E06732CB0BE66"/>
+                <NavigationProperty Name="to_SelectedPurchaseOrders" Relationship="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_77E36664D9165BCB74B0A1381CDAFF5F" FromRole="FromRole_assoc_77E36664D9165BCB74B0A1381CDAFF5F" ToRole="ToRole_assoc_77E36664D9165BCB74B0A1381CDAFF5F"/>
+                <NavigationProperty Name="to_SelectedServiceEntrySheets" Relationship="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_DABF7B3FED9B4405BBD40ABEF6607658" FromRole="FromRole_assoc_DABF7B3FED9B4405BBD40ABEF6607658" ToRole="ToRole_assoc_DABF7B3FED9B4405BBD40ABEF6607658"/>
+                <NavigationProperty Name="to_SuplrInvcItemAsset" Relationship="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_77064ABFF70606F7007BEE88891E8D2A" FromRole="FromRole_assoc_77064ABFF70606F7007BEE88891E8D2A" ToRole="ToRole_assoc_77064ABFF70606F7007BEE88891E8D2A"/>
+                <NavigationProperty Name="to_SuplrInvcItemMaterial" Relationship="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_CFEABE91BA1BF40ED3DF63EBF1D0F2BE" FromRole="FromRole_assoc_CFEABE91BA1BF40ED3DF63EBF1D0F2BE" ToRole="ToRole_assoc_CFEABE91BA1BF40ED3DF63EBF1D0F2BE"/>
+                <NavigationProperty Name="to_SuplrInvcItemPurOrdRef" Relationship="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_147B92B28C877B13E53F5C9C7D21C757" FromRole="FromRole_assoc_147B92B28C877B13E53F5C9C7D21C757" ToRole="ToRole_assoc_147B92B28C877B13E53F5C9C7D21C757"/>
+                <NavigationProperty Name="to_SuplrInvoiceAdditionalData" Relationship="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_C130E045D0542C2534BBCB499B2989A3" FromRole="FromRole_assoc_C130E045D0542C2534BBCB499B2989A3" ToRole="ToRole_assoc_C130E045D0542C2534BBCB499B2989A3"/>
+                <NavigationProperty Name="to_SupplierInvoiceItemGLAcct" Relationship="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_85DE35CFFFED29C8B07C8189049CAB62" FromRole="FromRole_assoc_85DE35CFFFED29C8B07C8189049CAB62" ToRole="ToRole_assoc_85DE35CFFFED29C8B07C8189049CAB62"/>
+                <NavigationProperty Name="to_SupplierInvoiceTax" Relationship="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_F3355BD7F1C92761A4E010B3FDD6D314" FromRole="FromRole_assoc_F3355BD7F1C92761A4E010B3FDD6D314" ToRole="ToRole_assoc_F3355BD7F1C92761A4E010B3FDD6D314"/>
+                <NavigationProperty Name="to_SupplierInvoiceWhldgTax" Relationship="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_11F34456F0B5036EFFE1EC09FDD2BCA4" FromRole="FromRole_assoc_11F34456F0B5036EFFE1EC09FDD2BCA4" ToRole="ToRole_assoc_11F34456F0B5036EFFE1EC09FDD2BCA4"/>
+            </EntityType>
+            <EntityType Name="A_SupplierInvoiceItemAssetType" sap:label="Item for Asset Posting" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SupplierInvoice"/>
+                    <PropertyRef Name="FiscalYear"/>
+                    <PropertyRef Name="SupplierInvoiceItem"/>
+                </Key>
+                <Property Name="SupplierInvoice" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Document Number" sap:quickinfo="Document Number of an Accounting Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FiscalYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SupplierInvoiceItem" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Sequence Number" sap:quickinfo="Four Character Sequential Number for Coding Block"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="MasterFixedAsset" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Asset" sap:quickinfo="Main Asset Number"/>
+                <Property Name="FixedAsset" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Subnumber" sap:quickinfo="Asset Subnumber"/>
+                <Property Name="ProfitCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Profit Center"/>
+                <Property Name="GLAccount" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="G/L Account" sap:quickinfo="G/L Account Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="SupplierInvoiceItemAmount" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="DocumentCurrency" sap:label="Amount" sap:quickinfo="Amount in Document Currency"/>
+                <Property Name="TaxCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax Code" sap:quickinfo="Tax on Sales/Purchases Code"/>
+                <Property Name="TaxJurisdiction" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Tax Jurisdiction"/>
+                <Property Name="TaxCountry" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Tax Ctry/Reg." sap:quickinfo="Tax Reporting Country/Region"/>
+                <Property Name="TaxDeterminationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Tax Date" sap:quickinfo="Date for Determining Tax Rates"/>
+                <Property Name="DebitCreditCode" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Debit/Credit Ind." sap:quickinfo="Debit/Credit Indicator"/>
+                <Property Name="SupplierInvoiceItemText" Type="Edm.String" MaxLength="50" sap:label="Text" sap:quickinfo="Item Text"/>
+                <Property Name="AssignmentReference" Type="Edm.String" MaxLength="18" sap:label="Assignment" sap:quickinfo="Assignment Number"/>
+                <Property Name="IsNotCashDiscountLiable" Type="Edm.Boolean" sap:label="W/o Cash Dscnt" sap:quickinfo="Indicator: Line Item Not Liable to Cash Discount?"/>
+                <Property Name="AssetValueDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Asset Value Date"/>
+                <Property Name="QuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="SuplrInvcItmQtyUnitSAPCode" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="SuplrInvcItmQtyUnitISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Code" sap:quickinfo="ISO Code for Unit of Measurement"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="SuplrInvcItmQtyUnitSAPCode" sap:label="Quantity"/>
+            </EntityType>
+            <EntityType Name="A_SupplierInvoiceItemGLAcctType" sap:label="Item for G/L Account Posting" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SupplierInvoice"/>
+                    <PropertyRef Name="FiscalYear"/>
+                    <PropertyRef Name="SupplierInvoiceItem"/>
+                </Key>
+                <Property Name="SupplierInvoice" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Document Number" sap:quickinfo="Document Number of an Accounting Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FiscalYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SupplierInvoiceItem" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Sequence Number" sap:quickinfo="Four Character Sequential Number for Coding Block"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="CostCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cost Center"/>
+                <Property Name="ControllingArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Controlling Area"/>
+                <Property Name="BusinessArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Business Area"/>
+                <Property Name="ProfitCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Profit Center"/>
+                <Property Name="FunctionalArea" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Functional Area"/>
+                <Property Name="GLAccount" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="G/L Account" sap:quickinfo="G/L Account Number"/>
+                <Property Name="SalesOrder" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="SD Document" sap:quickinfo="Sales and Distribution Document Number"/>
+                <Property Name="SalesOrderItem" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Sales document item"/>
+                <Property Name="CostObject" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Cost Object"/>
+                <Property Name="CostCtrActivityType" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Activity Type"/>
+                <Property Name="BusinessProcess" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Business Process"/>
+                <Property Name="WBSElement" Type="Edm.String" MaxLength="24" sap:display-format="NonNegative" sap:label="WBS Element" sap:quickinfo="Work Breakdown Structure Element (WBS Element)"/>
+                <Property Name="DocumentCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="SupplierInvoiceItemAmount" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="DocumentCurrency" sap:label="Amount" sap:quickinfo="Amount in Document Currency"/>
+                <Property Name="TaxCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax Code" sap:quickinfo="Tax on Sales/Purchases Code"/>
+                <Property Name="PersonnelNumber" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel Number"/>
+                <Property Name="WorkItem" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Work Item ID"/>
+                <Property Name="DebitCreditCode" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Debit/Credit Ind." sap:quickinfo="Debit/Credit Indicator"/>
+                <Property Name="TaxJurisdiction" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Tax Jurisdiction"/>
+                <Property Name="SupplierInvoiceItemText" Type="Edm.String" MaxLength="50" sap:label="Text" sap:quickinfo="Item Text"/>
+                <Property Name="AssignmentReference" Type="Edm.String" MaxLength="18" sap:label="Assignment" sap:quickinfo="Assignment Number"/>
+                <Property Name="IsNotCashDiscountLiable" Type="Edm.Boolean" sap:label="W/o Cash Dscnt" sap:quickinfo="Indicator: Line Item Not Liable to Cash Discount?"/>
+                <Property Name="InternalOrder" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Order" sap:quickinfo="Order Number"/>
+                <Property Name="ProjectNetwork" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Network" sap:quickinfo="Network Number for Account Assignment"/>
+                <Property Name="NetworkActivity" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Activity" sap:quickinfo="Activity Number"/>
+                <Property Name="CommitmentItem" Type="Edm.String" MaxLength="24" sap:display-format="UpperCase" sap:label="Commitment item" sap:quickinfo="Commitment Item"/>
+                <Property Name="FundsCenter" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Funds Center"/>
+                <Property Name="TaxBaseAmountInTransCrcy" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="DocumentCurrency" sap:label="Tax Base Amount" sap:quickinfo="Tax Base Amount in Document Currency"/>
+                <Property Name="Fund" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Fund"/>
+                <Property Name="GrantID" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Grant"/>
+                <Property Name="QuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="SuplrInvcItmQtyUnitSAPCode" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="SuplrInvcItmQtyUnitISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Code" sap:quickinfo="ISO Code for Unit of Measurement"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="SuplrInvcItmQtyUnitSAPCode" sap:label="Quantity"/>
+                <Property Name="PartnerBusinessArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Trading Part.BA" sap:quickinfo="Trading Partner's Business Area"/>
+                <Property Name="FinancialTransactionType" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Transaction Type"/>
+                <Property Name="TaxCountry" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Tax Ctry/Reg." sap:quickinfo="Tax Reporting Country/Region"/>
+                <Property Name="EarmarkedFundsDocument" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Earmarked Funds" sap:quickinfo="Document Number for Earmarked Funds"/>
+                <Property Name="EarmarkedFundsDocumentItem" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Document Item" sap:quickinfo="Earmarked Funds: Document Item"/>
+                <Property Name="BudgetPeriod" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Budget Period"/>
+            </EntityType>
+            <EntityType Name="A_SupplierInvoiceItemMaterialType" sap:label="Item for Material Posting" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SupplierInvoice"/>
+                    <PropertyRef Name="FiscalYear"/>
+                    <PropertyRef Name="SupplierInvoiceItem"/>
+                </Key>
+                <Property Name="SupplierInvoice" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Document Number" sap:quickinfo="Document Number of an Accounting Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FiscalYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SupplierInvoiceItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Invoice Item" sap:quickinfo="Document Item in Invoice Document"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="ValuationArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Valuation Area"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InventoryValuationType" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Valuation Type"/>
+                <Property Name="TaxCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax Code" sap:quickinfo="Tax on Sales/Purchases Code"/>
+                <Property Name="TaxJurisdiction" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Tax Jurisdiction"/>
+                <Property Name="TaxCountry" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Tax Ctry/Reg." sap:quickinfo="Tax Reporting Country/Region"/>
+                <Property Name="TaxDeterminationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Tax Date" sap:quickinfo="Date for Determining Tax Rates"/>
+                <Property Name="DocumentCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="SupplierInvoiceItemAmount" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="DocumentCurrency" sap:label="Amount" sap:quickinfo="Amount in Document Currency"/>
+                <Property Name="QuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="SuplrInvcItmQtyUnitSAPCode" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="SuplrInvcItmQtyUnitISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Code" sap:quickinfo="ISO Code for Unit of Measurement"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="SuplrInvcItmQtyUnitSAPCode" sap:label="Quantity"/>
+                <Property Name="DebitCreditCode" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Debit/Credit Ind." sap:quickinfo="Debit/Credit Indicator"/>
+                <Property Name="IsNotCashDiscountLiable" Type="Edm.Boolean" sap:label="W/o Cash Dscnt" sap:quickinfo="Indicator: Line Item Not Liable to Cash Discount?"/>
+            </EntityType>
+            <EntityType Name="A_SupplierInvoiceTaxType" sap:label="Tax Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SupplierInvoice"/>
+                    <PropertyRef Name="FiscalYear"/>
+                    <PropertyRef Name="TaxCode"/>
+                    <PropertyRef Name="SupplierInvoiceTaxCounter"/>
+                </Key>
+                <Property Name="SupplierInvoice" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Invoice Document No." sap:quickinfo="Document Number of an Invoice Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FiscalYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="TaxCode" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax Code" sap:quickinfo="Tax code"/>
+                <Property Name="SupplierInvoiceTaxCounter" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Invoice Item" sap:quickinfo="Document Item in Invoice Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DocumentCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="TaxAmount" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="DocumentCurrency" sap:label="Value-Added Tax Amt" sap:quickinfo="Tax Amount in Document Currency with +/- Sign"/>
+                <Property Name="TaxBaseAmountInTransCrcy" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="DocumentCurrency" sap:label="Tax Base Amount" sap:quickinfo="Tax Base Amount in Document Currency"/>
+                <Property Name="TaxJurisdiction" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Tax Jurisdiction"/>
+                <Property Name="TaxCountry" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Tax Ctry/Reg." sap:quickinfo="Tax Reporting Country/Region"/>
+                <Property Name="TaxDeterminationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Tax Date" sap:quickinfo="Date for Determining Tax Rates"/>
+                <Property Name="TaxRateValidityStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Tax Rate Valid-From" sap:quickinfo="Valid-From Date of the Tax Rate"/>
+            </EntityType>
+            <ComplexType Name="PostInvoiceExportParameters">
+                <Property Name="Success" Type="Edm.Boolean" Nullable="false" sap:label="TRUE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <ComplexType Name="CancelInvoiceExportParameters">
+                <Property Name="ReverseDocument" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Reversed With" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FiscalYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Success" Type="Edm.Boolean" Nullable="false" sap:label="TRUE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <ComplexType Name="ReleaseInvoiceExportParameters">
+                <Property Name="Success" Type="Edm.Boolean" Nullable="false" sap:label="TRUE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <Association Name="assoc_7EC8C986065F1890A807A790C8F2710B" sap:content-version="1">
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemPurOrdRefType" Multiplicity="1" Role="FromRole_assoc_7EC8C986065F1890A807A790C8F2710B"/>
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemAcctAssgmtType" Multiplicity="*" Role="ToRole_assoc_7EC8C986065F1890A807A790C8F2710B"/>
+            </Association>
+            <Association Name="assoc_86FC7D5A328D41B09C4E06732CB0BE66" sap:content-version="1">
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType" Multiplicity="1" Role="FromRole_assoc_86FC7D5A328D41B09C4E06732CB0BE66"/>
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcSeldInbDeliveryNoteType" Multiplicity="*" Role="ToRole_assoc_86FC7D5A328D41B09C4E06732CB0BE66"/>
+            </Association>
+            <Association Name="assoc_77E36664D9165BCB74B0A1381CDAFF5F" sap:content-version="1">
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType" Multiplicity="1" Role="FromRole_assoc_77E36664D9165BCB74B0A1381CDAFF5F"/>
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcSeldPurgDocumentType" Multiplicity="*" Role="ToRole_assoc_77E36664D9165BCB74B0A1381CDAFF5F"/>
+            </Association>
+            <Association Name="assoc_DABF7B3FED9B4405BBD40ABEF6607658" sap:content-version="1">
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType" Multiplicity="1" Role="FromRole_assoc_DABF7B3FED9B4405BBD40ABEF6607658"/>
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcSeldSrvcEntrShtLeanType" Multiplicity="*" Role="ToRole_assoc_DABF7B3FED9B4405BBD40ABEF6607658"/>
+            </Association>
+            <Association Name="assoc_77064ABFF70606F7007BEE88891E8D2A" sap:content-version="1">
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType" Multiplicity="1" Role="FromRole_assoc_77064ABFF70606F7007BEE88891E8D2A"/>
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemAssetType" Multiplicity="*" Role="ToRole_assoc_77064ABFF70606F7007BEE88891E8D2A"/>
+            </Association>
+            <Association Name="assoc_CFEABE91BA1BF40ED3DF63EBF1D0F2BE" sap:content-version="1">
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType" Multiplicity="1" Role="FromRole_assoc_CFEABE91BA1BF40ED3DF63EBF1D0F2BE"/>
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemMaterialType" Multiplicity="*" Role="ToRole_assoc_CFEABE91BA1BF40ED3DF63EBF1D0F2BE"/>
+            </Association>
+            <Association Name="assoc_147B92B28C877B13E53F5C9C7D21C757" sap:content-version="1">
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType" Multiplicity="1" Role="FromRole_assoc_147B92B28C877B13E53F5C9C7D21C757"/>
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemPurOrdRefType" Multiplicity="*" Role="ToRole_assoc_147B92B28C877B13E53F5C9C7D21C757"/>
+            </Association>
+            <Association Name="assoc_C130E045D0542C2534BBCB499B2989A3" sap:content-version="1">
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType" Multiplicity="1" Role="FromRole_assoc_C130E045D0542C2534BBCB499B2989A3"/>
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvoiceAdditionalDataType" Multiplicity="1" Role="ToRole_assoc_C130E045D0542C2534BBCB499B2989A3"/>
+            </Association>
+            <Association Name="assoc_85DE35CFFFED29C8B07C8189049CAB62" sap:content-version="1">
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType" Multiplicity="1" Role="FromRole_assoc_85DE35CFFFED29C8B07C8189049CAB62"/>
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemGLAcctType" Multiplicity="*" Role="ToRole_assoc_85DE35CFFFED29C8B07C8189049CAB62"/>
+            </Association>
+            <Association Name="assoc_F3355BD7F1C92761A4E010B3FDD6D314" sap:content-version="1">
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType" Multiplicity="1" Role="FromRole_assoc_F3355BD7F1C92761A4E010B3FDD6D314"/>
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceTaxType" Multiplicity="*" Role="ToRole_assoc_F3355BD7F1C92761A4E010B3FDD6D314"/>
+            </Association>
+            <Association Name="assoc_11F34456F0B5036EFFE1EC09FDD2BCA4" sap:content-version="1">
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType" Multiplicity="1" Role="FromRole_assoc_11F34456F0B5036EFFE1EC09FDD2BCA4"/>
+                <End Type="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcHeaderWhldgTaxType" Multiplicity="*" Role="ToRole_assoc_11F34456F0B5036EFFE1EC09FDD2BCA4"/>
+            </Association>
+            <EntityContainer Name="API_SUPPLIERINVOICE_PROCESS_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="A_SuplrInvcHeaderWhldgTax" EntityType="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcHeaderWhldgTaxType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_SuplrInvcItemAcctAssgmt" EntityType="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemAcctAssgmtType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_SuplrInvcItemPurOrdRef" EntityType="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemPurOrdRefType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_SuplrInvcSeldInbDeliveryNote" EntityType="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcSeldInbDeliveryNoteType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_SuplrInvcSeldPurgDocument" EntityType="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcSeldPurgDocumentType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_SuplrInvcSeldSrvcEntrShtLean" EntityType="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcSeldSrvcEntrShtLeanType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_SuplrInvoiceAdditionalData" EntityType="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvoiceAdditionalDataType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_SupplierInvoice" EntityType="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType" sap:updatable="false" sap:content-version="1"/>
+                <EntitySet Name="A_SupplierInvoiceItemAsset" EntityType="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemAssetType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_SupplierInvoiceItemGLAcct" EntityType="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemGLAcctType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_SupplierInvoiceItemMaterial" EntityType="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemMaterialType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_SupplierInvoiceTax" EntityType="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceTaxType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_11F34456F0B5036EFFE1EC09FDD2BCA4" Association="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_11F34456F0B5036EFFE1EC09FDD2BCA4" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_SupplierInvoice" Role="FromRole_assoc_11F34456F0B5036EFFE1EC09FDD2BCA4"/>
+                    <End EntitySet="A_SuplrInvcHeaderWhldgTax" Role="ToRole_assoc_11F34456F0B5036EFFE1EC09FDD2BCA4"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_7EC8C986065F1890A807A790C8F2710B" Association="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_7EC8C986065F1890A807A790C8F2710B" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_SuplrInvcItemPurOrdRef" Role="FromRole_assoc_7EC8C986065F1890A807A790C8F2710B"/>
+                    <End EntitySet="A_SuplrInvcItemAcctAssgmt" Role="ToRole_assoc_7EC8C986065F1890A807A790C8F2710B"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_77E36664D9165BCB74B0A1381CDAFF5F" Association="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_77E36664D9165BCB74B0A1381CDAFF5F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_SupplierInvoice" Role="FromRole_assoc_77E36664D9165BCB74B0A1381CDAFF5F"/>
+                    <End EntitySet="A_SuplrInvcSeldPurgDocument" Role="ToRole_assoc_77E36664D9165BCB74B0A1381CDAFF5F"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_85DE35CFFFED29C8B07C8189049CAB62" Association="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_85DE35CFFFED29C8B07C8189049CAB62" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_SupplierInvoice" Role="FromRole_assoc_85DE35CFFFED29C8B07C8189049CAB62"/>
+                    <End EntitySet="A_SupplierInvoiceItemGLAcct" Role="ToRole_assoc_85DE35CFFFED29C8B07C8189049CAB62"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_CFEABE91BA1BF40ED3DF63EBF1D0F2BE" Association="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_CFEABE91BA1BF40ED3DF63EBF1D0F2BE" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_SupplierInvoice" Role="FromRole_assoc_CFEABE91BA1BF40ED3DF63EBF1D0F2BE"/>
+                    <End EntitySet="A_SupplierInvoiceItemMaterial" Role="ToRole_assoc_CFEABE91BA1BF40ED3DF63EBF1D0F2BE"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_C130E045D0542C2534BBCB499B2989A3" Association="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_C130E045D0542C2534BBCB499B2989A3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_SupplierInvoice" Role="FromRole_assoc_C130E045D0542C2534BBCB499B2989A3"/>
+                    <End EntitySet="A_SuplrInvoiceAdditionalData" Role="ToRole_assoc_C130E045D0542C2534BBCB499B2989A3"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_F3355BD7F1C92761A4E010B3FDD6D314" Association="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_F3355BD7F1C92761A4E010B3FDD6D314" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_SupplierInvoice" Role="FromRole_assoc_F3355BD7F1C92761A4E010B3FDD6D314"/>
+                    <End EntitySet="A_SupplierInvoiceTax" Role="ToRole_assoc_F3355BD7F1C92761A4E010B3FDD6D314"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_77064ABFF70606F7007BEE88891E8D2A" Association="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_77064ABFF70606F7007BEE88891E8D2A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_SupplierInvoice" Role="FromRole_assoc_77064ABFF70606F7007BEE88891E8D2A"/>
+                    <End EntitySet="A_SupplierInvoiceItemAsset" Role="ToRole_assoc_77064ABFF70606F7007BEE88891E8D2A"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_147B92B28C877B13E53F5C9C7D21C757" Association="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_147B92B28C877B13E53F5C9C7D21C757" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_SupplierInvoice" Role="FromRole_assoc_147B92B28C877B13E53F5C9C7D21C757"/>
+                    <End EntitySet="A_SuplrInvcItemPurOrdRef" Role="ToRole_assoc_147B92B28C877B13E53F5C9C7D21C757"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_DABF7B3FED9B4405BBD40ABEF6607658" Association="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_DABF7B3FED9B4405BBD40ABEF6607658" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_SupplierInvoice" Role="FromRole_assoc_DABF7B3FED9B4405BBD40ABEF6607658"/>
+                    <End EntitySet="A_SuplrInvcSeldSrvcEntrShtLean" Role="ToRole_assoc_DABF7B3FED9B4405BBD40ABEF6607658"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_86FC7D5A328D41B09C4E06732CB0BE66" Association="API_SUPPLIERINVOICE_PROCESS_SRV.assoc_86FC7D5A328D41B09C4E06732CB0BE66" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_SupplierInvoice" Role="FromRole_assoc_86FC7D5A328D41B09C4E06732CB0BE66"/>
+                    <End EntitySet="A_SuplrInvcSeldInbDeliveryNote" Role="ToRole_assoc_86FC7D5A328D41B09C4E06732CB0BE66"/>
+                </AssociationSet>
+                <FunctionImport Name="Post" ReturnType="API_SUPPLIERINVOICE_PROCESS_SRV.PostInvoiceExportParameters" m:HttpMethod="POST">
+                    <Parameter Name="SupplierInvoice" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="FiscalYear" Type="Edm.String" Mode="In" MaxLength="4"/>
+                </FunctionImport>
+                <FunctionImport Name="Release" ReturnType="API_SUPPLIERINVOICE_PROCESS_SRV.ReleaseInvoiceExportParameters" m:HttpMethod="POST">
+                    <Parameter Name="SupplierInvoice" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="FiscalYear" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="DiscountDaysHaveToBeShifted" Type="Edm.Boolean" Mode="In" sap:label="Indicator"/>
+                </FunctionImport>
+                <FunctionImport Name="Cancel" ReturnType="API_SUPPLIERINVOICE_PROCESS_SRV.CancelInvoiceExportParameters" m:HttpMethod="POST">
+                    <Parameter Name="PostingDate" Type="Edm.DateTime" Mode="In" Precision="0" sap:label="Time Stamp"/>
+                    <Parameter Name="ReversalReason" Type="Edm.String" Mode="In" MaxLength="2"/>
+                    <Parameter Name="FiscalYear" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="SupplierInvoice" Type="Edm.String" Mode="In" MaxLength="10"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.5.0"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcHeaderWhldgTaxType/ManuallyEnteredWhldgTaxAmount"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcHeaderWhldgTaxType/WithholdingTaxBaseAmount"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcHeaderWhldgTaxType/WithholdingTaxCode"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcHeaderWhldgTaxType/WithholdingTaxType"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemAcctAssgmtType/SupplierInvoiceItem"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemPurOrdRefType/PurchaseOrder"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemPurOrdRefType/PurchaseOrderItem"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemPurOrdRefType/SupplierInvoiceItem"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemPurOrdRefType/SupplierInvoiceItemAmount"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemPurOrdRefType/TaxCode"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcSeldInbDeliveryNoteType/InboundDeliveryNote"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcSeldPurgDocumentType/PurchaseOrder"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcSeldPurgDocumentType/PurchaseOrderItem"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcSeldSrvcEntrShtLeanType/ServiceEntrySheet"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcSeldSrvcEntrShtLeanType/ServiceEntrySheetItem"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemAssetType/DebitCreditCode"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="DebitCreditCode"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemAssetType/MasterFixedAsset"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemAssetType/SupplierInvoiceItem"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemAssetType/SupplierInvoiceItemAmount"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemGLAcctType/DebitCreditCode"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="DebitCreditCode"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemGLAcctType/GLAccount"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemGLAcctType/SupplierInvoiceItem"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemGLAcctType/SupplierInvoiceItemAmount"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemMaterialType/DebitCreditCode"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="DebitCreditCode"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemMaterialType/Material"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemMaterialType/Quantity"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                    <Annotation Term="Measures.UNECEUnit" Path="SuplrInvcItmQtyUnitISOCode"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemMaterialType/SupplierInvoiceItem"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemMaterialType/SupplierInvoiceItemAmount"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemMaterialType/TaxCode"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemMaterialType/ValuationArea"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceTaxType/TaxAmount"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceTaxType/TaxCode"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType/CompanyCode"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="CompanyCode"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType/DocumentCurrency"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="Currency"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType/DocumentDate"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType/InvoiceGrossAmount"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType/PostingDate"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/A_SuplrInvcItemPurOrdRef"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.FilterRestrictions">
+                        <Record>
+                            <PropertyValue Property="NonFilterableProperties">
+                                <Collection>
+                                    <PropertyPath>ServiceEntrySheet</PropertyPath>
+                                    <PropertyPath>ServiceEntrySheetItem</PropertyPath>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                    <Annotation Term="Capabilities.NavigationRestrictions">
+                        <Record>
+                            <PropertyValue Property="RestrictedProperties">
+                                <Collection>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SupplierInvoiceItmAcctAssgmt"/>
+                                        <PropertyValue Property="InsertRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Insertable" Bool="false"/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                    <Annotation Term="Capabilities.SortRestrictions">
+                        <Record>
+                            <PropertyValue Property="NonSortableProperties">
+                                <Collection>
+                                    <PropertyPath>ServiceEntrySheet</PropertyPath>
+                                    <PropertyPath>ServiceEntrySheetItem</PropertyPath>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/A_SuplrInvoiceAdditionalData"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.FilterRestrictions">
+                        <Record>
+                            <PropertyValue Property="NonFilterableProperties">
+                                <Collection>
+                                    <PropertyPath>IBAN</PropertyPath>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                    <Annotation Term="Capabilities.SortRestrictions">
+                        <Record>
+                            <PropertyValue Property="NonSortableProperties">
+                                <Collection>
+                                    <PropertyPath>IBAN</PropertyPath>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/A_SupplierInvoice"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.FilterRestrictions">
+                        <Record>
+                            <PropertyValue Property="NonFilterableProperties">
+                                <Collection>
+                                    <PropertyPath>IsReversal</PropertyPath>
+                                    <PropertyPath>IsReversed</PropertyPath>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                    <Annotation Term="Capabilities.NavigationRestrictions">
+                        <Record>
+                            <PropertyValue Property="RestrictedProperties">
+                                <Collection>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SelectedDeliveryNotes"/>
+                                        <PropertyValue Property="InsertRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Insertable" Bool="false"/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SelectedPurchaseOrders"/>
+                                        <PropertyValue Property="InsertRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Insertable" Bool="false"/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SelectedServiceEntrySheets"/>
+                                        <PropertyValue Property="InsertRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Insertable" Bool="false"/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SuplrInvcItemAsset"/>
+                                        <PropertyValue Property="InsertRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Insertable" Bool="false"/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SuplrInvcItemMaterial"/>
+                                        <PropertyValue Property="InsertRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Insertable" Bool="false"/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SuplrInvcItemPurOrdRef"/>
+                                        <PropertyValue Property="InsertRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Insertable" Bool="false"/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SuplrInvoiceAdditionalData"/>
+                                        <PropertyValue Property="InsertRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Insertable" Bool="false"/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SupplierInvoiceItemGLAcct"/>
+                                        <PropertyValue Property="InsertRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Insertable" Bool="false"/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SupplierInvoiceTax"/>
+                                        <PropertyValue Property="InsertRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Insertable" Bool="false"/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SupplierInvoiceWhldgTax"/>
+                                        <PropertyValue Property="InsertRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Insertable" Bool="false"/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                    <Annotation Term="Capabilities.SortRestrictions">
+                        <Record>
+                            <PropertyValue Property="NonSortableProperties">
+                                <Collection>
+                                    <PropertyPath>IsReversal</PropertyPath>
+                                    <PropertyPath>IsReversed</PropertyPath>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcHeaderWhldgTaxType/DocumentCurrency"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="Currency"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemAcctAssgmtType/CompanyCode"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="CompanyCode"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemAcctAssgmtType/DebitCreditCode"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="DebitCreditCode"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemAcctAssgmtType/DocumentCurrency"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="Currency"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemAcctAssgmtType/TaxCountry"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="Country"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemAcctAssgmtType/TaxJurisdiction"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="TaxJurisdiction"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemPurOrdRefType/DocumentCurrency"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="Currency"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemPurOrdRefType/ProductType"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="ProductType"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemPurOrdRefType/PurchasingDocumentItemCategory"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="PurchasingDocumentItemCategory"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemPurOrdRefType/TaxCountry"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="Country"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemPurOrdRefType/TaxJurisdiction"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="TaxJurisdiction"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvoiceAdditionalDataType/BankCountry"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="Country"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvoiceAdditionalDataType/Country"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="Country"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvoiceAdditionalDataType/Region"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="Region"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemAssetType/CompanyCode"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="CompanyCode"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemAssetType/DocumentCurrency"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="Currency"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemAssetType/TaxCountry"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="Country"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemAssetType/TaxJurisdiction"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="TaxJurisdiction"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemGLAcctType/CompanyCode"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="CompanyCode"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemGLAcctType/DocumentCurrency"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="Currency"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemGLAcctType/FinancialTransactionType"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="FinancialTransactionType"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemGLAcctType/TaxCountry"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="Country"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemGLAcctType/TaxJurisdiction"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="TaxJurisdiction"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemMaterialType/CompanyCode"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="CompanyCode"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemMaterialType/DocumentCurrency"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="Currency"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemMaterialType/TaxCountry"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="Country"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemMaterialType/TaxJurisdiction"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="TaxJurisdiction"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceTaxType/TaxCountry"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="Country"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceTaxType/TaxJurisdiction"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="TaxJurisdiction"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType/AccountingDocumentType"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="JournalEntryType"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType/FixedCashDiscount"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="FixedCashDiscount"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType/PaymentBlockingReason"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="PaymentBlockingReason"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType/PaymentMethod"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="PaymentMethod"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType/PaymentMethodSupplement"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="PaymentMethodSupplement"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType/PaymentTerms"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="PaymentTerms"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType/StateCentralBankPaymentReason"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="StateCentralBankPaymentReason"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType/SupplierInvoiceStatus"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="SupplierInvoiceStatus"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType/SupplyingCountry"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="Country"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType/UnplndDelivCostTaxJurisdiction"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="TaxJurisdiction"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceType/UnplndDeliveryCostTaxCountry"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.SAPObjectNodeTypeReference" String="Country"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemAcctAssgmtType/Quantity"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Measures.UNECEUnit" Path="PurchaseOrderQtyUnitISOCode"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemAcctAssgmtType/QuantityInPurchaseOrderUnit"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Measures.UNECEUnit" Path="PurchaseOrderPriceUnitISOCode"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemPurOrdRefType/QtyInPurchaseOrderPriceUnit"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Measures.UNECEUnit" Path="PurchaseOrderPriceUnitISOCode"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SuplrInvcItemPurOrdRefType/QuantityInPurchaseOrderUnit"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Measures.UNECEUnit" Path="PurchaseOrderQtyUnitISOCode"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemAssetType/Quantity"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Measures.UNECEUnit" Path="SuplrInvcItmQtyUnitISOCode"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.A_SupplierInvoiceItemGLAcctType/Quantity"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Measures.UNECEUnit" Path="SuplrInvcItmQtyUnitISOCode"/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/A_SuplrInvcHeaderWhldgTax"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.ReadRestrictions">
+                        <Record>
+                            <PropertyValue Property="Description" String="Reads withholding tax data of supplier invoice."/>
+                            <PropertyValue Property="LongDescription" String="Reads the withholding tax data of the supplier invoice using, for example, the supplier invoice, the fiscal year, and the document currency."/>
+                            <PropertyValue Property="ReadByKeyRestrictions">
+                                <Record>
+                                    <PropertyValue Property="Description" String="Reads withholding tax data of supplier invoice by key data."/>
+                                    <PropertyValue Property="LongDescription" String="Reads withholding tax data of supplier invoice using the key fields for document number, fiscal year, and withholding tax type."/>
+                                </Record>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/A_SuplrInvcItemAcctAssgmt"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.ReadRestrictions">
+                        <Record>
+                            <PropertyValue Property="Description" String="Reads account assignment data of supplier invoice item."/>
+                            <PropertyValue Property="LongDescription" String="Reads the account assignment data of the supplier invoice item using, for example, the supplier invoice, the ordinal number and the supplier invoice item."/>
+                            <PropertyValue Property="ReadByKeyRestrictions">
+                                <Record>
+                                    <PropertyValue Property="Description" String="Reads account assignment data of supplier invoice item by key data."/>
+                                    <PropertyValue Property="LongDescription" String="Reads account assignment data of supplier invoice item using the key fields for document number, fiscal year, supplier invoice item and, ordinal number"/>
+                                </Record>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/A_SuplrInvcItemPurOrdRef"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.ReadRestrictions">
+                        <Record>
+                            <PropertyValue Property="Description" String="Reads supplier invoice item data with purchase order reference."/>
+                            <PropertyValue Property="LongDescription" String="Reads the data of the supplier invoice item with purchase order reference using, for example, the supplier invoice, the fiscal year, the plant, the document currency, the purchase order, the amount of the supplier invoice item, and the tax code."/>
+                            <PropertyValue Property="ReadByKeyRestrictions">
+                                <Record>
+                                    <PropertyValue Property="Description" String="Reads supplier invoice item data with purchase order reference by key data."/>
+                                    <PropertyValue Property="LongDescription" String="Reads supplier invoice item data with purchase order reference using key fields or document number, fiscal year, and supplier invoice item."/>
+                                </Record>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/A_SupplierInvoice"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.ReadRestrictions">
+                        <Record>
+                            <PropertyValue Property="Description" String="Reads supplier invoice data."/>
+                            <PropertyValue Property="LongDescription" String="Reads the supplier invoice data using, for example, the supplier invoice, the fiscal year, the company code, the document currency, the document date, the invoice gross amount, the invoicing party and the posting date."/>
+                            <PropertyValue Property="ReadByKeyRestrictions">
+                                <Record>
+                                    <PropertyValue Property="Description" String="Reads supplier invoice data by key data."/>
+                                    <PropertyValue Property="LongDescription" String="Reads supplier invoice data by key fields for document number and fiscal year."/>
+                                </Record>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/A_SupplierInvoiceItemGLAcct"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.ReadRestrictions">
+                        <Record>
+                            <PropertyValue Property="Description" String="Reads supplier invoice item data for posting to G/L account."/>
+                            <PropertyValue Property="LongDescription" String="Reads the data of the supplier invoice item for posting to G/L account using, for example, the supplier invoice, the fiscal year, the document currency, the debit credit code, and the amount of the supplier invoice."/>
+                            <PropertyValue Property="ReadByKeyRestrictions">
+                                <Record>
+                                    <PropertyValue Property="Description" String="Reads supplier invoice item data for posting to G/L account by key data."/>
+                                    <PropertyValue Property="LongDescription" String="Reads the supplier invoice item data for posting to G/L account by key fields for document number, fiscal year, and supplier invoice item."/>
+                                </Record>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/A_SupplierInvoiceItemAsset"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.ReadRestrictions">
+                        <Record>
+                            <PropertyValue Property="Description" String="Reads supplier invoice item data for posting to asset."/>
+                            <PropertyValue Property="LongDescription" String="Reads the data of the supplier invoice item for posting to asset using, for example, the supplier invoice, the fiscal year, the document currency, the debit credit code, and the amount of the supplier invoice."/>
+                            <PropertyValue Property="ReadByKeyRestrictions">
+                                <Record>
+                                    <PropertyValue Property="Description" String="Reads supplier invoice item data for posting to asset by key data."/>
+                                    <PropertyValue Property="LongDescription" String="Reads the supplier invoice item data for posting to asset by key fields for document number, fiscal year, and supplier invoice item."/>
+                                </Record>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/A_SupplierInvoiceItemMaterial"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.ReadRestrictions">
+                        <Record>
+                            <PropertyValue Property="Description" String="Reads supplier invoice item data for posting to material."/>
+                            <PropertyValue Property="LongDescription" String="Reads the data of the supplier invoice item for posting to material using, for example, the supplier invoice, the fiscal year, the document currency, the debit credit code, and the amount of the supplier invoice."/>
+                            <PropertyValue Property="ReadByKeyRestrictions">
+                                <Record>
+                                    <PropertyValue Property="Description" String="Reads supplier invoice item data for posting to material by key data."/>
+                                    <PropertyValue Property="LongDescription" String="Reads the supplier invoice item data for posting to material by key fields for document number, fiscal year, and supplier invoice item."/>
+                                </Record>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/A_SupplierInvoiceTax"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.ReadRestrictions">
+                        <Record>
+                            <PropertyValue Property="Description" String="Reads tax data for supplier invoice."/>
+                            <PropertyValue Property="LongDescription" String="Reads the tax data of the supplier invoice using, for example, the supplier invoice, the fiscal year, the tax counter in the supplier invoice, the tax code, and the document currency."/>
+                            <PropertyValue Property="ReadByKeyRestrictions">
+                                <Record>
+                                    <PropertyValue Property="Description" String="Reads tax data for supplier invoice by key data."/>
+                                    <PropertyValue Property="LongDescription" String="Reads tax data for supplier invoice by key fields for document number, fiscal year, tax code, and supplier invoice tax counter."/>
+                                </Record>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/A_SuplrInvoiceAdditionalData"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.ReadRestrictions">
+                        <Record>
+                            <PropertyValue Property="Description" String="Reads additional data for supplier invoice."/>
+                            <PropertyValue Property="LongDescription" String="Reads the additional data of the supplier invoice using, for example, the supplier invoice, the fiscal year, the supplier name , the supplier bank details, and the one-time account details."/>
+                            <PropertyValue Property="ReadByKeyRestrictions">
+                                <Record>
+                                    <PropertyValue Property="Description" String="Reads additional data for supplier invoice by key data."/>
+                                    <PropertyValue Property="LongDescription" String="Reads additional data for supplier invoice by key fields for document number, fiscal year, supplier, supplier bank data, and one-time account data."/>
+                                </Record>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/A_SuplrInvcSeldInbDeliveryNote"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.ReadRestrictions">
+                        <Record>
+                            <PropertyValue Property="Description" String="Reads entered delivery note data for supplier invoice."/>
+                            <PropertyValue Property="LongDescription" String="Reads the entered delivery note data of the supplier invoice using, for example, the supplier invoice, the fiscal year, and the inbound delivery note."/>
+                            <PropertyValue Property="ReadByKeyRestrictions">
+                                <Record>
+                                    <PropertyValue Property="Description" String="Reads entered delivery note data for supplier invoice by key data."/>
+                                    <PropertyValue Property="LongDescription" String="Reads entered delivery note data for supplier invoice by key fields for document number, fiscal year, and inbound delivery note."/>
+                                </Record>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/A_SuplrInvcSeldSrvcEntrShtLean"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.ReadRestrictions">
+                        <Record>
+                            <PropertyValue Property="Description" String="Reads entered service entry sheet (Lean) data for supplier invoice."/>
+                            <PropertyValue Property="LongDescription" String="Reads the entered service entry sheet (Lean) data of the supplier invoice using, for example, the supplier invoice, the fiscal year, the service entry sheet, and the service entry sheet item."/>
+                            <PropertyValue Property="ReadByKeyRestrictions">
+                                <Record>
+                                    <PropertyValue Property="Description" String="Reads entered service entry sheet (Lean) data for supplier invoice by key data."/>
+                                    <PropertyValue Property="LongDescription" String="Reads entered service entry sheet (Lean) data for supplier invoice by key fields for document number, fiscal year, service entry sheet, and service entry sheet item."/>
+                                </Record>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/A_SuplrInvcSeldPurgDocument"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.ReadRestrictions">
+                        <Record>
+                            <PropertyValue Property="Description" String="Reads entered purchasing document data for supplier invoice."/>
+                            <PropertyValue Property="LongDescription" String="Reads the entered purchasing document data of the supplier invoice using, for example, the supplier invoice, the fiscal year, the purchase order, and the purchase order item."/>
+                            <PropertyValue Property="ReadByKeyRestrictions">
+                                <Record>
+                                    <PropertyValue Property="Description" String="Reads entered purchasing document data for supplier invoice by key data."/>
+                                    <PropertyValue Property="LongDescription" String="Reads entered purchasing document data for supplier invoice by key fields for document number, fiscal year, purchase order, and purchase order item."/>
+                                </Record>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/A_SupplierInvoice"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.InsertRestrictions">
+                        <Record>
+                            <PropertyValue Property="Description" String="Creates a supplier invoice."/>
+                            <PropertyValue Property="LongDescription" String="Creates a supplier invoice using, for example, the company code, the invoice gross amount, and the invoicing party. The service supports a deep create of an invoice. In addition, you can park or hold an invoice with header data only."/>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/A_SupplierInvoice"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.DeleteRestrictions">
+                        <Record>
+                            <PropertyValue Property="Description" String="Deletes supplier invoice that has not been posted."/>
+                            <PropertyValue Property="LongDescription" String="Deletes not-posted supplier invoice (for example in status Held or Parked) using the supplier invoice and the fiscal year."/>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/Cancel"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Core.Description" String="Reverses a supplier invoice and returns the reversal number."/>
+                    <Annotation Term="Core.LongDescription" String="Reverses a supplier invoice and creates a reversal document. The system returns the reversal number."/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/Release"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Core.Description" String="Releases a supplier invoice."/>
+                    <Annotation Term="Core.LongDescription" String="Releases a blocked supplier invoice."/>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/A_SuplrInvcItemPurOrdRef"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.NavigationRestrictions">
+                        <Record>
+                            <PropertyValue Property="RestrictedProperties">
+                                <Collection>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SupplierInvoiceItmAcctAssgmt"/>
+                                        <PropertyValue Property="ReadRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Description" String="Reads the item data with purchase order reference including the account assignment data."/>
+                                                <PropertyValue Property="LongDescription" String="Reads the data of an item with purchase order reference and the corresponding account assignment data."/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities/A_SupplierInvoice"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.NavigationRestrictions">
+                        <Record>
+                            <PropertyValue Property="RestrictedProperties">
+                                <Collection>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SuplrInvcItemPurOrdRef"/>
+                                        <PropertyValue Property="ReadRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Description" String="Reads the supplier invoice data and the item data with purchase order reference."/>
+                                                <PropertyValue Property="LongDescription" String="Reads the header data of the supplier invoice and the data of items with purchase order reference."/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SupplierInvoiceItemGLAcct"/>
+                                        <PropertyValue Property="ReadRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Description" String="Reads the supplier invoice data and the item data for posting to G/L account."/>
+                                                <PropertyValue Property="LongDescription" String="Reads the header data of the supplier invoice and the data of items for posting to G/L account."/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SuplrInvcItemAsset"/>
+                                        <PropertyValue Property="ReadRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Description" String="Reads the supplier invoice data and the item data for posting to asset."/>
+                                                <PropertyValue Property="LongDescription" String="Reads the header data of the supplier invoice and the data of items for posting to asset."/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SuplrInvcItemMaterial"/>
+                                        <PropertyValue Property="ReadRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Description" String="Reads the supplier invoice data and the item data for posting to material."/>
+                                                <PropertyValue Property="LongDescription" String="Reads the header data of the supplier invoice and the data of items for posting to material."/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SupplierInvoiceTax"/>
+                                        <PropertyValue Property="ReadRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Description" String="Reads the supplier invoice data including the tax data."/>
+                                                <PropertyValue Property="LongDescription" String="Reads the header data of the supplier invoice including the tax data."/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SupplierInvoiceWhldgTax"/>
+                                        <PropertyValue Property="ReadRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Description" String="Reads the supplier invoice data including the withholding tax data."/>
+                                                <PropertyValue Property="LongDescription" String="Reads the header data of the supplier invoice including the withholding tax data."/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SuplrInvoiceAdditionalData"/>
+                                        <PropertyValue Property="ReadRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Description" String="Reads the supplier invoice data including the additional data."/>
+                                                <PropertyValue Property="LongDescription" String="Reads the header data of the supplier invoice including the additional data."/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SelectedDeliveryNotes"/>
+                                        <PropertyValue Property="ReadRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Description" String="Reads the supplier invoice data including the entered delivery note data."/>
+                                                <PropertyValue Property="LongDescription" String="Reads the header data of the supplier invoice including the entered delivery note data."/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SelectedServiceEntrySheets"/>
+                                        <PropertyValue Property="ReadRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Description" String="Reads the supplier invoice data including the entered service entry sheet (Lean) data."/>
+                                                <PropertyValue Property="LongDescription" String="Reads the header data of the supplier invoice including the entered service entry sheet (Lean) data."/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SelectedPurchaseOrders"/>
+                                        <PropertyValue Property="ReadRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Description" String="Reads the supplier invoice data including the entered purchasing document data."/>
+                                                <PropertyValue Property="LongDescription" String="Reads the header data of the supplier invoice including the entered purchasing document data."/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="API_SUPPLIERINVOICE_PROCESS_SRV.API_SUPPLIERINVOICE_PROCESS_SRV_Entities"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+                    <atom:link rel="self" href="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/sap/API_SUPPLIERINVOICE_PROCESS_SRV/$metadata"
+                        xmlns:atom="http://www.w3.org/2005/Atom"/>
+                        <atom:link rel="latest-version" href="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/sap/API_SUPPLIERINVOICE_PROCESS_SRV/$metadata"
+                            xmlns:atom="http://www.w3.org/2005/Atom"/>
+                        </Schema>
+                    </edmx:DataServices>
+                </edmx:Edmx>
