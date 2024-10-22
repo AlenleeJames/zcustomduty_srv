@@ -24,12 +24,15 @@ module.exports = async (srv) =>
       return InvoicePostResponse;
     });
 
+    //Custom Duty Calculation
+    srv.on('calculateDuty', async(req)=>{
+       // Extract the Supplier Invoice payload from the request data
+       const CustomDutyData = req.data.fileData;
+
+    })
+
     srv.before ('CREATE', 'CustomDutyMaster', async (req) => {
         
         
-    })  
-      
-      //srv.after ('READ', 'CustomDutyMaster', each => {
-        
-      //})
+    });    
 }
