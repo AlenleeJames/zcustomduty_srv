@@ -1,1 +1,30 @@
-ID,BENumber,BEDate,TotalBCD,TotalSWS,TotalIGST,TotalDuty,InvoiceNumber,InvoiceValueInFC,InvoiceCurrency,ExcRateForInvoice,OverseasFreightAmount,FreightPercentage,FreightCurrency,FreightExcRate,InsuranceAmount,InsurancePercentage,MiscCharges,Material,MaterialDescription,HSNCode,UnitPrice,Quantity,Unit,BCDAmount,BCDPercentage,SWSCharges,SWSPercentage,IGSTAmount,IGSTPercentage,AssessableValue
+ID,CHAFileFieldName,CHAFileFieldColumnValue
+5449c7dd-03d6-47ac-bdfc-3d184923429e,BE Number,A
+70fcf467-b5a7-43c0-8946-aa8c0c4d5fda,BE Date,C
+baedf2a0-5ae6-4829-a548-eec6a5fc20c7,Total BCD,D
+cedfc334-c60d-4273-9c55-94f00687c84e,Total SWS,
+23467496-f25e-4964-833b-8fa020b7e60b,Total IGST,
+e8b0cd9c-a27a-4890-b150-9c22f7ff4cc6,Total Duty,
+5655bc3f-9fdb-403a-ab83-22de201ce74c,Invoice Number,
+3170d1b7-11ff-49fb-9734-608fdf9e4bc1,Invoice Value in FC,
+f450bf35-d8ca-4ba8-9061-97bed07ee219,Invoice Currency,
+6977a12d-33ee-4e70-911e-f70f5cbceed0,Exc Rate for Invoice,
+36964473-d8b8-4b67-84e5-c5edca482263,Overseas Freight Amount,
+10479db7-8413-4e3e-9056-20f1ba989855,Freight percentage,
+a98cd120-4cb0-40ce-9c0f-2ca4d1d60563,Freight Currency,
+c3619d60-fc67-4d5e-8e86-d4412b4a7309,Freight Exc Rate,
+ee61acaf-f29d-44f2-b8b1-5b37969155a9,Insurance Amount,
+84f99a02-0601-40f9-b5e2-2e3703ac17db,Insurance Percentage,
+557c9bc1-cc89-4ef8-96c3-65f871aae6c0,Misc Charges,
+8e8f42d6-6dd7-4287-96ce-f1d701d6350b,Material,
+fa033513-14dd-4f47-8328-79e618b251a9,Material Description,
+1dff26e6-0d31-4147-ae29-ff0e4234560e,HSN Code,
+c3404775-fc7e-4317-9b4e-bb452d43eb79,Unit Price,
+447da84d-9354-4222-8ca1-82831660e4a7,Unit,
+18129629-3bce-48c1-a6b8-667e043c4afe,BCD Amount,
+6e1c0e73-6298-4d2c-9aa7-ec8807d7c00c,BCD %,
+7e781e93-07bb-41b0-9b7b-938c3f24f407,SWS Charges,
+418f0b37-2e45-46c6-9b2e-7057f21be96f,SWS %,
+33824550-6053-443b-bc86-97be39c58c2c,IGST Amount,
+5b1b11bd-c4ce-4290-aed0-c4ce9778e301,IGST %,
+66a7e598-0803-4144-938e-cd11122d3249,Assessable Value,
