@@ -35,7 +35,7 @@ module.exports = async (srv) =>
 
     })
 
-    srv.before ('CREATE', 'CustomDutyMaster', async (req) => {
+    srv.before ('CREATE', 'CustomDutyMaster', async (req) => { 
         
         
     });    

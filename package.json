@@ -49,7 +49,7 @@
             "path": "/sap/opu/odata4/sap/zapi_mm_customsinvdetails_v4/srvd_a2x/sap/zapi_mm_customdutyinvdetails/0001"
           }
         },
-        "csrf": true,
+        "csrf": true, 
         "csrfInBatch": true
       },      
       "API_SUPPLIERINVOICE_PROCESS_SRV": {
