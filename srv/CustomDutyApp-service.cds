@@ -73,15 +73,8 @@ type CustomInvoiceHdr {
     entity CustomDutyMaster       as projection on data.CustomDutyMaster;
     
     //Entities of Configuration tables    
-    entity ConditionTypesMapping  as projection on data.ConditionTypesMapping;
-    entity DefaultTaxCodes        as projection on data.DefaultTaxCodes;
-    entity DefaultVendors         as projection on data.DefaultVendors;
-    entity PlantCodes             as projection on data.PlantCodes;
-    entity MaterialCodes          as projection on data.MaterialCodes;
-    entity CurrencyCodes          as projection on data.CurrencyCodes;
-    entity ExchangeRates          as projection on data.ExchangeRates;
     entity CHAFileFieldsOrderList as projection on data.CHAFileFieldsOrderList;
-    entity Messages               as projection on data.Messages;    
+
 
 }
 
