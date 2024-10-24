@@ -20,6 +20,7 @@ entity CustomDutyMaster : managed, cuid {
     Invoicedate            : Date;
     InvoiceValueFC         : Decimal(13, 3);
     InvoiceCurrency        : Currency;
+    InvoiceValueINR        : Decimal(13, 3);
     ExcRateforInvoice      : Decimal(9, 5);
     OverseasFreightAmount  : Decimal(13, 3);
     FreightPercentage      : Decimal(5, 0);
