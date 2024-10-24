@@ -20,6 +20,7 @@ entity CustomDutyMaster : managed, cuid {
     Invoicedate            : Date;
     InvoiceValueFC         : Decimal(13, 3);
     InvoiceCurrency        : Currency;
+    InvoiceValueINR        : Decimal(13, 3);
     ExcRateforInvoice      : Decimal(9, 5);
     OverseasFreightAmount  : Decimal(13, 3);
     FreightPercentage      : Decimal(5, 0);
@@ -66,48 +67,9 @@ entity CustomDutyMaster : managed, cuid {
     status                 : String(10);
 }
 
-entity ConditionTypesMapping : cuid {
-    Identifier     : Integer;
-    Description    : String;
-    ConditionTable : String;
-    ConditionType  : String;
-}
-
-entity DefaultTaxCodes : cuid {
-    TaxCode : String;
-}
-
-entity DefaultVendors : cuid {
-    VendorType : String;
-    VendorCode : String
-}
-
-entity PlantCodes : cuid {
-
-}
-
-entity MaterialCodes : cuid {
-    ContentName : String;
-    ContentFrom : String;
-    ContentTo   : String;
-}
-
-entity CurrencyCodes : cuid {
-
-}
-
-entity ExchangeRates : cuid {
-
-}
-
-entity CHAFileFieldsOrderList : cuid {
-    FieldName             : String;
-    CHAFileColumnPosition : String;
-
-}
-
-entity Messages : cuid {
-    ValidationCode : String;
-    WarningOrError : String;
+//Entities of Configuration tables
+entity CHAFileFieldsOrderList : managed, cuid {
+    CHAFileFieldName      : String;
+    CHAFileFieldColumnValue  : String;
 
 }

@@ -233,7 +233,7 @@ Content-Type: application/json
     "MiscChargesVen": "",
     "MiscChargeInvoice": "",
     "Remarks": "",
-    "status": "Saved"
+    "status": "Saved" 
 }
 ]
 }
