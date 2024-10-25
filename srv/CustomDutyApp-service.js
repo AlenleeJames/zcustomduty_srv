@@ -26,14 +26,9 @@ module.exports = async (srv) =>
 
     //Custom Duty Calculation
     srv.on('calculateDuty', async(req)=>{
-       // Extract the Supplier Invoice payload from the request data
-       console.log('Reached');
+       // Extract the Supplier Invoice payload from the request data      
        const CustomDutyData = req.data.fileData;
-       CustomDutyData[0].CountryOfOrigin = 'INDIA';
-       CustomDutyData[1].CountryOfOrigin = 'FRANCE';
-       return CustomDutyData;
-
-       //Distinct Invoice Numbers
+        //Distinct Invoice Numbers
       var selInvoice = [], finalCalcInvoice = [], InvoiceValue = 0;
       CustomDutyData.map(element => {
         var Invoice = element.InvoiceNumber;
@@ -70,8 +65,9 @@ module.exports = async (srv) =>
           }
         }
       }
+       return CustomDutyData;   
 
-    })
+    });
 
     srv.before ('CREATE', 'CustomDutyMaster', async (req) => { 
         

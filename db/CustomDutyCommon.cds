@@ -22,6 +22,7 @@ type DutyMaster : {
     FreightPercentage      : Decimal(5, 0);
     FreightCurrency        : Currency;
     FreightExrate          : Decimal(9, 5);
+    OverseasFreightAmtINR  : Decimal(13, 3);
     DomesticFreightAmount  : Decimal(13, 3);
     InsuranceAmount        : Decimal(13, 3);
     InsurancePercentage    : Decimal(5, 0);
