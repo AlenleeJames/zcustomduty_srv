@@ -29,7 +29,7 @@
       "index": true
     },
     "requires": {
-      "auth": "xsuaa",
+      "auth": "mocked",
       "connectivity": true,
       "destinations": true,
       "html5-repo": true,
