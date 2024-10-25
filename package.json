@@ -33,7 +33,7 @@
       "plugin" : true
     },
     "requires": {
-      "auth": "mocked",
+      "auth": "xsuaa",
       "connectivity": true,
       "destinations": true,
       "html5-repo": true,
