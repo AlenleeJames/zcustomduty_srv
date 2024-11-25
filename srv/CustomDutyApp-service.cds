@@ -84,5 +84,9 @@ type CustomInvoiceHdr {
     entity CHAFileFieldsOrderList as projection on data.CHAFileFieldsOrderList;   
     entity CustomDutyFieldMapping as projection on data.CustomDutyFieldMapping; 
 
+    entity CommonParamTableMaster as projection on data.CommonParamTableMaster;
+    
+    entity CommonParamTableActuals as projection on data.CommonParamTableActuals;    
+
 }
 
