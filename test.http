@@ -1,5 +1,4 @@
 
-
 ###
 #
 # Get Custom master Data
@@ -37,16 +36,16 @@ Content-Type: application/json
     "Material": "",
     "ProductDescription": "",
     "PurchaseOrder": "",
-    "PurchaseorderItem": 0,
+    "PurchaseorderItem": "",
     "HSNCodefromCHA": "",
     "HSNCodeSystem": "",
     "UnitPrice": 0.000,
     "Quantity": 0.000,
     "OpenPOQty": 0.000,
-    "Unit": "",
+    "Unit": "PC",
     "BCDAmount": 0.000,
     "RateofBCDPercent": 0,
-    "SocWelSurDutyAmt": 0.000,
+    "SocWelSurDutyAmt": 100.000,
     "SocWelSurDutyPer": 0,
     "IGST": 0.000,
     "IGSTRateDutyPer": 0,
@@ -70,6 +69,364 @@ Content-Type: application/json
 }
 
 
+#####
+###
+#
+# Get Custom Master Data
+#
+GET http://localhost:4004/odata/v4/custom-duty-app-srv/CustomDutyHdr('749b4d7a-8911-4715-89ae-87bd4bc41279')?$expand=to_CustomDutyLog
+
+###
+#
+# Create Custom Master Data
+#
+POST http://localhost:4004/odata/v4/custom-duty-app-srv/CustomDutyHdr
+Content-Type: application/json
+
+{
+    "InvoiceNumber": "INV1234567",
+    "Plant": "PLANT01",
+    "POVendor": "VENDOR001",
+    "OverallStatus": "In Progress",
+    "CustomVendInv": "CUSTINV01",
+    "CustomVendor": "CUSTVEN",
+    "CustomVendInvStat": "Pending",
+    "CustomVendInvMsg": "Custom vendor invoice is pending approval",
+    "OverSeasVendInv": "OVINV001",
+    "OverSeasVendor": "OVVEND001",
+    "OverSeasVendInvStat": "Approved",
+    "OverSeasVendInvMsg": "Overseas vendor invoice approved",
+    "DomesticVendInv": "DOMINV001",
+    "DomesticVendor": "DOMVEND001",
+    "DomesticVendInvStat": "Rejected",
+    "DomesticVendInvMsg": "Domestic vendor invoice was rejected due to discrepancies",
+    "to_CustomDutyItem": [
+        {
+            "ID": "234f5678-d90c-34d5-a678-526714274001",
+            "CountryOfOrigin": "Germany",
+            "BENo": "BE123456",
+            "BEDate": "2023-06-01",
+            "HAWB_HBLDate": "2023-05-29",
+            "TotalBCD": 1234.567,
+            "TotalSWS": 345.678,
+            "TotalIGST": 456.789,
+            "TotalAmount": 2037.034,
+            "Invoicedate": "2023-05-15",
+            "InvoiceValueFC": 15000.500,
+            "InvoiceValueINR": 1100000.000,
+            "ExcRateforInvoice": 73,
+            "OverseasFreightAmount": 500.000,
+            "FreightPercentage": 5,
+            "FreightExrate": 73,
+            "OverseasFreightAmtINR": 36750.000,
+            "DomesticFreightAmount": 300.000,
+            "InsuranceAmount": 200.000,
+            "InsurancePercentage": 1,
+            "InsuranceExrate": 73,
+            "MiscCharges": 50.000,
+            "Material": "MATERIAL001",
+            "ProductDescription": "High-quality material",
+            "PurchaseOrder": "PO123456",
+            "PurchaseorderItem": "0010",
+            "HSNCodefromCHA": "HSN1234",
+            "HSNCodeSystem": "HSN001",
+            "UnitPrice": 100.000,
+            "Quantity": 1000.000,
+            "OpenPOQty": 200.000,
+            "Unit": "KG",
+            "BCDAmount": 1234.567,
+            "RateofBCDPercent": 10,
+            "SocWelSurDutyAmt": 345.678,
+            "SocWelSurDutyPer": 1,
+            "IGST": 456.789,
+            "IGSTRateDutyPer": 18,
+            "AssessableValue": 15000.500,
+            "OverFreightperitem": 500.000,
+            "DomesticFreightperitem": 300.000,
+            "Inschargesperitem": 200.000,
+            "Miscchargesperitem": 50.000,
+            "CustomInvoiceVendor": "CUSTVEND0",
+            "CustomInvoice": "INV123456",
+            "OverFreightVendor": "FREIGHTVEN",
+            "OverFreighInvoice": "FRT123456",
+            "DomFreightVendor": "DOMFRTVEN",
+            "DomFreightInvoice": "DOMFRT123",
+            "InsuranceVendor": "INSVEND",
+            "InsInvoNum": "INS1234",
+            "MiscChargesVen": "MISCVEND1",
+            "MiscChargeInvoice": "MISCINV123",
+            "Remarks": "Additional details regarding the duty item.",
+            "status": "Completed"
+        }
+        // Add more DutyMasterItem objects as needed
+    ]
+}
+
+
+####
+
+POST http://localhost:4004/odata/v4/custom-duty-app-srv/DeleteCustomDuty
+Content-Type: application/json
+
+{
+  "ID": "0e47e7a5-4852-4b6c-b8d2-92e0cc8d2bae"
+}
+
+###
+#
+# Create Custom Master Data using action
+#
+POST http://localhost:4004/odata/v4/custom-duty-app-srv/UpdateCustomDuty
+Content-Type: application/json
+
+{
+  "ID": "0e47e7a5-4852-4b6c-b8d2-92e0cc8d2bae",
+  "CustomDutyData":
+  
+{
+  "InvoiceNumber": "INVTEST1",
+  "OverallStatus": "In Progress",
+  "CustomVendInv": "CINV001",
+  "CustomVendInvStat": "Pending",
+  "OverSeasVendInv": "OSINV001",
+  "OverSeasVendInvStat": "Received",
+  "DomesticVendInv": "DINV001",
+  "DomesticVendInvStat": "Shipped",
+  "to_CustomDutyItem": [
+    {
+      "CountryOfOrigin": "Germany",
+      "BENo": "BE001",
+      "BEDate": "2024-10-30",
+      "HAWB_HBLDate": "2024-10-28",
+      "TotalBCD": 1500.123,
+      "TotalSWS": 300.456,
+      "TotalIGST": 900.789,
+      "TotalAmount": 2701.368,
+      "Invoicedate": "2024-10-25",
+      "InvoiceValueFC": 10000.000,
+      "InvoiceValueINR": 880000.000,
+      "ExcRateforInvoice": 88.00000,
+      "OverseasFreightAmount": 500.000,
+      "FreightPercentage": 5,
+      "FreightExrate": 88.00000,
+      "OverseasFreightAmtINR": 44000.000,
+      "DomesticFreightAmount": 200.000,
+      "InsuranceAmount": 100.000,
+      "InsurancePercentage": 1,
+      "InsuranceExrate": 88.00000,
+      "MiscCharges": 50.000,
+      "Material": "Steel Rods",
+      "ProductDescription": "High-grade steel rods",
+      "PurchaseOrder": "PO123",
+      "PurchaseorderItem": "10",
+      "HSNCodefromCHA": "7208",
+      "HSNCodeSystem": "HSN",
+      "UnitPrice": 500.000,
+      "Quantity": 20.000,
+      "OpenPOQty": 5.000,
+      "Unit": "KG",
+      "BCDAmount": 1500.123,
+      "RateofBCDPercent": 10,
+      "SocWelSurDutyAmt": 300.456,
+      "SocWelSurDutyPer": 2,
+      "IGST": 900.789,
+      "IGSTRateDutyPer": 18,
+      "AssessableValue": 5000.000,
+      "OverFreightperitem": 25.000,
+      "DomesticFreightperitem": 10.000,
+      "Inschargesperitem": 5.000,
+      "Miscchargesperitem": 2.500,
+      "CustomInvoiceVendor": "CUST001",
+      "CustomInvoice": "CINV001",
+      "OverFreightVendor": "OVER001",
+      "OverFreighInvoice": "OSINV001",
+      "DomFreightVendor": "DOM001",
+      "DomFreightInvoice": "DINV001",
+      "InsuranceVendor": "INS001",
+      "InsInvoNum": "INSINV001",
+      "MiscChargesVen": "MISC001",
+      "MiscChargeInvoice": "MISCINV001",
+      "Remarks": "Urgent shipment",
+      "status": "Active"
+    }
+  ]
+}
+
+}
+
+#####
+###
+#
+# Get Custom Master Data Expand
+#
+GET http://localhost:4004/odata/v4/custom-duty-app-srv/CustomDutyHdr('f1c8e21d-d991-4796-9970-8eb78b969763')?$expand=to_CustomDutyItem
+
+###
+#
+# Get Custom Master Data
+#
+GET http://localhost:4004/odata/v4/custom-duty-app-srv/CustomDutyHdr('2f5d3dac-2a22-4730-8915-a8d68240d973')?$expand=to_CustomDutyLog
+
+####
+#Post Supplier
+POST http://localhost:4004/odata/v4/custom-duty-app-srv/PostInvoice
+Content-Type: application/json
+
+{
+"ID": "83f71123-a3ce-4fc2-b314-ee69d2d7a9f8"
+}
+
+
+###
+#
+# Create Custom Master Data using action
+#
+POST http://localhost:4004/odata/v4/custom-duty-app-srv/SaveCustomDuty
+Content-Type: application/json
+
+{
+  "CustomDutyData": {
+    "BENoKey": "5380006",
+    "Plant": "IN10",
+    "POVendor": "4000000",
+    "OverallStatus": "Saved",
+    "CustomVendInv": "",
+    "CustomVendor": "3000007",
+    "CustomVendInvStat": "Sucesss",
+    "OverSeasVendInv": "",
+    "OverSeasVendInvStat": "Sucesss",
+    "OverSeasVendor": "5000006",
+    "DomesticVendInv": "3000373",
+    "DomesticVendInvStat": "Saved",
+    "DomesticVendor": "",
+    "to_CustomDutyItem": [    
+    {
+            "ID": "a4491f4e-175b-486a-942b-9de13dafb7d6",
+            "BENo": "5380006",
+            "IGST": 59.63,
+            "RITC": "39169010",
+            "Unit": "PC",
+            "BEDate": "2024-11-08",
+            "status": null,
+            "Remarks": null,
+            "ItemSrNo": 5,
+            "Material": "63117089300",
+            "Quantity": 1,
+            "TotalBCD": 331.26,
+            "TotalSWS": null,
+            "BCDAmount": 29.84,
+            "OpenPOQty": null,
+            "TotalIGST": null,
+            "UnitPrice": 1011,
+             "InsInvoNum": "",
+            "Invoicedate": "2024-11-08",
+            "TotalAmount": null,
+            "HAWB_HBLDate": null,
+            "PortofOrigin": "Norfolk",
+            "CustomInvoice": "5105600384",
+            "FreightAmount": 63325,
+            "FreightExrate": 1,
+            "HSNCodeSystem": "85318000",
+            "InvoiceNumber": "90524224",
+            "MiscAmountCHA": 1498,
+            "PurchaseOrder": "4500000313",
+            "HSNCodefromCHA": "",
+            "InvoiceValueFC": 1011,
+            "MiscAmountTAX1": "",
+            "MiscAmountTAX2": "",
+            "MiscChargesVen": "",
+            "TermsofInvoice": "FOB",
+            "AssessableValue": 298.43,
+            "CountryOfOrigin": "UNITED STATES",
+            "IGSTRateDutyPer": 18,
+            "InsuranceAmtCHA": 1943,
+            "InsuranceExrate": null,
+            "InsuranceVendor": "",
+            "InvoiceValueINR": null,
+            "MiscAmountCALC1": 0,
+            "MiscAmountCALC2": 0,
+            "DomFreightVendor": "",
+            "InsuranceAmTCALC": null,
+            "InsuranceAmTTAX1": "",
+            "InsuranceAmTTAX2": "",
+            "RateofBCDPercent": 10,
+            "SocWelSurDutyAmt": 2.98,
+            "SocWelSurDutyPer": 10,
+            "DomFreightInvoice": "",
+            "ExcRateforInvoice": 84.85,
+            "FreightPercentage": null,
+            "InsuranceAmTCALC1": 0,
+            "InsuranceAmTCALC2": 0,
+            "MiscChargeInvoice": "",
+            "OverFreighInvoice": "",
+            "OverFreightVendor": "",
+            "PurchaseorderItem": "10",
+            "DomesticFrtAmtTAX1": "A3",
+            "DomesticFrtAmtTAX2": "A3",
+            "Inschargesperitem1": 0,
+            "Inschargesperitem2": 0,
+            "OverseasFrtAmtTAX1": "A3",
+            "OverseasFrtAmtTAX2": "A3",
+            "ProductDescription": "Washer (63117089300) (QTY 1 PC/UNIT PRICE USD 1011) (USE FOR AGRICULTURE) ",
+            "CustomInvoiceVendor": "3456",
+            "DomesticFrtAmtCALC1": 100,
+            "DomesticFrtAmtCALC2": 200,
+            "InsurancePercentage": null,
+            "Miscchargesperitem1": 0,
+            "Miscchargesperitem2": 0,
+            "OverFreightperitem1": 300,
+            "OverFreightperitem2": 400,
+            "OverseasFrtAmtCALC1": 300,
+            "OverseasFrtAmtCALC2": 400,
+            "FreightCurrency_code": null,
+            "InvoiceCurrency_code": null,
+            "InsuranceCurrency_code": null,
+            "DomesticFreightperitem1": 100,
+            "DomesticFreightperitem2": 200
+        }
+  ]
+  }
+}
+
+
+####
+POST http://localhost:4004/odata/v4/custom-duty-app-srv/$batch HTTP/1.1
+Content-Type: multipart/mixed; boundary=batch_id-1729963260972-190
+
+--batch_id-1729963260972-190
+Content-Type: multipart/mixed;boundary=changeset_id-1729963260972-191
+
+--changeset_id-1729963260972-191
+Content-Type:application/http
+Content-Transfer-Encoding:binary
+Content-ID:0.0
+
+POST PostSupplierInvoice HTTP/1.1
+Accept:application/json;odata.metadata=minimal;IEEE754Compatible=true
+Accept-Language:en
+Content-Type:application/json;charset=UTF-8;IEEE754Compatible=true
+
+{"InvoiceData":[{"FiscalYear":"2024","CompanyCode":"IN10","DocumentDate":"2024-10-26","PostingDate":"2024-10-26","SupplierInvoiceIDByInvcgParty":"FREIGHT","InvoicingParty":"5000003","DocumentCurrency":"INR","InvoiceGrossAmount":299,"BusinessPlace":"MH01","TaxDeterminationDate":"2024-10-26","TaxReportingDate":"2024-10-26","TaxFulfillmentDate":"2024-10-26","to_SuplrInvcItemPurOrdRef":[{"SupplierInvoiceItem":"1","PurchaseOrder":"4500000079","PurchaseOrderItem":"10","Plant":"IN10","TaxCode":"K1","DocumentCurrency":"INR","SupplierInvoiceItemAmount":74.89,"PurchaseOrderQuantityUnit":"PCS","QuantityInPurchaseOrderUnit":20,"PurchaseOrderPriceUnit":"PCS","QtyInPurchaseOrderPriceUnit":20,"SuplrInvcDeliveryCostCndnType":"ZFR1","FreightSupplier":"5000003","TaxDeterminationDate":"2024-10-26"},{"SupplierInvoiceItem":"2","PurchaseOrder":"4500000080","PurchaseOrderItem":"10","Plant":"IN10","TaxCode":"K1","DocumentCurrency":"INR","SupplierInvoiceItemAmount":224.11,"PurchaseOrderQuantityUnit":"PCS","QuantityInPurchaseOrderUnit":2,"PurchaseOrderPriceUnit":"PCS","QtyInPurchaseOrderPriceUnit":2,"SuplrInvcDeliveryCostCndnType":"ZFR1","FreightSupplier":"5000003","TaxDeterminationDate":"2024-10-26"}]}]}
+--changeset_id-1729963260972-191
+Content-Type:application/http
+Content-Transfer-Encoding:binary
+Content-ID:1.0
+
+POST PostSupplierInvoice HTTP/1.1
+Accept:application/json;odata.metadata=minimal;IEEE754Compatible=true
+Accept-Language:en
+Content-Type:application/json;charset=UTF-8;IEEE754Compatible=true
+
+{"InvoiceData":[{"FiscalYear":"2024","CompanyCode":"IN10","DocumentDate":"2024-10-26","PostingDate":"2024-10-26","SupplierInvoiceIDByInvcgParty":"FREIGHT","InvoicingParty":"5000003","DocumentCurrency":"INR","InvoiceGrossAmount":299,"BusinessPlace":"MH01","TaxDeterminationDate":"2024-10-26","TaxReportingDate":"2024-10-26","TaxFulfillmentDate":"2024-10-26","to_SuplrInvcItemPurOrdRef":[{"SupplierInvoiceItem":"1","PurchaseOrder":"4500000079","PurchaseOrderItem":"10","Plant":"IN10","TaxCode":"K1","DocumentCurrency":"INR","SupplierInvoiceItemAmount":74.89,"PurchaseOrderQuantityUnit":"PCS","QuantityInPurchaseOrderUnit":20,"PurchaseOrderPriceUnit":"PCS","QtyInPurchaseOrderPriceUnit":20,"SuplrInvcDeliveryCostCndnType":"ZFR1","FreightSupplier":"5000003","TaxDeterminationDate":"2024-10-26"},{"SupplierInvoiceItem":"2","PurchaseOrder":"4500000080","PurchaseOrderItem":"10","Plant":"IN10","TaxCode":"K1","DocumentCurrency":"INR","SupplierInvoiceItemAmount":224.11,"PurchaseOrderQuantityUnit":"PCS","QuantityInPurchaseOrderUnit":2,"PurchaseOrderPriceUnit":"PCS","QtyInPurchaseOrderPriceUnit":2,"SuplrInvcDeliveryCostCndnType":"ZFR1","FreightSupplier":"5000003","TaxDeterminationDate":"2024-10-26"}]}]}
+--changeset_id-1729963260972-191--
+--batch_id-1729963260972-190--
+
+#####
+GET http://localhost:4004/odata/v4/custom-duty-app-srv/SupplierInvoice?$filter=SupplierInvoice eq '5105600372'
+
+#####
+GET http://localhost:4004/odata/v4/custom-duty-app-srv/SupplierInvoice(SupplierInvoice = '5105600372',FiscalYear = '2024')?$expand=to_SuplrInvcItemPurOrdRef
+
 ###
 #
 # Post Supplier Invoice
@@ -78,8 +435,13 @@ POST http://localhost:4004/odata/v4/custom-duty-app-srv/PostSupplierInvoice
 Content-Type: application/json
 
 {
-    "InvoiceData": 
+    "InvoiceData": [
     {
+    "BENo"       :  "4416577",
+    "InvoiceNumber": "94424769", 
+    "SupplierInvoice" : "",
+    "Status"          : "",
+    "Message"         : "",
     "FiscalYear": "2024",
     "CompanyCode": "IN10",
     "DocumentDate": "2024-10-21",
@@ -112,8 +474,187 @@ Content-Type: application/json
         }
 
     ]
+},
+{
+    "BENo"       :  "4416577",
+    "InvoiceNumber": "94424769", 
+    "SupplierInvoice" : "",
+    "Status"          : "",
+    "Message"         : "",
+    "FiscalYear": "2024",
+    "CompanyCode": "IN10",
+    "DocumentDate": "2024-10-21",
+    "PostingDate": "2024-10-21",
+    "SupplierInvoiceIDByInvcgParty": "FREIGHT",
+    "InvoicingParty": "1000011",
+    "DocumentCurrency": "INR",
+    "InvoiceGrossAmount": "2000.00",
+    "BusinessPlace": "MH01",
+    "TaxDeterminationDate": "2024-10-21",
+    "TaxReportingDate": "2024-10-21",
+    "TaxFulfillmentDate": "2024-10-21",
+    
+    "to_SuplrInvcItemPurOrdRef": [
+       {
+            "SupplierInvoiceItem": "1",
+            "PurchaseOrder": "4500000079",
+            "PurchaseOrderItem": "10",
+            "Plant": "IN10",
+            "TaxCode": "K1",
+            "DocumentCurrency": "INR",
+            "SupplierInvoiceItemAmount": "2000.00",
+            "PurchaseOrderQuantityUnit": "PC",
+            "QuantityInPurchaseOrderUnit": "10",
+            "PurchaseOrderPriceUnit": "PC",
+            "QtyInPurchaseOrderPriceUnit": "10",
+            "SuplrInvcDeliveryCostCndnType": "ZFR1",
+            "FreightSupplier": "1000011",
+            "TaxDeterminationDate": "2024-10-21"
+        }
+
+    ]
+}]
 }
+
+
+
+####
+POST http://localhost:4004/odata/v4/custom-duty-app-srv/PostSupplierInvoice
+Content-Type: application/json
+
+{
+  "InvoiceData": [
+    {
+      "FiscalYear": "2024",
+      "CompanyCode": "IN10",
+      "DocumentDate": "2024-10-26",
+      "PostingDate": "2024-10-26",
+      "SupplierInvoiceIDByInvcgParty": "FREIGHT",
+      "InvoicingParty": "5000006",
+      "DocumentCurrency": "INR",
+      "InvoiceGrossAmount": 971,
+      "BusinessPlace": "MH01",
+      "TaxDeterminationDate": "2024-10-26",
+      "TaxReportingDate": "2024-10-26",
+      "TaxFulfillmentDate": "2024-10-26",
+      "to_SuplrInvcItemPurOrdRef": [
+        {
+          "SupplierInvoiceItem": "1",
+          "PurchaseOrder": "4500000079",
+          "PurchaseOrderItem": "10",
+          "Plant": "IN10",
+          "TaxCode": "K1",
+          "DocumentCurrency": "INR",
+          "SupplierInvoiceItemAmount": 139,
+          "PurchaseOrderQuantityUnit": "PCS",
+          "QuantityInPurchaseOrderUnit": 20,
+          "PurchaseOrderPriceUnit": "PCS",
+          "QtyInPurchaseOrderPriceUnit": 20,
+          "SuplrInvcDeliveryCostCndnType": "ZFR1",
+          "FreightSupplier": "5000006",
+          "TaxDeterminationDate": "2024-10-26"
+        },
+        {
+          "SupplierInvoiceItem": "2",
+          "PurchaseOrder": "4500000080",
+          "PurchaseOrderItem": "10",
+          "Plant": "IN10",
+          "TaxCode": "K1",
+          "DocumentCurrency": "INR",
+          "SupplierInvoiceItemAmount": 416,
+          "PurchaseOrderQuantityUnit": "PCS",
+          "QuantityInPurchaseOrderUnit": 2,
+          "PurchaseOrderPriceUnit": "PCS",
+          "QtyInPurchaseOrderPriceUnit": 2,
+          "SuplrInvcDeliveryCostCndnType": "ZFR1",
+          "FreightSupplier": "5000006",
+          "TaxDeterminationDate": "2024-10-26"
+        },
+        {
+          "SupplierInvoiceItem": "3",
+          "PurchaseOrder": "4500000080",
+          "PurchaseOrderItem": "10",
+          "Plant": "IN10",
+          "TaxCode": "K1",
+          "DocumentCurrency": "INR",
+          "SupplierInvoiceItemAmount": 416,
+          "PurchaseOrderQuantityUnit": "PCS",
+          "QuantityInPurchaseOrderUnit": 2,
+          "PurchaseOrderPriceUnit": "PCS",
+          "QtyInPurchaseOrderPriceUnit": 2,
+          "SuplrInvcDeliveryCostCndnType": "ZFR1",
+          "FreightSupplier": "5000006",
+          "TaxDeterminationDate": "2024-10-26"
+        }
+      ]
+    },
+    {
+      "FiscalYear": "2024",
+      "CompanyCode": "IN10",
+      "DocumentDate": "2024-10-26",
+      "PostingDate": "2024-10-26",
+      "SupplierInvoiceIDByInvcgParty": "FREIGHT",
+      "InvoicingParty": "5000006",
+      "DocumentCurrency": "INR",
+      "InvoiceGrossAmount": 971,
+      "BusinessPlace": "MH01",
+      "TaxDeterminationDate": "2024-10-26",
+      "TaxReportingDate": "2024-10-26",
+      "TaxFulfillmentDate": "2024-10-26",
+      "to_SuplrInvcItemPurOrdRef": [
+        {
+          "SupplierInvoiceItem": "1",
+          "PurchaseOrder": "4500000079",
+          "PurchaseOrderItem": "10",
+          "Plant": "IN10",
+          "TaxCode": "K1",
+          "DocumentCurrency": "INR",
+          "SupplierInvoiceItemAmount": 139,
+          "PurchaseOrderQuantityUnit": "PCS",
+          "QuantityInPurchaseOrderUnit": 20,
+          "PurchaseOrderPriceUnit": "PCS",
+          "QtyInPurchaseOrderPriceUnit": 20,
+          "SuplrInvcDeliveryCostCndnType": "ZFR1",
+          "FreightSupplier": "5000006",
+          "TaxDeterminationDate": "2024-10-26"
+        },
+        {
+          "SupplierInvoiceItem": "2",
+          "PurchaseOrder": "4500000080",
+          "PurchaseOrderItem": "10",
+          "Plant": "IN10",
+          "TaxCode": "K1",
+          "DocumentCurrency": "INR",
+          "SupplierInvoiceItemAmount": 416,
+          "PurchaseOrderQuantityUnit": "PCS",
+          "QuantityInPurchaseOrderUnit": 2,
+          "PurchaseOrderPriceUnit": "PCS",
+          "QtyInPurchaseOrderPriceUnit": 2,
+          "SuplrInvcDeliveryCostCndnType": "ZFR1",
+          "FreightSupplier": "5000006",
+          "TaxDeterminationDate": "2024-10-26"
+        },
+        {
+          "SupplierInvoiceItem": "3",
+          "PurchaseOrder": "4500000080",
+          "PurchaseOrderItem": "10",
+          "Plant": "IN10",
+          "TaxCode": "K1",
+          "DocumentCurrency": "INR",
+          "SupplierInvoiceItemAmount": 416,
+          "PurchaseOrderQuantityUnit": "PCS",
+          "QuantityInPurchaseOrderUnit": 2,
+          "PurchaseOrderPriceUnit": "PCS",
+          "QtyInPurchaseOrderPriceUnit": 2,
+          "SuplrInvcDeliveryCostCndnType": "ZFR1",
+          "FreightSupplier": "5000006",
+          "TaxDeterminationDate": "2024-10-26"
+        }
+      ]
+    }
+  ]
 }
+
 
 
 ###
@@ -123,174 +664,272 @@ Content-Type: application/json
 POST http://localhost:4004/odata/v4/custom-duty-app-srv/calculateDuty
 Content-Type: application/json
 
-{
-    "fileData":[
-    {
-    "CountryOfOrigin": "GERMANY",
-    "BENo": "1234567",
-    "BEDate": "2024-10-01",
-    "HAWB_HBLDate": "2024-10-01",
-    "TotalBCD": 0.000,
-    "TotalSWS": 0.000,
-    "TotalIGST": 0.000,
-    "TotalAmount": 0.000,
-    "InvoiceNumber": "123456",
-    "Invoicedate": "2024-10-01",
-    "InvoiceValueFC": 100000.000,
-    "ExcRateforInvoice": 82.00000,
-    "OverseasFreightAmount": 1000.000,
-    "FreightPercentage": 0,
-    "FreightExrate": 0.00000,
-    "DomesticFreightAmount": 20000.000,
-    "InsuranceAmount": 4000.000,
-    "InsurancePercentage": 0,
-    "InsuranceExrate": 0.00000,
-    "MiscCharges": 30000.000,
-    "Material": "MAT456",
-    "ProductDescription": "",
-    "PurchaseOrder": "",
-    "PurchaseorderItem": 0,
-    "HSNCodefromCHA": "",
-    "HSNCodeSystem": "",
-    "UnitPrice": 0.000,
-    "Quantity": 0.000,
-    "OpenPOQty": 0.000,
-    "Unit": "",
-    "BCDAmount": 0.000,
-    "RateofBCDPercent": 0,
-    "SocWelSurDutyAmt": 0.000,
-    "SocWelSurDutyPer": 0,
-    "IGST": 0.000,
-    "IGSTRateDutyPer": 0,
-    "AssessableValue": 0.000,
-    "OverFreightperitem": 0.000,
-    "DomesticFreightperitem": 0.000,
-    "Inschargesperitem": 0.000,
-    "Miscchargesperitem": 0.000,
-    "CustomInvoiceVendor": "",
-    "CustomInvoice": "",
-    "OverFreightVendor": "",
-    "OverFreighInvoice": "",
-    "DomFreightVendor": "",
-    "DomFreightInvoice": "",
-    "InsuranceVendor": "",
-    "InsInvoNum": "",
-    "MiscChargesVen": "",
-    "MiscChargeInvoice": "",
-    "Remarks": "",
-    "status": "Saved"
-},
-{
-    "CountryOfOrigin": "CHINA",
-    "BENo": "1234567",
-    "BEDate": "2024-10-01",
-    "HAWB_HBLDate": "2024-10-01",
-    "TotalBCD": 0.000,
-    "TotalSWS": 0.000,
-    "TotalIGST": 0.000,
-    "TotalAmount": 0.000,
-    "InvoiceNumber": "123456",
-    "Invoicedate": "2024-10-01",
-    "InvoiceValueFC": 100000.000,
-    "ExcRateforInvoice": 82.00000,
-    "OverseasFreightAmount": 6000.000,
-    "FreightPercentage": 0,
-    "FreightExrate": 0.00000,
-    "DomesticFreightAmount": 70000.000,
-    "InsuranceAmount": 8000.000,
-    "InsurancePercentage": 0,
-    "InsuranceExrate": 0.00000,
-    "MiscCharges": 10000.000,
-    "Material": "MAT123",
-    "ProductDescription": "",
-    "PurchaseOrder": "",
-    "PurchaseorderItem": 0,
-    "HSNCodefromCHA": "",
-    "HSNCodeSystem": "",
-    "UnitPrice": 0.000,
-    "Quantity": 0.000,
-    "OpenPOQty": 0.000,
-    "Unit": "",
-    "BCDAmount": 0.000,
-    "RateofBCDPercent": 0,
-    "SocWelSurDutyAmt": 0.000,
-    "SocWelSurDutyPer": 0,
-    "IGST": 0.000,
-    "IGSTRateDutyPer": 0,
-    "AssessableValue": 0.000,
-    "OverFreightperitem": 0.000,
-    "DomesticFreightperitem": 0.000,
-    "Inschargesperitem": 0.000,
-    "Miscchargesperitem": 0.000,
-    "CustomInvoiceVendor": "",
-    "CustomInvoice": "",
-    "OverFreightVendor": "",
-    "OverFreighInvoice": "",
-    "DomFreightVendor": "",
-    "DomFreightInvoice": "",
-    "InsuranceVendor": "",
-    "InsInvoNum": "",
-    "MiscChargesVen": "",
-    "MiscChargeInvoice": "",
-    "Remarks": "",
-    "status": "Saved" 
-},
-{
-    "CountryOfOrigin": "CHINA",
-    "BENo": "987654",
-    "BEDate": "2024-10-01",
-    "HAWB_HBLDate": "2024-10-01",
-    "TotalBCD": 0.000,
-    "TotalSWS": 0.000,
-    "TotalIGST": 0.000,
-    "TotalAmount": 0.000,
-    "InvoiceNumber": "123456",
-    "Invoicedate": "2024-10-01",
-    "InvoiceValueFC": 200000.000,
-    "ExcRateforInvoice": 70.00000,
-    "OverseasFreightAmount": 6000.000,
-    "FreightPercentage": 0,
-    "FreightExrate": 0.00000,
-    "DomesticFreightAmount": 70000.000,
-    "InsuranceAmount": 8000.000,
-    "InsurancePercentage": 0,
-    "InsuranceExrate": 0.00000,
-    "MiscCharges": 10000.000,
-    "Material": "MAT123",
-    "ProductDescription": "",
-    "PurchaseOrder": "",
-    "PurchaseorderItem": 0,
-    "HSNCodefromCHA": "",
-    "HSNCodeSystem": "",
-    "UnitPrice": 0.000,
-    "Quantity": 0.000,
-    "OpenPOQty": 0.000,
-    "Unit": "",
-    "BCDAmount": 0.000,
-    "RateofBCDPercent": 0,
-    "SocWelSurDutyAmt": 0.000,
-    "SocWelSurDutyPer": 0,
-    "IGST": 0.000,
-    "IGSTRateDutyPer": 0,
-    "AssessableValue": 0.000,
-    "OverFreightperitem": 0.000,
-    "DomesticFreightperitem": 0.000,
-    "Inschargesperitem": 0.000,
-    "Miscchargesperitem": 0.000,
-    "CustomInvoiceVendor": "",
-    "CustomInvoice": "",
-    "OverFreightVendor": "",
-    "OverFreighInvoice": "",
-    "DomFreightVendor": "",
-    "DomFreightInvoice": "",
-    "InsuranceVendor": "",
-    "InsInvoNum": "",
-    "MiscChargesVen": "",
-    "MiscChargeInvoice": "",
-    "Remarks": "",
-    "status": "Saved" 
-}
+{"fileData":[{"CountryOfOrigin":"GERMANY","BENo":"4416577","BEDate":"2024-10-23","HAWB_HBLDate":"2024-10-23","TotalBCD":389.2,"TotalSWS":38.9,"TotalIGST":1011,"TotalAmount":1439.1,"Invoicedate":"2024-10-23","InvoiceValueFC":41.02,"InvoiceCurrency_code":"EUR","ExcRateforInvoice":90.82,"InvoiceValueINR":3725.436,"OverseasFreightAmount":555,"FreightPercentage":0,"FreightCurrency_code":"EUR","FreightExrate":55,"DomesticFreightAmount":33,"InsuranceAmount":44,"InsurancePercentage":0,"InsuranceCurrency_code":"EUR","InsuranceExrate":90,"MiscCharges":666,"Material":"70318710001","ProductDescription":"FS 230/FR 230/FR 3001 Auto Cut deflector","PurchaseOrder":"4500000079","PurchaseorderItem":"10","HSNCodefromCHA":"39263090","HSNCodeSystem":"39263090","UnitPrice":2.06,"Quantity":20,"OpenPOQty":0,"Unit":"PCS","BCDAmount":389.2,"RateofBCDPercent":7,"SocWelSurDutyAmt":38.9,"SocWelSurDutyPer":10,"IGST":1011,"IGSTRateDutyPer":18,"AssessableValue":5188.73,"OverFreightperitem":0,"DomesticFreightperitem":0,"Inschargesperitem":0,"Miscchargesperitem":0,"CustomInvoiceVendor":"3000007","CustomInvoice":"","OverFreightVendor":"5000004","OverFreighInvoice":"","DomFreightVendor":"3000373","DomFreightInvoice":"","InsuranceVendor":"4000000","InsInvoNum":"","MiscChargesVen":"","MiscChargeInvoice":"","Remarks":"","status":""},{"CountryOfOrigin":"GERMANY","BENo":"4416577","BEDate":"2024-10-23","HAWB_HBLDate":"2024-10-23","TotalBCD":1159.5,"TotalSWS":116,"TotalIGST":4686.1,"TotalAmount":5961.6,"Invoicedate":"2024-10-23","InvoiceValueFC":122.76,"InvoiceCurrency_code":"EUR","ExcRateforInvoice":90.82,"InvoiceValueINR":11149.063,"OverseasFreightAmount":555,"FreightPercentage":0,"FreightCurrency_code":"EUR","FreightExrate":55,"DomesticFreightAmount":33,"InsuranceAmount":44,"InsurancePercentage":0,"InsuranceCurrency_code":"EUR","InsuranceExrate":90,"MiscCharges":666,"Material":"70318710001","ProductDescription":"FS 230/FR 230/FR 3001 Auto Cut deflector","PurchaseOrder":"4500000080","PurchaseorderItem":"10","HSNCodefromCHA":"39263090","HSNCodeSystem":"39263090","UnitPrice":61.38,"Quantity":2,"OpenPOQty":0,"Unit":"PCS","BCDAmount":1159.5,"RateofBCDPercent":7,"SocWelSurDutyAmt":116,"SocWelSurDutyPer":10,"IGST":4686.1,"IGSTRateDutyPer":28,"AssessableValue":15460.13,"OverFreightperitem":0,"DomesticFreightperitem":0,"Inschargesperitem":0,"Miscchargesperitem":0,"CustomInvoiceVendor":"3000007","CustomInvoice":"","OverFreightVendor":"5000004","OverFreighInvoice":"","DomFreightVendor":"3000373","DomFreightInvoice":"","InsuranceVendor":"4000000","InsInvoNum":"","MiscChargesVen":"","MiscChargeInvoice":"","Remarks":"","status":""}]}
+
+
+###
+#
+# Calculate CustomDuty
+#
+GET http://localhost:4004/odata/v4/custom-duty-app-srv/$metadata
+
+###
+
+POST http://localhost:4004/odata/v4/custom-duty-app-srv/CustomDutyFieldMapping
+Content-Type: application/json
+
+[
+  { "Source": "CHA", "InputFields": "Supplier", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "BE No.", "OutputFields": "BENo", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "BE Date", "OutputFields": "BEDate", "Visibility": true, "Type": "date" },
+  { "Source": "CHA", "InputFields": "Product Description", "OutputFields": "ProductDescription", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "MBL / MAWB No", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "MBL / MAWB Date", "OutputFields": "", "Visibility": true, "Type": "date" },
+  { "Source": "CHA", "InputFields": "NetWeight", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "WeightUnit", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Invoice No.", "OutputFields": "InvoiceNumber", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "ExchangeRate", "OutputFields": "ExcRateforInvoice", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "TermsofInvoice", "OutputFields": "TermsofInvoice", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "ItemAmount_FC", "OutputFields": "InvoiceValueFC", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "RITC", "OutputFields": "RITC", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Quantity", "OutputFields": "Quantity", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "Unit", "OutputFields": "Unit", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "UnitPrice", "OutputFields": "UnitPrice", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "ItemAssessableValue", "OutputFields": "AssessableValue", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "ItemSrNo", "OutputFields": "ItemSrNo", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Basic Duty Rate", "OutputFields": "RateofBCDPercent", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "Basic Duty Amount", "OutputFields": "BCDAmount", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "SWS Rate", "OutputFields": "SocWelSurDutyPer", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "SWS Amount", "OutputFields": "SocWelSurDutyAmt", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "IGST Levy Rate", "OutputFields": "IGSTRateDutyPer", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "IGST Levy Amount", "OutputFields": "IGST", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "Duty Total", "OutputFields": "TotalBCD", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "Total duty paid", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "Status", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Conversion Value in INR", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "1% Landind Charges", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "Specific Duty Value", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "CESSCVD", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "ESTIMATE DUTY INR", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "TR 6", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Shipment Clearance Location", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "CHA Name", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "CHA LIC No.", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "AD CODE", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Clearance Date", "OutputFields": "", "Visibility": true, "Type": "date" },
+  { "Source": "CHA", "InputFields": "BE Type", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Mode", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Port of UnLoading", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Country of Shipment", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Port of Shipment", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Country of Origin", "OutputFields": "CountryOfOrigin", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "PortofOrigin", "OutputFields": "PortofOrigin", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Customer Name", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Customer Address", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "IEC", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "BRANCH CODE", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "HBL / HAWB No", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "HBL / HAWB Date", "OutputFields": "HAWB_HBLDate", "Visibility": true, "Type": "date" },
+  { "Source": "CHA", "InputFields": "NoofPKG", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "PKGUnit", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "GrossWeight", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "IGMNo", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "IGMDate", "OutputFields": "", "Visibility": true, "Type": "date" },
+  { "Source": "CHA", "InputFields": "ContainerNo", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "ExciseSealNo", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "ContainerSize", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "ContainerType", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Invoice Date", "OutputFields": "Invoicedate", "Visibility": true, "Type": "date" },
+  { "Source": "CHA", "InputFields": "InvoiceCurrency", "OutputFields": "InvoiceCurrency", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "FreightCurrency", "OutputFields": "FreightCurrency", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "FreightAmount", "OutputFields": "FreightAmount", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "InsuranceCurrency", "OutputFields": "InsuranceCurrency", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "InsuranceAmount", "OutputFields": "InsuranceAmtCHA", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "MiscAmount", "OutputFields": "MiscAmountCHA", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "ConsignorAddress", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "LicenceRegistrationNo", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "LicenceRegistrationDate", "OutputFields": "", "Visibility": true, "Type": "date" },
+  { "Source": "CHA", "InputFields": "LicenceRegistrationPort", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "DebitQuantity", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "DebitDutyAmount", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "ACD rate", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "ACD Amount", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "SAD Rate", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "SAD Amount", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "SAFEGUARD Duty", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "IGST NO", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "IGST Levy Notification Number", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "IGST Levy Sl. No.", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Penalty", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "Fine", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "Interest", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "Internet Transaction num", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Payment Date", "OutputFields": "", "Visibility": true, "Type": "date" },
+  { "Source": "CHA", "InputFields": "SVB Load(Ass)", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "SVB Load(Dty)", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "EDD", "OutputFields": "", "Visibility": true, "Type": "date" },
+  { "Source": "CHA", "InputFields": "Total Assesseble Value", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "LicenceInvoiceSerialNo", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "LicenceItemSerialNo", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "LicenceSerialNo", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Licence code", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Debit UQC", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Debit Duty", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "Certificate Number", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Certificate Date", "OutputFields": "", "Visibility": true, "Type": "date" },
+  { "Source": "CHA", "InputFields": "Certificate Type", "OutputFields": "", "Visibility": true, "Type": "string" },
+  { "Source": "CHA", "InputFields": "Duty Forgone", "OutputFields": "", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "Material", "OutputFields": "Material", "Visibility": true, "Type": "string" },
+  { "Source": "S4", "InputFields": "PurchaseOrder", "OutputFields": "PurchaseOrder", "Visibility": true, "Type": "string" },
+  { "Source": "S4", "InputFields": "PurchaseorderItem", "OutputFields": "PurchaseorderItem", "Visibility": true, "Type": "string" },
+  { "Source": "CALC", "InputFields": "OverFreightperitem1", "OutputFields": "OverFreightperitem1", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "OverFreightperitem2", "OutputFields": "OverFreightperitem2", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "DomesticFreightperitem1", "OutputFields": "DomesticFreightperitem1", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "DomesticFreightperitem2", "OutputFields": "DomesticFreightperitem2", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "Inschargesperitem1", "OutputFields": "Inschargesperitem1", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "Inschargesperitem2", "OutputFields": "Inschargesperitem2", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "Miscchargesperitem1", "OutputFields": "Miscchargesperitem", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "Miscchargesperitem2", "OutputFields": "Miscchargesperitem", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "CustomInvoiceVendor", "OutputFields": "CustomInvoiceVendor", "Visibility": true, "Type": "string" },
+  { "Source": "CALC", "InputFields": "CustomInvoice", "OutputFields": "CustomInvoice", "Visibility": true, "Type": "string" },
+  { "Source": "CALC", "InputFields": "OverFreightVendor", "OutputFields": "OverFreightVendor", "Visibility": true, "Type": "string" },
+  { "Source": "CALC", "InputFields": "OverFreighInvoice", "OutputFields": "OverFreighInvoice", "Visibility": true, "Type": "string" },
+  { "Source": "CALC", "InputFields": "DomFreightVendor", "OutputFields": "DomFreightVendor", "Visibility": true, "Type": "string" },
+  { "Source": "CALC", "InputFields": "DomFreightInvoice", "OutputFields": "DomFreightInvoice", "Visibility": true, "Type": "string" },
+  { "Source": "CALC", "InputFields": "InsuranceVendor", "OutputFields": "InsuranceVendor", "Visibility": true, "Type": "string" },
+  { "Source": "CALC", "InputFields": "InsInvoNum", "OutputFields": "InsInvoNum", "Visibility": true, "Type": "string" },
+  { "Source": "CALC", "InputFields": "MiscChargesVen", "OutputFields": "MiscChargesVen", "Visibility": true, "Type": "string" },
+  { "Source": "CALC", "InputFields": "MiscChargeInvoice", "OutputFields": "MiscChargeInvoice", "Visibility": true, "Type": "string" },
+  { "Source": "CALC", "InputFields": "OverseasFrtAmtCALC1", "OutputFields": "OverseasFrtAmtCALC1", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "OverseasFrtAmtCALC2", "OutputFields": "OverseasFrtAmtCALC2", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "OverseasExgRate", "OutputFields": "OverseasExgRate", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "DomesticFrtAmtCALC1", "OutputFields": "DomesticFrtAmtCALC1", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "DomesticFrtAmtCALC2", "OutputFields": "DomesticFrtAmtCALC2", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "TotalSWS", "OutputFields": "TotalSWS", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "TotalIGST", "OutputFields": "TotalIGST", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "TotalAmount", "OutputFields": "TotalAmount", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "InvoiceValueINR", "OutputFields": "InvoiceValueINR", "Visibility": true, "Type": "number" },
+  { "Source": "CHA", "InputFields": "FreightPercentage", "OutputFields": "FreightPercentage", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "FreightExrate", "OutputFields": "FreightExrate", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "HSNCodefromCHA", "OutputFields": "HSNCodefromCHA", "Visibility": true, "Type": "string" },
+  { "Source": "S4", "InputFields": "HSNCodeSystem", "OutputFields": "HSNCodeSystem", "Visibility": true, "Type": "string" },
+  { "Source": "S4", "InputFields": "OpenPOQty", "OutputFields": "OpenPOQty", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "InsurancePercentage", "OutputFields": "InsurancePercentage", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "InsuranceExrate", "OutputFields": "InsuranceExrate", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "MiscAmountCALC1", "OutputFields": "MiscAmountCALC1", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "MiscAmountCALC2", "OutputFields": "MiscAmountCALC2", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "InsuranceAmTCALC1", "OutputFields": "InsuranceAmTCALC1", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "InsuranceAmTCALC2", "OutputFields": "InsuranceAmTCALC2", "Visibility": true, "Type": "number" },
+  { "Source": "CALC", "InputFields": "OverseasFrtAmtTAX1", "OutputFields": "OverseasFrtAmtTAX1", "Visibility": true, "Type": "string" },
+  { "Source": "CALC", "InputFields": "OverseasFrtAmtTAX2", "OutputFields": "OverseasFrtAmtTAX2", "Visibility": true, "Type": "string" },
+  { "Source": "CALC", "InputFields": "DomesticFrtAmtTAX1", "OutputFields": "DomesticFrtAmtTAX1", "Visibility": true, "Type": "string" },
+  { "Source": "CALC", "InputFields": "DomesticFrtAmtTAX2", "OutputFields": "DomesticFrtAmtTAX2", "Visibility": true, "Type": "string" },
+  { "Source": "CALC", "InputFields": "MiscAmountTAX1", "OutputFields": "MiscAmountTAX1", "Visibility": true, "Type": "string" },
+  { "Source": "CALC", "InputFields": "MiscAmountTAX2", "OutputFields": "MiscAmountTAX2", "Visibility": true, "Type": "string" },
+  { "Source": "CALC", "InputFields": "InsuranceAmTTAX1", "OutputFields": "InsuranceAmTTAX1", "Visibility": true, "Type": "string" },
+  { "Source": "CALC", "InputFields": "InsuranceAmTTAX2", "OutputFields": "InsuranceAmTTAX2", "Visibility": true, "Type": "string" }
 ]
+
+
+
+###
+GET http://localhost:4004/odata/v4/custom-duty-app-srv/CustomDutyFieldMapping
+
+
+####
+POST http://localhost:4004/odata/v4/custom-duty-app-srv/calculateDuty
+Content-Type: application/json
+
+{
+  "fileData": [
+    {
+      "ID": "a4491f4e-175b-486a-942b-9de13dafb7d6",
+      "BENo": "5380006",
+      "IGST": 59.63,
+      "RITC": "39169010",
+      "Unit": "PC",
+      "BEDate": "2024-11-08",
+      "status": null,
+      "Remarks": null,
+      "ItemSrNo": 5,
+      "Material": "63117089300",
+      "Quantity": 1,
+      "TotalBCD": 331.26,
+      "TotalSWS": null,
+      "BCDAmount": 29.84,
+      "OpenPOQty": null,
+      "TotalIGST": null,
+      "UnitPrice": 1011,
+      "createdAt": "2024-11-13T11:53:27.552Z",
+      "createdBy": "system",
+      "BENoKey_ID": "b93afa4a-c764-4275-8610-c414c1c97fcd",
+      "InsInvoNum": "",
+      "modifiedAt": "2024-11-13T11:54:27.657Z",
+      "modifiedBy": "system",
+      "Invoicedate": "2024-11-08",
+      "TotalAmount": null,
+      "HAWB_HBLDate": null,
+      "PortofOrigin": "Norfolk",
+      "CustomInvoice": "5105600384",
+      "FreightAmount": 63325,
+      "FreightExrate": 1,
+      "HSNCodeSystem": "85318000",
+      "InvoiceNumber": "90524224",
+      "MiscAmountCHA": 1498,
+      "PurchaseOrder": "4500000313",
+      "HSNCodefromCHA": "",
+      "InvoiceValueFC": 1011,
+      "MiscAmountTAX1": "",
+      "MiscAmountTAX2": "",
+      "MiscChargesVen": "",
+      "TermsofInvoice": "FOB",
+      "AssessableValue": 298.43,
+      "CountryOfOrigin": "UNITED STATES",
+      "IGSTRateDutyPer": 18,
+      "InsuranceAmtCHA": 1943,
+      "InsuranceExrate": null,
+      "InsuranceVendor": "",
+      "InvoiceValueINR": null,
+      "MiscAmountCALC1": 0,
+      "MiscAmountCALC2": 0,
+      "DomFreightVendor": "",
+      "InsuranceAmTCALC": null,
+      "InsuranceAmTTAX1": "",
+      "InsuranceAmTTAX2": "",
+      "RateofBCDPercent": 10,
+      "SocWelSurDutyAmt": 2.98,
+      "SocWelSurDutyPer": 10,
+      "DomFreightInvoice": "",
+      "ExcRateforInvoice": 84.85,
+      "FreightPercentage": null,
+      "InsuranceAmTCALC1": 0,
+      "InsuranceAmTCALC2": 0,
+      "MiscChargeInvoice": "",
+      "OverFreighInvoice": "",
+      "OverFreightVendor": "",
+      "PurchaseorderItem": "10",
+      "DomesticFrtAmtTAX1": "A3",
+      "DomesticFrtAmtTAX2": "A3",
+      "Inschargesperitem1": 0,
+      "Inschargesperitem2": 0,
+      "OverseasFrtAmtTAX1": "A3",
+      "OverseasFrtAmtTAX2": "#",
+      "ProductDescription": "Washer (63117089300) (QTY 1 PC/UNIT PRICE USD 1011) (USE FOR AGRICULTURE) ",
+      "CustomInvoiceVendor": "",
+      "DomesticFrtAmtCALC1": 100,
+      "DomesticFrtAmtCALC2": 200,
+      "InsurancePercentage": null,
+      "Miscchargesperitem1": 0,
+      "Miscchargesperitem2": 0,
+      "OverFreightperitem1": 300,
+      "OverFreightperitem2": 400,
+      "OverseasFrtAmtCALC1": 300,
+      "OverseasFrtAmtCALC2": 400,
+      "FreightCurrency_code": null,
+      "InvoiceCurrency_code": null,
+      "InsuranceCurrency_code": null,
+      "DomesticFreightperitem1": 100,
+      "DomesticFreightperitem2": 200
+    }
+  ]
 }
-
-

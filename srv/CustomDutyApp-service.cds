@@ -1,14 +1,7 @@
 using API_SUPPLIERINVOICE_PROCESS_SRV as SupplierInvPost from './external/API_SUPPLIERINVOICE_PROCESS_SRV';
-
 using CustomDutyInvoiceSrv as S4Services from './external/CustomDutyInvoiceSrv';
 using { customduty.serviceAPI as data} from '../db/CustomDutyApp';
-
-using {
-    Currency
-} from '@sap/cds/common';
-
-using { DutyMaster } from '../db/CustomDutyCommon';
-
+using {  DutyMasterHdr } from '../db/CustomDutyCommon'; 
 
 service CustomDutyAppSrv {
     @readonly
@@ -46,6 +39,11 @@ service CustomDutyAppSrv {
 }
 //Deep strucure to post Invoice
 type CustomInvoiceHdr {    
+    BENo                          : String(10);
+    InvoiceNumber                 : String(10);
+    SupplierInvoice               : String(10);
+    Status                        : String(10);
+    Message                       : String;
     FiscalYear                    : String(4);   // "2024"
     CompanyCode                   : String(10);  // "IN10"
     DocumentDate                  : Date;    // "2024-10-21T01:01:01"
@@ -61,20 +59,30 @@ type CustomInvoiceHdr {
     to_SuplrInvcItemPurOrdRef     : many SuplrInvcItemPurOrdRef;
 }  
 
+//Action to Post Invoice
+    action PostSupplierInvoice(InvoiceData: array of CustomInvoiceHdr) returns array of CustomInvoiceHdr;
+    action PostInvoice(ID: UUID) returns Boolean;
+    
 
 //Action to Post Invoice
-    action PostSupplierInvoice(InvoiceData: CustomInvoiceHdr) returns CustomInvoiceHdr;
+    action SaveCustomDuty(CustomDutyData: DutyMasterHdr) returns DutyMasterHdr;
+    action UpdateCustomDuty(ID: UUID, CustomDutyData: DutyMasterHdr) returns DutyMasterHdr;
+    action DeleteCustomDuty(ID: UUID) returns Boolean;
 
 //Action to Calculate Custom Duty Based on File Input
-    action calculateDuty(fileData: array of DutyMaster) returns array of DutyMaster; 
+    action calculateDuty(fileData: array of CustomDutyItem) returns array of CustomDutyItem; 
 
     //Entities for CustomDuty Master Data
     //entity CustomDutyMaster as select from data.CustomDutyMaster;
-    entity CustomDutyMaster       as projection on data.CustomDutyMaster;
+    //entity CustomDutyMaster       as projection on data.CustomDutyMaster;
+
+    entity CustomDutyHdr       as projection on data.CustomDutyHdr;
+    entity CustomDutyItem       as projection on data.CustomDutyItem;
+    entity CustomDutyLog       as projection on data.CustomDutyLog;
     
     //Entities of Configuration tables    
-    entity CHAFileFieldsOrderList as projection on data.CHAFileFieldsOrderList;
-
+    entity CHAFileFieldsOrderList as projection on data.CHAFileFieldsOrderList;   
+    entity CustomDutyFieldMapping as projection on data.CustomDutyFieldMapping; 
 
 }
 

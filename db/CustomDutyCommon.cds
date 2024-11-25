@@ -3,8 +3,40 @@ using {
     Currency
 } from '@sap/cds/common';
 
-type DutyMaster : {
+
+type DutyMasterHdr :{
+    ID                     : UUID;
+    BENoKey                : String(10);
+    Plant                  : String(10);
+    POVendor               : String(10);
+    OverallStatus          : String(20);
+    CustomVendInv          : String(10);
+    CustomVendor           : String(10);
+    CustomVendInvStat      : String(20);
+    CustomVendInvMsg       : String;
+    OverSeasVendInv          : String(10);
+    OverSeasVendor          : String(10);
+    OverSeasVendInvStat      : String(20);
+    OverSeasVendInvMsg      : String;
+    DomesticVendInv          : String(10);
+    DomesticVendor          : String(10);
+    DomesticVendInvStat      : String(20);
+    DomesticVendInvMsg       : String;
+    to_CustomDutyItem : many DutyMasterItem;
+    to_CustomDutyLog : many CustomMasterLog;
+}
+
+type CustomMasterLog {
+    ID                 : UUID;
+    type : String;
+    message : String;
+}
+
+
+type DutyMasterItem : {
+    ID                 : UUID;    
     CountryOfOrigin        : String(100);
+    PortofOrigin           : String(100);
     BENo                   : String(10);
     BEDate                 : Date;
     HAWB_HBLDate           : Date;
@@ -17,22 +49,40 @@ type DutyMaster : {
     InvoiceValueFC         : Decimal(13, 3);
     InvoiceCurrency        : Currency;
     InvoiceValueINR        : Decimal(13, 3);
-    ExcRateforInvoice      : Decimal(9, 5);
-    OverseasFreightAmount  : Decimal(13, 3);
+    ExcRateforInvoice      : Decimal(9, 5);    
     FreightPercentage      : Decimal(5, 0);
     FreightCurrency        : Currency;
+    FreightAmount          : Decimal(13, 3);
     FreightExrate          : Decimal(9, 5);
-    OverseasFreightAmtINR  : Decimal(13, 3);
-    DomesticFreightAmount  : Decimal(13, 3);
-    InsuranceAmount        : Decimal(13, 3);
+    OverseasFrtAmtCALC1     : Decimal(13, 3);
+    OverseasFrtAmtCALC2     : Decimal(13, 3);
+    OverseasFrtAmtTAX1     : String(2);
+    OverseasFrtAmtTAX2     : String(2);
+    DomesticFrtAmtCALC1     : Decimal(13, 3);
+    DomesticFrtAmtCALC2     : Decimal(13, 3);
+    DomesticFrtAmtTAX1     : String(2);
+    DomesticFrtAmtTAX2     : String(2);
+    MiscAmountCALC1         : Decimal(13, 3);
+    MiscAmountCALC2         : Decimal(13, 3);
+    MiscAmountTAX1         : String(2);
+    MiscAmountTAX2         : String(2);
+    InsuranceAmTCALC       : Decimal(13, 3);
+    InsuranceAmTCALC1       : Decimal(13, 3);
+    InsuranceAmTCALC2       : Decimal(13, 3);
+    InsuranceAmTTAX1       : String(2);
+    InsuranceAmTTAX2       : String(2);
+    MiscAmountCHA          : Decimal(13, 3);
+    InsuranceAmtCHA        : Decimal(13, 3);
+    TermsofInvoice         : String(3);
+    RITC                   : String(8);    
+    ItemSrNo               : Int16;
     InsurancePercentage    : Decimal(5, 0);
     InsuranceCurrency      : Currency;
     InsuranceExrate        : Decimal(5, 0);
-    MiscCharges            : Decimal(13, 3);
     Material               : String(40);
-    ProductDescription     : String(40);
+    ProductDescription     : String;
     PurchaseOrder          : String(10);
-    PurchaseorderItem      : Decimal(5, 0);
+    PurchaseorderItem      : String(5);
     HSNCodefromCHA         : String(10);
     HSNCodeSystem          : String(10);
     UnitPrice              : Decimal(13, 3);
@@ -46,10 +96,14 @@ type DutyMaster : {
     IGST                   : Decimal(13, 3);
     IGSTRateDutyPer        : Decimal(5, 0);
     AssessableValue        : Decimal(13, 3);
-    OverFreightperitem     : Decimal(13, 3);
-    DomesticFreightperitem : Decimal(13, 3);
-    Inschargesperitem      : Decimal(13, 3);
-    Miscchargesperitem     : Decimal(13, 3);
+    OverFreightperitem1     : Decimal(13, 3);
+    OverFreightperitem2     : Decimal(13, 3);
+    DomesticFreightperitem1 : Decimal(13, 3);
+    DomesticFreightperitem2 : Decimal(13, 3);
+    Inschargesperitem1      : Decimal(13, 3);
+    Inschargesperitem2      : Decimal(13, 3);
+    Miscchargesperitem1     : Decimal(13, 3);
+    Miscchargesperitem2     : Decimal(13, 3);
     CustomInvoiceVendor    : String(10);
     CustomInvoice          : String(10);
     OverFreightVendor      : String(10);
@@ -61,5 +115,5 @@ type DutyMaster : {
     MiscChargesVen         : String(10);
     MiscChargeInvoice      : String(10);
     Remarks                : LargeString;
-    status                 : String(10);    
-};
+    status                 : String(10);
+}

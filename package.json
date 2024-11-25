@@ -12,7 +12,8 @@
     "@sap-cloud-sdk/resilience": "^3.22.2",
     "@sap/cds": "^8",
     "@sap/xssec": "^4",
-    "express": "^4"
+    "express": "^4",
+    "http-parser-js": "^0.5.8"
   },
   "devDependencies": {
     "@cap-js/cds-types": "^0.6",
@@ -29,8 +30,8 @@
     "server": {
       "index": true
     },
-    "cov2ap":{
-      "plugin" : true
+    "cov2ap": {
+      "plugin": true
     },
     "requires": {
       "auth": "xsuaa",
@@ -64,13 +65,15 @@
         "[production]": {
           "credentials": {
             "destination": "STIHL_B2B_K4Q100_BASIC",
-            "path": "/sap/opu/odata/sap/API_SUPPLIERINVOICE_PROCESS_SRV"
+            "path": "/sap/opu/odata/sap/API_SUPPLIERINVOICE_PROCESS_SRV",
+            "requestTimeout": 1200000
           }
         },
         "[hybrid]": {
           "credentials": {
             "destination": "STIHL_B2B_K4Q100_BASIC",
-            "path": "/sap/opu/odata/sap/API_SUPPLIERINVOICE_PROCESS_SRV"
+            "path": "/sap/opu/odata/sap/API_SUPPLIERINVOICE_PROCESS_SRV",
+            "requestTimeout": 1200000
           }
         }
       },
