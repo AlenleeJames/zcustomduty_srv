@@ -1,51 +1,5 @@
 /* checksum : 227e5b990bf488f1bfcb24a9a276b5fb */
 @cds.external : true
-@CodeList.UnitsOfMeasure : {
-  Url: '../../../../default/iwbep/common/0001/$metadata',
-  CollectionPath: 'UnitsOfMeasure'
-}
-@Aggregation.ApplySupported : {
-  Transformations: [ 'aggregate', 'groupby', 'filter' ],
-  Rollup: #None
-}
-@Common.ApplyMultiUnitBehaviorForSortingAndFiltering : true
-@Capabilities.FilterFunctions : [
-  'eq',
-  'ne',
-  'gt',
-  'ge',
-  'lt',
-  'le',
-  'and',
-  'or',
-  'contains',
-  'startswith',
-  'endswith',
-  'any',
-  'all'
-]
-@Capabilities.SupportedFormats : [ 'application/json', 'application/pdf' ]
-@PDF.Features : {
-  DocumentDescriptionReference: '../../../../default/iwbep/common/0001/$metadata',
-  DocumentDescriptionCollection: 'MyDocumentDescriptions',
-  ArchiveFormat: true,
-  Border: true,
-  CoverPage: true,
-  FitToPage: true,
-  FontName: true,
-  FontSize: true,
-  Margin: true,
-  Padding: true,
-  Signature: true,
-  HeaderFooter: true,
-  ResultSizeDefault: 20000,
-  ResultSizeMaximum: 20000,
-  IANATimezoneFormat: true,
-  Treeview: true
-}
-@Capabilities.KeyAsSegmentSupported : true
-@Capabilities.AsynchronousRequestsSupported : true
-
 @m.IsDefaultEntityContainer : 'true'
 @sap.message.scope.supported : 'true'
 @sap.supported.formats : 'atom json xlsx'
