@@ -84,7 +84,7 @@ type CustomInvoiceHdr {
     @cds.redirection.target
     entity CustomDutyHdr       as projection on data.CustomDutyHdr;
     entity BENoF4 as projection on data.CustomDutyHdr{
-        BENoKey
+        key BENoKey
     }
     entity CustomDutyItem       as projection on data.CustomDutyItem;
     entity CustomDutyLog       as projection on data.CustomDutyLog;
