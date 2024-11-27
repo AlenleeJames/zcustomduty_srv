@@ -9,6 +9,7 @@ module.exports = async (srv) => {
   srv.on('READ', 'POVendorVH', req => CustomDutyMaster.run(req.query));
   srv.on('READ', 'PlantVH', req => CustomDutyMaster.run(req.query));
   srv.on('READ', 'ZA_MM_CustomDutyInvDetails', req => CustomDutyMaster.run(req.query));
+  srv.on('READ', 'TaxCodeVH', req => CustomDutyMaster.run(req.query)); 
 
   // Using CDS API      
   const API_SUPPLIERINVOICE_PROCESS_SRV = await cds.connect.to("API_SUPPLIERINVOICE_PROCESS_SRV");
