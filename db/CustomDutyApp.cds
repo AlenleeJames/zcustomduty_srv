@@ -157,3 +157,12 @@ entity CommonParamTableActuals : cuid {
         Value1         : String;
         Value2         : String;
 }
+
+//Entity for Upload HSN table
+entity UploadHSN : managed, cuid {
+    key ID              : UUID;
+        SupplierCountry : String(2);
+        HSNCode         : String(10);
+        TaxRate         : Decimal(5,0);
+        TaxCode         : String(10);
+}

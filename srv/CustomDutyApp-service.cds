@@ -95,7 +95,11 @@ type CustomInvoiceHdr {
 
     entity CommonParamTableMaster as projection on data.CommonParamTableMaster;
     
-    entity CommonParamTableActuals as projection on data.CommonParamTableActuals;  
- 
+
+    entity CommonParamTableActuals as projection on data.CommonParamTableActuals;    
+
+    //Entity for Upload HSN table
+    entity UploadHSN  as  projection  on data.UploadHSN;
+
 }
 
