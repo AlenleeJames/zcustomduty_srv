@@ -163,6 +163,6 @@ entity UploadHSN : managed, cuid {
     key ID              : UUID;
         SupplierCountry : String(2);
         HSNCode         : String(10);
-        TaxRate         : String(2);
+        TaxRate         : Decimal(5,0);
         TaxCode         : String(10);
 }
