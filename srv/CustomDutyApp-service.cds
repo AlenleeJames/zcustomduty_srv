@@ -14,7 +14,7 @@ service CustomDutyAppSrv {
 ;
     @readonly
     entity ZA_MM_CustomDutyInvDetails as projection on S4Services.ZA_MM_CustomDutyInvDetails
-    {        key IBDNumber, key IBDItemNumber, Plant, Material, PurchaseorderNumber, POItemNumber, POVendor, InvoiceNumber, POQuantity, GRQuantity, PurchaseOrderQuantityUnit, HSNCode, BCDVendor, SWSVendor, BCDRate, SWSRate, OverseasFreightVendor, DomesticFreightVendor, InsuranceVendor, Miscvendor     }    
+    {        key IBDNumber, key IBDItemNumber, Plant, Material, BPTaxNumber, Country, PurchaseorderNumber, POItemNumber, POVendor, InvoiceNumber, POQuantity, GRQuantity, PurchaseOrderQuantityUnit, HSNCode, BCDVendor, SWSVendor, BCDRate, SWSRate, OverseasFreightVendor, DomesticFreightVendor, InsuranceVendor, Miscvendor     }    
 ;
 
      @readonly
@@ -88,6 +88,7 @@ type CustomInvoiceHdr {
     }
     entity CustomDutyItem       as projection on data.CustomDutyItem;
     entity CustomDutyLog       as projection on data.CustomDutyLog;
+    entity ValidationLog       as projection on data.ValidationLog;
     
     //Entities of Configuration tables    
     entity CHAFileFieldsOrderList as projection on data.CHAFileFieldsOrderList;   
@@ -97,6 +98,7 @@ type CustomInvoiceHdr {
     
 
     entity CommonParamTableActuals as projection on data.CommonParamTableActuals;    
+    entity CustomDutyParam as projection on data.CustomDutyParam;
 
     //Entity for Upload HSN table
     entity UploadHSN  as  projection  on data.UploadHSN;

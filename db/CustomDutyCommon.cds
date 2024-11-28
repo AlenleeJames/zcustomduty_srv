@@ -15,18 +15,28 @@ type DutyMasterHdr :{
     CustomVendInvStat      : String(20);
     CustomVendInvMsg       : String;
     OverSeasVendInv          : String(10);
+    OverSeasInvHdr      : String(10);
     OverSeasVendor          : String(10);
     OverSeasVendInvStat      : String(20);
     OverSeasVendInvMsg      : String;
     DomesticVendInv          : String(10);
+    DomesticInvHdr      : String(10);
     DomesticVendor          : String(10);
     DomesticVendInvStat      : String(20);
     DomesticVendInvMsg       : String;
     to_CustomDutyItem : many DutyMasterItem;
     to_CustomDutyLog : many CustomMasterLog;
+    to_ValidationLog : many CustomValidationLog;
 }
 
 type CustomMasterLog {
+    ID                 : UUID;
+    type : String;
+    message : String;
+}
+
+
+type CustomValidationLog {
     ID                 : UUID;
     type : String;
     message : String;
