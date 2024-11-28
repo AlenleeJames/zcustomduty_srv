@@ -143,12 +143,12 @@ entity CHAFileFieldsOrderList : managed, cuid {
 
 }
 
-entity CommonParamTableMaster : cuid {
+entity CommonParamTableMaster : managed,cuid {
     key ID      : UUID;
         Element : String;
 }
 
-entity CommonParamTableActuals : cuid {
+entity CommonParamTableActuals : managed,cuid {
     key ID             : UUID;
         Element        : String;
         CompanyCode    : String;

@@ -17,6 +17,11 @@ service CustomDutyAppSrv {
     {        key IBDNumber, key IBDItemNumber, Plant, Material, PurchaseorderNumber, POItemNumber, POVendor, InvoiceNumber, POQuantity, GRQuantity, PurchaseOrderQuantityUnit, HSNCode, BCDVendor, SWSVendor, BCDRate, SWSRate, OverseasFreightVendor, DomesticFreightVendor, InsuranceVendor, Miscvendor     }    
 ;
 
+     @readonly
+    entity TaxCodeVH as projection on S4Services.TaxCodeVH
+    {        key TaxCode, key TaxCalculationProcedure, TaxCodeName     }    
+;
+
   
     entity SupplierInvoice as projection on SupplierInvPost.A_SupplierInvoice;
    
@@ -76,7 +81,11 @@ type CustomInvoiceHdr {
     //entity CustomDutyMaster as select from data.CustomDutyMaster;
     //entity CustomDutyMaster       as projection on data.CustomDutyMaster;
 
+    @cds.redirection.target
     entity CustomDutyHdr       as projection on data.CustomDutyHdr;
+    entity BENoF4 as projection on data.CustomDutyHdr{
+        key BENoKey
+    }
     entity CustomDutyItem       as projection on data.CustomDutyItem;
     entity CustomDutyLog       as projection on data.CustomDutyLog;
     
@@ -86,9 +95,11 @@ type CustomInvoiceHdr {
 
     entity CommonParamTableMaster as projection on data.CommonParamTableMaster;
     
+
     entity CommonParamTableActuals as projection on data.CommonParamTableActuals;    
 
     //Entity for Upload HSN table
     entity UploadHSN  as  projection  on data.UploadHSN;
+
 }
 

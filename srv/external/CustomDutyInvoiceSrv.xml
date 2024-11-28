@@ -1,495 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="4.0"
-    xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
-    xmlns="http://docs.oasis-open.org/odata/ns/edm">
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
     </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
     </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
     </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="SAP__measures"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="SAP__capabilities"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="SAP__aggregation"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="SAP__validation"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
     </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="SAP__UI"/>
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
     </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="SAP__HTML5"/>
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
     </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PDF',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="com.sap.vocabularies.PDF.v1" Alias="SAP__PDF"/>
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
     </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_SESSION',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="com.sap.vocabularies.Session.v1" Alias="SAP__session"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ODM',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ODM',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.ODM.v1" Alias="SAP__ODM"/>
     </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HIERARCHY',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="com.sap.vocabularies.Hierarchy.v1" Alias="SAP__hierarchy"/>
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
     </edmx:Reference>
-    <edmx:DataServices>
-        <Schema Namespace="com.sap.gateway.srvd_a2x.zapi_mm_customdutyinvdetails.v0001" Alias="SAP__self">
-            <Annotation Term="SAP__core.SchemaVersion" String="1.0.0"/>
-            <EntityType Name="PlantVHType">
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zapi_mm_customdutyinvdetails" xml:lang="en" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="PlantVHType" sap:label="Plant" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Plant"/>
                 </Key>
-                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
-                <Property Name="PlantName" Type="Edm.String" Nullable="false" MaxLength="30"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="PlantName" sap:label="Plant"/>
+                <Property Name="PlantName" Type="Edm.String" MaxLength="30" sap:label="Plant Name"/>
             </EntityType>
-            <EntityType Name="ZA_MM_CustomDutyInvDetailsType">
+            <EntityType Name="POVendorVHType" sap:label="Supplier" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Supplier"/>
+                </Key>
+                <Property Name="Supplier" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="BPSupplierName" sap:label="Supplier" sap:quickinfo="Account Number of Supplier"/>
+                <Property Name="SupplierName" Type="Edm.String" MaxLength="35" sap:label="Supplier Name1" sap:quickinfo="Supplier Name"/>
+                <Property Name="BusinessPartnerName1" Type="Edm.String" MaxLength="40" sap:label="Business Partner Name1"/>
+                <Property Name="BPSupplierName" Type="Edm.String" MaxLength="81" sap:label="Business Partner Supplier Name" sap:quickinfo="Supplier Name"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization" sap:quickinfo="Authorization Group"/>
+                <Property Name="SupplierAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Account Group" sap:quickinfo="Supplier Account Group"/>
+                <Property Name="IsBusinessPurposeCompleted" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Purpose Completed" sap:quickinfo="Business Purpose Completed Flag"/>
+                <Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="BusinessPartnerType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Business Partner Type"/>
+                <Property Name="DataControllerSet" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Data Ctrlr. Set" sap:quickinfo="BP: Data Controller Set Flag"/>
+                <Property Name="DataController1" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Data Controller" sap:quickinfo="BP: Data Controller (Internal Use Only)"/>
+                <Property Name="DataController2" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Data Controller" sap:quickinfo="BP: Data Controller (Internal Use Only)"/>
+                <Property Name="DataController3" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Data Controller" sap:quickinfo="BP: Data Controller (Internal Use Only)"/>
+                <Property Name="DataController4" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Data Controller" sap:quickinfo="BP: Data Controller (Internal Use Only)"/>
+                <Property Name="DataController5" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Data Controller" sap:quickinfo="BP: Data Controller (Internal Use Only)"/>
+                <Property Name="DataController6" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Data Controller" sap:quickinfo="BP: Data Controller (Internal Use Only)"/>
+                <Property Name="DataController7" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Data Controller" sap:quickinfo="BP: Data Controller (Internal Use Only)"/>
+                <Property Name="DataController8" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Data Controller" sap:quickinfo="BP: Data Controller (Internal Use Only)"/>
+                <Property Name="DataController9" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Data Controller" sap:quickinfo="BP: Data Controller (Internal Use Only)"/>
+                <Property Name="DataController10" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Data Controller" sap:quickinfo="BP: Data Controller (Internal Use Only)"/>
+            </EntityType>
+            <EntityType Name="ZA_MM_CustomDutyInvDetailsType" sap:label="API View - Customs Invoice Details" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="IBDNumber"/>
                     <PropertyRef Name="IBDItemNumber"/>
                 </Key>
-                <Property Name="IBDNumber" Type="Edm.String" Nullable="false" MaxLength="10"/>
-                <Property Name="IBDItemNumber" Type="Edm.String" Nullable="false" MaxLength="6"/>
-                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
-                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="18"/>
-                <Property Name="PurchaseorderNumber" Type="Edm.String" Nullable="false" MaxLength="10"/>
-                <Property Name="POItemNumber" Type="Edm.String" Nullable="false" MaxLength="5"/>
-                <Property Name="POVendor" Type="Edm.String" Nullable="false" MaxLength="10"/>
-                <Property Name="InvoiceNumber" Type="Edm.String" Nullable="false" MaxLength="25"/>
-                <Property Name="POQuantity" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3"/>
-                <Property Name="GRQuantity" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3"/>
-                <Property Name="PurchaseOrderQuantityUnit" Type="Edm.String" Nullable="false" MaxLength="3"/>
-                <Property Name="HSNCode" Type="Edm.String" Nullable="false" MaxLength="16"/>
-                <Property Name="BCDVendor" Type="Edm.String" Nullable="false" MaxLength="10"/>
-                <Property Name="SWSVendor" Type="Edm.String" Nullable="false" MaxLength="10"/>
-                <Property Name="BCDRate" Type="Edm.Decimal" Nullable="false" Precision="24" Scale="9"/>
-                <Property Name="SWSRate" Type="Edm.Decimal" Nullable="false" Precision="24" Scale="9"/>
-                <Property Name="OverseasFreightVendor" Type="Edm.String" Nullable="false" MaxLength="10"/>
-                <Property Name="DomesticFreightVendor" Type="Edm.String" Nullable="false" MaxLength="10"/>
-                <Property Name="InsuranceVendor" Type="Edm.String" Nullable="false" MaxLength="10"/>
-                <Property Name="Miscvendor" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="IBDNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Delivery"/>
+                <Property Name="IBDItemNumber" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Item" sap:quickinfo="Delivery Item"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Product" sap:quickinfo="Product Number"/>
+                <Property Name="PurchaseorderNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchase Order" sap:quickinfo="Purchase Order Number"/>
+                <Property Name="POItemNumber" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="Purchase Order Item" sap:quickinfo="Item Number of Purchase Order"/>
+                <Property Name="POVendor" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier"/>
+                <Property Name="InvoiceNumber" Type="Edm.String" MaxLength="35" sap:label="External Delivery ID" sap:quickinfo="External Identification of Delivery Note"/>
+                <Property Name="POQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="PurchaseOrderQuantityUnit" sap:label="Order Quantity" sap:quickinfo="Purchase Order Quantity"/>
+                <Property Name="GRQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="PurchaseOrderQuantityUnit" sap:label="Quantity"/>
+                <Property Name="OpenQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="PurchaseOrderQuantityUnit"/>
+                <Property Name="PurchaseOrderQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Order Unit" sap:quickinfo="Purchase Order Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="HSNCode" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Control Code" sap:quickinfo="Control code for consumption taxes in foreign trade"/>
+                <Property Name="BCDVendor" Type="Edm.String" MaxLength="10"/>
+                <Property Name="SWSVendor" Type="Edm.String" MaxLength="10"/>
+                <Property Name="BCDRate" Type="Edm.Decimal" Precision="24" Scale="9"/>
+                <Property Name="SWSRate" Type="Edm.Decimal" Precision="24" Scale="9"/>
+                <Property Name="OverseasFreightVendor" Type="Edm.String" MaxLength="10"/>
+                <Property Name="DomesticFreightVendor" Type="Edm.String" MaxLength="10"/>
+                <Property Name="InsuranceVendor" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Miscvendor" Type="Edm.String" MaxLength="10"/>
             </EntityType>
-            <EntityType Name="POVendorVHType">
+            <EntityType Name="TaxCodeVHType" sap:label="Value Help for Tax Code" sap:content-version="1">
                 <Key>
-                    <PropertyRef Name="Supplier"/>
+                    <PropertyRef Name="TaxCode"/>
+                    <PropertyRef Name="TaxCalculationProcedure"/>
                 </Key>
-                <Property Name="Supplier" Type="Edm.String" Nullable="false" MaxLength="10"/>
-                <Property Name="SupplierName" Type="Edm.String" Nullable="false" MaxLength="35"/>
-                <Property Name="BusinessPartnerName1" Type="Edm.String" Nullable="false" MaxLength="40"/>
-                <Property Name="BPSupplierName" Type="Edm.String" Nullable="false" MaxLength="81"/>
-                <Property Name="AuthorizationGroup" Type="Edm.String" Nullable="false" MaxLength="4"/>
-                <Property Name="SupplierAccountGroup" Type="Edm.String" Nullable="false" MaxLength="4"/>
-                <Property Name="IsBusinessPurposeCompleted" Type="Edm.String" Nullable="false" MaxLength="1"/>
-                <Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10"/>
-                <Property Name="BusinessPartnerType" Type="Edm.String" Nullable="false" MaxLength="4"/>
-                <Property Name="DataControllerSet" Type="Edm.String" Nullable="false" MaxLength="1"/>
-                <Property Name="DataController1" Type="Edm.String" Nullable="false" MaxLength="30"/>
-                <Property Name="DataController2" Type="Edm.String" Nullable="false" MaxLength="30"/>
-                <Property Name="DataController3" Type="Edm.String" Nullable="false" MaxLength="30"/>
-                <Property Name="DataController4" Type="Edm.String" Nullable="false" MaxLength="30"/>
-                <Property Name="DataController5" Type="Edm.String" Nullable="false" MaxLength="30"/>
-                <Property Name="DataController6" Type="Edm.String" Nullable="false" MaxLength="30"/>
-                <Property Name="DataController7" Type="Edm.String" Nullable="false" MaxLength="30"/>
-                <Property Name="DataController8" Type="Edm.String" Nullable="false" MaxLength="30"/>
-                <Property Name="DataController9" Type="Edm.String" Nullable="false" MaxLength="30"/>
-                <Property Name="DataController10" Type="Edm.String" Nullable="false" MaxLength="30"/>
+                <Property Name="TaxCode" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax Code" sap:quickinfo="Tax on Sales/Purchases Code"/>
+                <Property Name="TaxCalculationProcedure" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:label="Procedure" sap:quickinfo="Procedure (Pricing, Output Control, Acct. Det., Costing,...)"/>
+                <Property Name="TaxCodeName" Type="Edm.String" MaxLength="50" sap:label="Tax Code Name"/>
             </EntityType>
-            <EntityContainer Name="Container">
-                <EntitySet Name="PlantVH" EntityType="com.sap.gateway.srvd_a2x.zapi_mm_customdutyinvdetails.v0001.PlantVHType"/>
-                <EntitySet Name="POVendorVH" EntityType="com.sap.gateway.srvd_a2x.zapi_mm_customdutyinvdetails.v0001.POVendorVHType"/>
-                <EntitySet Name="ZA_MM_CustomDutyInvDetails" EntityType="com.sap.gateway.srvd_a2x.zapi_mm_customdutyinvdetails.v0001.ZA_MM_CustomDutyInvDetailsType"/>
+            <EntityContainer Name="cds_zapi_mm_customdutyinvdetails_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="PlantVH" EntityType="cds_zapi_mm_customdutyinvdetails.PlantVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="POVendorVH" EntityType="cds_zapi_mm_customdutyinvdetails.POVendorVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZA_MM_CustomDutyInvDetails" EntityType="cds_zapi_mm_customdutyinvdetails.ZA_MM_CustomDutyInvDetailsType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="TaxCodeVH" EntityType="cds_zapi_mm_customdutyinvdetails.TaxCodeVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
             </EntityContainer>
-            <Annotations Target="SAP__self.PlantVHType/Plant">
-                <Annotation Term="SAP__common.Text" Path="PlantName"/>
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.Label" String="Plant"/>
-                <Annotation Term="SAP__common.Heading" String="Plnt"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PlantVHType">
-                <Annotation Term="SAP__common.Label" String="Plant"/>
-            </Annotations>
-            <Annotations Target="SAP__self.Container/PlantVH">
-                <Annotation Term="SAP__capabilities.SearchRestrictions">
-                    <Record>
-                        <PropertyValue Property="Searchable" Bool="true"/>
-                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.InsertRestrictions">
-                    <Record>
-                        <PropertyValue Property="Insertable" Bool="false"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.DeleteRestrictions">
-                    <Record>
-                        <PropertyValue Property="Deletable" Bool="false"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.UpdateRestrictions">
-                    <Record>
-                        <PropertyValue Property="Updatable" Bool="false"/>
-                        <PropertyValue Property="QueryOptions">
-                            <Record>
-                                <PropertyValue Property="SelectSupported" Bool="true"/>
-                            </Record>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__core.OptimisticConcurrency">
-                    <Collection/>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="SAP__self.ZA_MM_CustomDutyInvDetailsType/IBDNumber">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.Label" String="Delivery"/>
-            </Annotations>
-            <Annotations Target="SAP__self.ZA_MM_CustomDutyInvDetailsType/IBDItemNumber">
-                <Annotation Term="SAP__common.IsDigitSequence"/>
-                <Annotation Term="SAP__common.Label" String="Item"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Delivery Item"/>
-            </Annotations>
-            <Annotations Target="SAP__self.ZA_MM_CustomDutyInvDetailsType/Plant">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.Label" String="Plant"/>
-                <Annotation Term="SAP__common.Heading" String="Plnt"/>
-            </Annotations>
-            <Annotations Target="SAP__self.ZA_MM_CustomDutyInvDetailsType/Material">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.Label" String="Product"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Product Number"/>
-            </Annotations>
-            <Annotations Target="SAP__self.ZA_MM_CustomDutyInvDetailsType/PurchaseorderNumber">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.Label" String="Purchase Order"/>
-                <Annotation Term="SAP__common.Heading" String="Purchase Order Number"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Purchase Order Number"/>
-            </Annotations>
-            <Annotations Target="SAP__self.ZA_MM_CustomDutyInvDetailsType/POItemNumber">
-                <Annotation Term="SAP__common.IsDigitSequence"/>
-                <Annotation Term="SAP__common.Label" String="Purchase Order Item"/>
-                <Annotation Term="SAP__common.Heading" String="Item Number of Purchase Order"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Item Number of Purchase Order"/>
-            </Annotations>
-            <Annotations Target="SAP__self.ZA_MM_CustomDutyInvDetailsType/POVendor">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.Label" String="Supplier"/>
-            </Annotations>
-            <Annotations Target="SAP__self.ZA_MM_CustomDutyInvDetailsType/InvoiceNumber">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.Label" String="Reference"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Reference Document Number"/>
-            </Annotations>
-            <Annotations Target="SAP__self.ZA_MM_CustomDutyInvDetailsType/POQuantity">
-                <Annotation Term="SAP__measures.Unit" Path="PurchaseOrderQuantityUnit"/>
-                <Annotation Term="SAP__common.Label" String="Order Quantity"/>
-                <Annotation Term="SAP__common.Heading" String="PO Quantity"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Purchase Order Quantity"/>
-            </Annotations>
-            <Annotations Target="SAP__self.ZA_MM_CustomDutyInvDetailsType/GRQuantity">
-                <Annotation Term="SAP__measures.Unit" Path="PurchaseOrderQuantityUnit"/>
-                <Annotation Term="SAP__common.Label" String="Quantity"/>
-            </Annotations>
-            <Annotations Target="SAP__self.ZA_MM_CustomDutyInvDetailsType/PurchaseOrderQuantityUnit">
-                <Annotation Term="SAP__common.IsUnit"/>
-                <Annotation Term="SAP__common.Label" String="Order Unit"/>
-                <Annotation Term="SAP__common.Heading" String="OUn"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Purchase Order Unit of Measure"/>
-            </Annotations>
-            <Annotations Target="SAP__self.ZA_MM_CustomDutyInvDetailsType/HSNCode">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.Label" String="Control Code"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Control code for consumption taxes in foreign trade"/>
-            </Annotations>
-            <Annotations Target="SAP__self.ZA_MM_CustomDutyInvDetailsType">
-                <Annotation Term="SAP__common.Label" String="API View - Customs Invoice Details"/>
-            </Annotations>
-            <Annotations Target="SAP__self.Container/ZA_MM_CustomDutyInvDetails">
-                <Annotation Term="SAP__capabilities.SearchRestrictions">
-                    <Record>
-                        <PropertyValue Property="Searchable" Bool="false"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.InsertRestrictions">
-                    <Record>
-                        <PropertyValue Property="Insertable" Bool="false"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.DeleteRestrictions">
-                    <Record>
-                        <PropertyValue Property="Deletable" Bool="false"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.UpdateRestrictions">
-                    <Record>
-                        <PropertyValue Property="Updatable" Bool="false"/>
-                        <PropertyValue Property="QueryOptions">
-                            <Record>
-                                <PropertyValue Property="SelectSupported" Bool="true"/>
-                            </Record>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__core.OptimisticConcurrency">
-                    <Collection/>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.FilterRestrictions">
-                    <Record>
-                        <PropertyValue Property="FilterExpressionRestrictions">
-                            <Collection>
-                                <Record>
-                                    <PropertyValue Property="Property" PropertyPath="POQuantity"/>
-                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
-                                </Record>
-                                <Record>
-                                    <PropertyValue Property="Property" PropertyPath="GRQuantity"/>
-                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
-                                </Record>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="SAP__self.Container">
-                <Annotation Term="SAP__CodeList.UnitsOfMeasure">
-                    <Record>
-                        <PropertyValue Property="Url" String="../../../../default/iwbep/common/0001/$metadata"/>
-                        <PropertyValue Property="CollectionPath" String="UnitsOfMeasure"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__aggregation.ApplySupported">
-                    <Record>
-                        <PropertyValue Property="Transformations">
-                            <Collection>
-                                <String>aggregate</String>
-                                <String>groupby</String>
-                                <String>filter</String>
-                            </Collection>
-                        </PropertyValue>
-                        <PropertyValue Property="Rollup" EnumMember="SAP__aggregation.RollupType/None"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
-                <Annotation Term="SAP__capabilities.FilterFunctions">
-                    <Collection>
-                        <String>eq</String>
-                        <String>ne</String>
-                        <String>gt</String>
-                        <String>ge</String>
-                        <String>lt</String>
-                        <String>le</String>
-                        <String>and</String>
-                        <String>or</String>
-                        <String>contains</String>
-                        <String>startswith</String>
-                        <String>endswith</String>
-                        <String>any</String>
-                        <String>all</String>
-                    </Collection>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.SupportedFormats">
-                    <Collection>
-                        <String>application/json</String>
-                        <String>application/pdf</String>
-                    </Collection>
-                </Annotation>
-                <Annotation Term="SAP__PDF.Features">
-                    <Record>
-                        <PropertyValue Property="DocumentDescriptionReference" String="../../../../default/iwbep/common/0001/$metadata"/>
-                        <PropertyValue Property="DocumentDescriptionCollection" String="MyDocumentDescriptions"/>
-                        <PropertyValue Property="ArchiveFormat" Bool="true"/>
-                        <PropertyValue Property="Border" Bool="true"/>
-                        <PropertyValue Property="CoverPage" Bool="true"/>
-                        <PropertyValue Property="FitToPage" Bool="true"/>
-                        <PropertyValue Property="FontName" Bool="true"/>
-                        <PropertyValue Property="FontSize" Bool="true"/>
-                        <PropertyValue Property="Margin" Bool="true"/>
-                        <PropertyValue Property="Padding" Bool="true"/>
-                        <PropertyValue Property="Signature" Bool="true"/>
-                        <PropertyValue Property="HeaderFooter" Bool="true"/>
-                        <PropertyValue Property="ResultSizeDefault" Int="20000"/>
-                        <PropertyValue Property="ResultSizeMaximum" Int="20000"/>
-                        <PropertyValue Property="IANATimezoneFormat" Bool="true"/>
-                        <PropertyValue Property="Treeview" Bool="true"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.KeyAsSegmentSupported"/>
-                <Annotation Term="SAP__capabilities.AsynchronousRequestsSupported"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType/Supplier">
-                <Annotation Term="SAP__common.Text" Path="BPSupplierName"/>
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.Label" String="Supplier"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Account Number of Supplier"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType/SupplierName">
-                <Annotation Term="SAP__common.Label" String="Supplier Name1"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Supplier Name"/>
-                <Annotation Term="SAP__common.Heading" String="Name"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType/BusinessPartnerName1">
-                <Annotation Term="SAP__common.Label" String="Business Partner Name1"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Business Partner Name1"/>
-                <Annotation Term="SAP__common.Heading" String="Name"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType/BPSupplierName">
-                <Annotation Term="SAP__common.Label" String="Business Partner Supplier Name"/>
-                <Annotation Term="SAP__common.Heading" String="Supplier Name"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Supplier Name"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType/AuthorizationGroup">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__UI.HiddenFilter"/>
-                <Annotation Term="SAP__common.Label" String="Authorization"/>
-                <Annotation Term="SAP__common.Heading" String="AuGr"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Authorization Group"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType/SupplierAccountGroup">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__UI.HiddenFilter"/>
-                <Annotation Term="SAP__common.Label" String="Account Group"/>
-                <Annotation Term="SAP__common.Heading" String="Group"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Supplier Account Group"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType/IsBusinessPurposeCompleted">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__UI.HiddenFilter"/>
-                <Annotation Term="SAP__common.Label" String="Purpose Completed"/>
-                <Annotation Term="SAP__common.Heading" String="Business Purpose Completed Flag"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Business Purpose Completed Flag"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType/BusinessPartner">
-                <Annotation Term="SAP__common.Label" String="Business Partner"/>
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.Heading" String="Business Partner"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Business Partner Number"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType/BusinessPartnerType">
-                <Annotation Term="SAP__common.Label" String="Business Partner Type"/>
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.Heading" String="Type"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Business Partner Type"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType/DataControllerSet">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__UI.HiddenFilter"/>
-                <Annotation Term="SAP__common.Label" String="Data Ctrlr. Set"/>
-                <Annotation Term="SAP__common.Heading" String="Data Controller Set Flag"/>
-                <Annotation Term="SAP__common.QuickInfo" String="BP: Data Controller Set Flag"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType/DataController1">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__UI.HiddenFilter"/>
-                <Annotation Term="SAP__common.Label" String="Data Controller"/>
-                <Annotation Term="SAP__common.QuickInfo" String="BP: Data Controller (Internal Use Only)"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType/DataController2">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__UI.HiddenFilter"/>
-                <Annotation Term="SAP__common.Label" String="Data Controller"/>
-                <Annotation Term="SAP__common.QuickInfo" String="BP: Data Controller (Internal Use Only)"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType/DataController3">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__UI.HiddenFilter"/>
-                <Annotation Term="SAP__common.Label" String="Data Controller"/>
-                <Annotation Term="SAP__common.QuickInfo" String="BP: Data Controller (Internal Use Only)"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType/DataController4">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__UI.HiddenFilter"/>
-                <Annotation Term="SAP__common.Label" String="Data Controller"/>
-                <Annotation Term="SAP__common.QuickInfo" String="BP: Data Controller (Internal Use Only)"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType/DataController5">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__UI.HiddenFilter"/>
-                <Annotation Term="SAP__common.Label" String="Data Controller"/>
-                <Annotation Term="SAP__common.QuickInfo" String="BP: Data Controller (Internal Use Only)"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType/DataController6">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__UI.HiddenFilter"/>
-                <Annotation Term="SAP__common.Label" String="Data Controller"/>
-                <Annotation Term="SAP__common.QuickInfo" String="BP: Data Controller (Internal Use Only)"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType/DataController7">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__UI.HiddenFilter"/>
-                <Annotation Term="SAP__common.Label" String="Data Controller"/>
-                <Annotation Term="SAP__common.QuickInfo" String="BP: Data Controller (Internal Use Only)"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType/DataController8">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__UI.HiddenFilter"/>
-                <Annotation Term="SAP__common.Label" String="Data Controller"/>
-                <Annotation Term="SAP__common.QuickInfo" String="BP: Data Controller (Internal Use Only)"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType/DataController9">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__UI.HiddenFilter"/>
-                <Annotation Term="SAP__common.Label" String="Data Controller"/>
-                <Annotation Term="SAP__common.QuickInfo" String="BP: Data Controller (Internal Use Only)"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType/DataController10">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__UI.HiddenFilter"/>
-                <Annotation Term="SAP__common.Label" String="Data Controller"/>
-                <Annotation Term="SAP__common.QuickInfo" String="BP: Data Controller (Internal Use Only)"/>
-            </Annotations>
-            <Annotations Target="SAP__self.POVendorVHType">
-                <Annotation Term="SAP__common.Label" String="Supplier"/>
-            </Annotations>
-            <Annotations Target="SAP__self.Container/POVendorVH">
-                <Annotation Term="SAP__capabilities.SearchRestrictions">
-                    <Record>
-                        <PropertyValue Property="Searchable" Bool="true"/>
-                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.InsertRestrictions">
-                    <Record>
-                        <PropertyValue Property="Insertable" Bool="false"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.DeleteRestrictions">
-                    <Record>
-                        <PropertyValue Property="Deletable" Bool="false"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.UpdateRestrictions">
-                    <Record>
-                        <PropertyValue Property="Updatable" Bool="false"/>
-                        <PropertyValue Property="QueryOptions">
-                            <Record>
-                                <PropertyValue Property="SelectSupported" Bool="true"/>
-                            </Record>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__core.OptimisticConcurrency">
-                    <Collection/>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="SAP__self.PlantVHType/PlantName">
-                <Annotation Term="SAP__common.Label" String="Plant Name"/>
-            </Annotations>
-        </Schema>
-    </edmx:DataServices>
-</edmx:Edmx>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+                <Annotations Target="cds_zapi_mm_customdutyinvdetails.cds_zapi_mm_customdutyinvdetails_Entities"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                </Annotations>
+                <Annotations Target="cds_zapi_mm_customdutyinvdetails.cds_zapi_mm_customdutyinvdetails_Entities/POVendorVH"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.DeleteRestrictions">
+                        <Record>
+                            <PropertyValue Property="Deletable" Bool="false"/>
+                        </Record>
+                    </Annotation>
+                    <Annotation Term="Capabilities.InsertRestrictions">
+                        <Record>
+                            <PropertyValue Property="Insertable" Bool="false"/>
+                        </Record>
+                    </Annotation>
+                    <Annotation Term="Capabilities.UpdateRestrictions">
+                        <Record>
+                            <PropertyValue Property="Updatable" Bool="false"/>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="cds_zapi_mm_customdutyinvdetails.cds_zapi_mm_customdutyinvdetails_Entities/PlantVH"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.DeleteRestrictions">
+                        <Record>
+                            <PropertyValue Property="Deletable" Bool="false"/>
+                        </Record>
+                    </Annotation>
+                    <Annotation Term="Capabilities.InsertRestrictions">
+                        <Record>
+                            <PropertyValue Property="Insertable" Bool="false"/>
+                        </Record>
+                    </Annotation>
+                    <Annotation Term="Capabilities.UpdateRestrictions">
+                        <Record>
+                            <PropertyValue Property="Updatable" Bool="false"/>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="cds_zapi_mm_customdutyinvdetails.cds_zapi_mm_customdutyinvdetails_Entities/TaxCodeVH"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.DeleteRestrictions">
+                        <Record>
+                            <PropertyValue Property="Deletable" Bool="false"/>
+                        </Record>
+                    </Annotation>
+                    <Annotation Term="Capabilities.InsertRestrictions">
+                        <Record>
+                            <PropertyValue Property="Insertable" Bool="false"/>
+                        </Record>
+                    </Annotation>
+                    <Annotation Term="Capabilities.UpdateRestrictions">
+                        <Record>
+                            <PropertyValue Property="Updatable" Bool="false"/>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="cds_zapi_mm_customdutyinvdetails.cds_zapi_mm_customdutyinvdetails_Entities/ZA_MM_CustomDutyInvDetails"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.DeleteRestrictions">
+                        <Record>
+                            <PropertyValue Property="Deletable" Bool="false"/>
+                        </Record>
+                    </Annotation>
+                    <Annotation Term="Capabilities.InsertRestrictions">
+                        <Record>
+                            <PropertyValue Property="Insertable" Bool="false"/>
+                        </Record>
+                    </Annotation>
+                    <Annotation Term="Capabilities.UpdateRestrictions">
+                        <Record>
+                            <PropertyValue Property="Updatable" Bool="false"/>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="cds_zapi_mm_customdutyinvdetails.cds_zapi_mm_customdutyinvdetails_Entities"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
+                        <Record Type="Org.OData.Capabilities.V1.BatchSupportType">
+                            <PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <atom:link rel="self" href="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/sap/ZAPI_MM_CUSTOMINVDETAIL_V2/$metadata"
+                    xmlns:atom="http://www.w3.org/2005/Atom"/>
+                    <atom:link rel="latest-version" href="https://my414221-api.s4hana.cloud.sap/sap/opu/odata/sap/ZAPI_MM_CUSTOMINVDETAIL_V2/$metadata"
+                        xmlns:atom="http://www.w3.org/2005/Atom"/>
+                    </Schema>
+                </edmx:DataServices>
+            </edmx:Edmx>
