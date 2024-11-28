@@ -91,6 +91,8 @@
                 <Property Name="IBDItemNumber" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Item" sap:quickinfo="Delivery Item"/>
                 <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
                 <Property Name="Material" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Product" sap:quickinfo="Product Number"/>
+                <Property Name="BPTaxNumber" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Tax number" sap:quickinfo="Business Partner Tax Number"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key"/>
                 <Property Name="PurchaseorderNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchase Order" sap:quickinfo="Purchase Order Number"/>
                 <Property Name="POItemNumber" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="Purchase Order Item" sap:quickinfo="Item Number of Purchase Order"/>
                 <Property Name="POVendor" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier"/>

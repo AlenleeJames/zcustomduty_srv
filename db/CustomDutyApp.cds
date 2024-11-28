@@ -19,10 +19,12 @@ entity CustomDutyHdr : managed, cuid {
         CustomVendInvStat   : String(20);
         CustomVendInvMsg    : String;
         OverSeasVendInv     : String(10);
+        OverSeasInvHdr      : String(10);
         OverSeasVendor      : String(10);
         OverSeasVendInvStat : String(20);
         OverSeasVendInvMsg  : String;
         DomesticVendInv     : String(10);
+        DomesticInvHdr      : String(10);
         DomesticVendor      : String(10);
         DomesticVendInvStat : String(20);
         DomesticVendInvMsg  : String;
@@ -30,6 +32,8 @@ entity CustomDutyHdr : managed, cuid {
                                   on to_CustomDutyItem.BENoKey = $self;
         to_CustomDutyLog    : Composition of many CustomDutyLog
                                   on to_CustomDutyLog.BENoKey = $self;
+        to_ValidationLog    : Composition of many ValidationLog
+                                  on to_ValidationLog.BENoKey = $self;
 }
 
 entity CustomDutyItem : managed, cuid {
@@ -125,6 +129,13 @@ entity CustomDutyLog : managed, cuid {
         BENoKey : Association to CustomDutyHdr;
 }
 
+entity ValidationLog : managed, cuid {
+    key ID      : UUID;
+        type    : String;
+        message : String;
+        BENoKey : Association to CustomDutyHdr;
+}
+
 entity CustomDutyFieldMapping : managed, cuid {
     key ID           : UUID;
         Source       : String;
@@ -156,6 +167,20 @@ entity CommonParamTableActuals : managed,cuid {
         ConditionTable : String;
         Value1         : String;
         Value2         : String;
+}
+
+
+entity CustomDutyParam : managed,cuid {
+    key ID             : UUID;
+        ParamID        : String;
+        ParamName      : String;
+        Sequence       : Int16;
+        Description    : String;
+        Value1         : String;
+        Value2         : String;
+        Value3         : String;
+        Value4         : String;
+        Value5         : String;
 }
 
 //Entity for Upload HSN table

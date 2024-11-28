@@ -1,4 +1,4 @@
-/* checksum : 227e5b990bf488f1bfcb24a9a276b5fb */
+/* checksum : 24881e7956131d84891c548b54a88812 */
 @cds.external : true
 @m.IsDefaultEntityContainer : 'true'
 @sap.message.scope.supported : 'true'
@@ -131,6 +131,13 @@ entity CustomDutyInvoiceSrv.ZA_MM_CustomDutyInvDetails {
   @sap.label : 'Product'
   @sap.quickinfo : 'Product Number'
   Material : String(18);
+  @sap.display.format : 'UpperCase'
+  @sap.label : 'Tax number'
+  @sap.quickinfo : 'Business Partner Tax Number'
+  BPTaxNumber : String(20);
+  @sap.display.format : 'UpperCase'
+  @sap.label : 'Country/Region Key'
+  Country : String(3);
   @sap.display.format : 'UpperCase'
   @sap.label : 'Purchase Order'
   @sap.quickinfo : 'Purchase Order Number'
