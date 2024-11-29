@@ -81,6 +81,8 @@ type DutyMasterItem : {
     InsuranceAmTCALC2       : Decimal(13, 3);
     InsuranceAmTTAX1       : String(2);
     InsuranceAmTTAX2       : String(2);
+    CustomDutyTAX1        : String(2);
+    CustomDutyTAX2        : String(2);
     MiscAmountCHA          : Decimal(13, 3);
     InsuranceAmtCHA        : Decimal(13, 3);
     TermsofInvoice         : String(3);
@@ -105,6 +107,7 @@ type DutyMasterItem : {
     SocWelSurDutyPer       : Decimal(5, 0);
     IGST                   : Decimal(13, 3);
     IGSTRateDutyPer        : Decimal(5, 0);
+    IGSTNo                 : String(20);
     AssessableValue        : Decimal(13, 3);
     OverFreightperitem1     : Decimal(13, 3);
     OverFreightperitem2     : Decimal(13, 3);
