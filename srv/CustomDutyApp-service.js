@@ -75,7 +75,7 @@ module.exports = async (srv) => {
 
   srv.on('PostInvoice', async (req) => {
     const { ID } = req.data; // Extract the payload    
-    const { CustomDutyHdr, CustomDutyItem, CustomDutyLog, SupplierInvoice } = srv.entities;
+    const { CustomDutyHdr, CustomDutyItem, CustomDutyLog, SupplierInvoice, CustomDutyParam } = srv.entities;
 
     // Optional: Add business logic here
     //const query = SELECT.from(CustomDutyHdr).columns('*', 'to_CustomDutyItem.*');
@@ -100,6 +100,10 @@ module.exports = async (srv) => {
         header.to_CustomDutyLog = [];
       }
 
+      var configData = await tx.run(
+        SELECT.from(CustomDutyParam)                     // Filter by ID
+      );
+
       var trxProcessed = false;
       var InvoiceDomCompleted = true;
       var InvoiceOverCompleted = true;
@@ -121,18 +125,22 @@ module.exports = async (srv) => {
         DomPayload.Process = 'Domestic';
         DomPayload.FiscalYear = new Date().getFullYear().toString();
         DomPayload.CompanyCode = 'IN10';
-        DomPayload.DocumentDate = item[0].Invoicedate;
-        DomPayload.PostingDate = item[0].Invoicedate;
+        DomPayload.DocumentDate = new Date(); //item[0].Invoicedate;
+        DomPayload.PostingDate = new Date(); //item[0].Invoicedate;
         DomPayload.SupplierInvoiceIDByInvcgParty = item[0].BENo;
         DomPayload.InvoicingParty = header.DomesticVendor;
         DomPayload.DocumentCurrency = 'INR';
+        DomPayload.SupplierPostingLineItemText = header.DomesticInvHdr;
         DomPayload.BusinessPlace = 'MH01';
         DomPayload.TaxDeterminationDate = new Date();
         DomPayload.TaxReportingDate = new Date();
         DomPayload.TaxFulfillmentDate = new Date();
         DomPayload.TaxIsCalculatedAutomatically = true;
+        const DomConType1 = configData.find(item => item.ParamID === 'DOMESTIC_CONTYPE' && item.Sequence === 1);  
+        const DomConType2 = configData.find(item => item.ParamID === 'DOMESTIC_CONTYPE' && item.Sequence === 2);  
         var SupplierInvoiceItem = 0;
         var totalAmt = 0;
+        var totalTax = 0;
         item.forEach(element => {
           for (let index = 1; index < 3; index++) {
             SupplierInvoiceItem = SupplierInvoiceItem + 1;
@@ -142,15 +150,35 @@ module.exports = async (srv) => {
             itemData.PurchaseOrderItem = element.PurchaseorderItem;
             itemData.Plant = header.Plant;
             if (index == 1) {
+              const TaxPercent1 = configData.find(item => item.ParamID === 'TAX_CODE_PERCENT' && item.ParamName === element.DomesticFrtAmtTAX1);  
               totalAmt = totalAmt + element.DomesticFreightperitem1;
+
+              if (TaxPercent1) {
+                let addedAmount = (TaxPercent1.Value1 / 100) * element.DomesticFreightperitem1;
+                // Add the percentage amount to the original totalAmt
+                totalTax += addedAmount;
+              }              
+
               itemData.SupplierInvoiceItemAmount = element.DomesticFreightperitem1;           
               itemData.TaxCode = element.DomesticFrtAmtTAX1;
-              itemData.SuplrInvcDeliveryCostCndnType = "ZFR1";
+              if (DomConType1) {
+                itemData.SuplrInvcDeliveryCostCndnType = DomConType1.Value1;
+              }              
             } else {
+              const TaxPercent2 = configData.find(item => item.ParamID === 'TAX_CODE_PERCENT' && item.ParamName === element.DomesticFrtAmtTAX2);
               totalAmt = totalAmt + element.DomesticFreightperitem2;
+
+              if (TaxPercent2) {
+                let addedAmount = (TaxPercent2.Value1 / 100) * element.DomesticFreightperitem2;
+                // Add the percentage amount to the original totalAmt
+                totalTax += addedAmount;
+              } 
+
               itemData.SupplierInvoiceItemAmount = element.DomesticFreightperitem2;           
-              itemData.TaxCode = element.DomesticFrtAmtTAX2
-              itemData.SuplrInvcDeliveryCostCndnType = "ZMIS";
+              itemData.TaxCode = element.DomesticFrtAmtTAX2;
+              if (DomConType2) {
+                itemData.SuplrInvcDeliveryCostCndnType = DomConType2.Value1;
+              }              
             }            
             itemData.DocumentCurrency = 'INR';
             itemData.PurchaseOrderQuantityUnit = element.Unit;
@@ -162,9 +190,9 @@ module.exports = async (srv) => {
             invItem.push(itemData);
           }
         }); 
-        let addedAmount = (18 / 100) * totalAmt;
+        //let addedAmount = (18 / 100) * totalAmt;
         // Add the percentage amount to the original totalAmt
-        totalAmt += addedAmount;
+        totalAmt += totalTax;
         DomPayload.InvoiceGrossAmount = totalAmt;        
         if (invItem) {
           DomPayload.to_SuplrInvcItemPurOrdRef = invItem;
@@ -205,7 +233,7 @@ module.exports = async (srv) => {
                 header.OverallStatus = 'Completed';
               }
               header.DomesticVendInvStat = 'Error';
-              header.DomesticVendInvMsg = err.message.split(': ')[1];
+              header.DomesticVendInvMsg = err.message; //err.message.split(': ')[1];
               item.forEach(element => {
                 //element.Remarks = err.message.split(': ')[1];
                 //element.status = 'Error';
@@ -241,18 +269,22 @@ module.exports = async (srv) => {
         OverseasPayload.Process = 'Overseas';
         OverseasPayload.FiscalYear = new Date().getFullYear().toString();
         OverseasPayload.CompanyCode = 'IN10';
-        OverseasPayload.DocumentDate = item[0].Invoicedate;
-        OverseasPayload.PostingDate = item[0].Invoicedate;
+        OverseasPayload.DocumentDate = new Date(); //item[0].Invoicedate;
+        OverseasPayload.PostingDate = new Date(); //item[0].Invoicedate;
         OverseasPayload.SupplierInvoiceIDByInvcgParty = item[0].BENo;
         OverseasPayload.InvoicingParty = header.OverSeasVendor;
+        OverseasPayload.SupplierPostingLineItemText = header.OverSeasInvHdr;
         OverseasPayload.DocumentCurrency = 'INR';
         OverseasPayload.BusinessPlace = 'MH01';
         OverseasPayload.TaxDeterminationDate = new Date();
         OverseasPayload.TaxReportingDate = new Date();
         OverseasPayload.TaxFulfillmentDate = new Date();
         OverseasPayload.TaxIsCalculatedAutomatically = true;
+        const OverConType1 = configData.find(item => item.ParamID === 'OVERSEAS_CONTYPE' && item.Sequence === 1);  
+        const OverConType2 = configData.find(item => item.ParamID === 'OVERSEAS_CONTYPE' && item.Sequence === 2); 
         var SupplierInvoiceItem = 0;
         var totalAmt = 0;
+        var totalTax = 0;
         item.forEach(element => {
           for (let index = 1; index < 3; index++) {
           SupplierInvoiceItem = SupplierInvoiceItem + 1;
@@ -262,14 +294,32 @@ module.exports = async (srv) => {
           itemData.PurchaseOrderItem = element.PurchaseorderItem;
           itemData.Plant = header.Plant;          
           if (index == 1) {
+            const OverTaxPercent1 = configData.find(item => item.ParamID === 'TAX_CODE_PERCENT' && item.ParamName === element.OverseasFrtAmtTAX1);
             itemData.TaxCode = element.OverseasFrtAmtTAX1;
-            itemData.SuplrInvcDeliveryCostCndnType = "ZFR2";
+            if (OverConType1) {
+              itemData.SuplrInvcDeliveryCostCndnType = OverConType1.Value1;
+            }            
             totalAmt = totalAmt + element.OverFreightperitem1;
+            if (OverTaxPercent1) {
+              let addedAmount = (OverTaxPercent1.Value1 / 100) * element.OverFreightperitem1;
+              // Add the percentage amount to the original totalAmt
+              totalTax += addedAmount;
+            } 
             itemData.SupplierInvoiceItemAmount = element.OverFreightperitem1;
           } else {
+            const OverTaxPercent2 = configData.find(item => item.ParamID === 'TAX_CODE_PERCENT' && item.ParamName === element.OverseasFrtAmtTAX2);
             itemData.TaxCode = element.OverseasFrtAmtTAX2;
-            itemData.SuplrInvcDeliveryCostCndnType = "FVA1";
+            if (OverConType2) {
+              itemData.SuplrInvcDeliveryCostCndnType = OverConType2.Value1;
+            }            
             totalAmt = totalAmt + element.OverFreightperitem2;
+
+            if (OverTaxPercent2) {
+              let addedAmount = (OverTaxPercent2.Value1 / 100) * element.OverFreightperitem2;
+              // Add the percentage amount to the original totalAmt
+              totalTax += addedAmount;
+            }
+
           itemData.SupplierInvoiceItemAmount = element.OverFreightperitem2;
           } 
           itemData.DocumentCurrency = 'INR';
@@ -283,9 +333,9 @@ module.exports = async (srv) => {
           }
         });
 
-        let addedAmount = (18 / 100) * totalAmt;
+        //let addedAmount = (18 / 100) * totalAmt;
         // Add the percentage amount to the original totalAmt
-        totalAmt += addedAmount;
+        totalAmt += totalTax;
         OverseasPayload.InvoiceGrossAmount = totalAmt;
         if (invItem) {
           OverseasPayload.to_SuplrInvcItemPurOrdRef = invItem;
@@ -362,8 +412,8 @@ module.exports = async (srv) => {
         CustomPayload.Process = 'Custom';
         CustomPayload.FiscalYear = new Date().getFullYear().toString();
         CustomPayload.CompanyCode = 'IN10';
-        CustomPayload.DocumentDate = item[0].Invoicedate;
-        CustomPayload.PostingDate = item[0].Invoicedate;
+        CustomPayload.DocumentDate = new Date(); //item[0].Invoicedate;
+        CustomPayload.PostingDate = new Date(); //item[0].Invoicedate;
         CustomPayload.SupplierInvoiceIDByInvcgParty = item[0].BENo;
         CustomPayload.InvoicingParty = header.CustomVendor;
         CustomPayload.DocumentCurrency = 'INR';
@@ -373,6 +423,8 @@ module.exports = async (srv) => {
         CustomPayload.TaxDeterminationDate = new Date();
         CustomPayload.TaxReportingDate = new Date();
         CustomPayload.TaxFulfillmentDate = new Date();
+        const CustomConType1 = configData.find(item => item.ParamID === 'CUSTOM_CONTYPE' && item.Sequence === 1);  
+        const CustomConType2 = configData.find(item => item.ParamID === 'CUSTOM_CONTYPE' && item.Sequence === 2); 
         var SupplierInvoiceItem = 0;
         var totalAmt = 0;
         item.forEach(element => { 
@@ -384,7 +436,7 @@ module.exports = async (srv) => {
             itemData.PurchaseOrder = element.PurchaseOrder;
             itemData.PurchaseOrderItem = element.PurchaseorderItem;
             itemData.Plant = header.Plant;
-            itemData.TaxCode = 'A3';
+            itemData.TaxCode = element.CustomDutyTAX1;
             itemData.DocumentCurrency = 'INR';
             itemData.PurchaseOrderQuantityUnit = element.Unit;
             itemData.QuantityInPurchaseOrderUnit = element.Quantity;
@@ -393,12 +445,16 @@ module.exports = async (srv) => {
             if (index == 1) {
               totalAmt = totalAmt + element.BCDAmount;
               itemData.SupplierInvoiceItemAmount = element.BCDAmount;
-              itemData.SuplrInvcDeliveryCostCndnType = 'JCDB';
+              if (CustomConType1) {
+                itemData.SuplrInvcDeliveryCostCndnType = CustomConType1.Value1;
+              }              
               itemData.IN_CustomDutyAssessableValue = element.AssessableValue;
             } else {
               totalAmt = totalAmt + element.SocWelSurDutyAmt;
               itemData.SupplierInvoiceItemAmount = element.SocWelSurDutyAmt;
-              itemData.SuplrInvcDeliveryCostCndnType = 'JSWC';
+              if (CustomConType2) {
+                itemData.SuplrInvcDeliveryCostCndnType = CustomConType2.Value1;
+              }              
               itemData.IN_CustomDutyAssessableValue = 0;
             }
             itemData.FreightSupplier = header.CustomVendor;
@@ -447,7 +503,7 @@ module.exports = async (srv) => {
                 header.OverallStatus = 'Completed';
               }
               header.CustomVendInvStat = 'Error';
-              header.CustomVendInvMsg = err.message.split(': ')[1];
+              header.CustomVendInvMsg = err.message; //err.message.split(': ')[1];
               item.forEach(element => {
                 //element.Remarks = err.message.split(': ')[1];
                 //element.status = 'Error';

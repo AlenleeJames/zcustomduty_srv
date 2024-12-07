@@ -76,7 +76,7 @@ annotate service.CustomDutyFieldMapping with @(
 });
 
 
-annotate service.CustomDutyParam with @odata.draft.enabled;
+annotate service.CustomDutyParam with @odata.draft.enabled; 
 /*---------->>[ service.CHAFileFieldsOrderList - Generic Actions ]<<----------*/
 
 // Create Action

@@ -169,7 +169,7 @@ POST http://localhost:4004/odata/v4/custom-duty-app-srv/DeleteCustomDuty
 Content-Type: application/json
 
 {
-  "ID": "0e47e7a5-4852-4b6c-b8d2-92e0cc8d2bae"
+  "ID": "2b33324f-204a-4ae5-bbe4-cc297b54c140"
 }
 
 ###
@@ -265,7 +265,101 @@ GET http://localhost:4004/odata/v4/custom-duty-app-srv/CustomDutyHdr('f1c8e21d-d
 #
 # Get Custom Master Data
 #
-GET http://localhost:4004/odata/v4/custom-duty-app-srv/CustomDutyHdr('2f5d3dac-2a22-4730-8915-a8d68240d973')?$expand=to_CustomDutyLog
+GET http://localhost:4004/odata/v4/custom-duty-app-srv/CustomDutyParam
+
+###
+#
+# Get Custom Master Data
+#
+POST http://localhost:4004/odata/v4/custom-duty-app-srv/CustomDutyParam
+Content-Type: application/json
+
+[
+  {
+    "ParamID": "TAX_CODE_PERCENT",
+    "ParamName": "A3",
+    "Sequence": 1,
+    "Description": "Tax Code Percentage",
+    "Value1": "18",
+    "Value2": "",
+    "Value3": "",
+    "Value4": "",
+    "Value5": ""
+  },
+  {
+    "ParamID": "CUSTOM_CONTYPE",
+    "ParamName": "Custom Duty Condition Type",
+    "Sequence": 1,
+    "Description": "Custom Duty Condition Type 1",
+    "Value1": "JCDB",
+    "Value2": "",
+    "Value3": "",
+    "Value4": "",
+    "Value5": ""
+  },
+  {
+    "ParamID": "DOMESTIC_CONTYPE",
+    "ParamName": "Domestic Condition Type",
+    "Sequence": 2,
+    "Description": "Domestic Condition Type 2",
+    "Value1": "ZMIS",
+    "Value2": "",
+    "Value3": "",
+    "Value4": "",
+    "Value5": ""
+  },
+  {
+    "ParamID": "OVERSEAS_CONTYPE",
+    "ParamName": "Overseas Condition Type",
+    "Sequence": 1,
+    "Description": "Overseas Condition Type 1",
+    "Value1": "ZFR2",
+    "Value2": "",
+    "Value3": "",
+    "Value4": "",
+    "Value5": ""
+  },
+  {
+    "ParamID": "OVERSEAS_CONTYPE",
+    "ParamName": "Overseas Condition Type",
+    "Sequence": 2,
+    "Description": "Overseas Condition Type 2",
+    "Value1": "FVA1",
+    "Value2": "",
+    "Value3": "",
+    "Value4": "",
+    "Value5": ""
+  },
+  {
+    "ParamID": "CUSTOM_CONTYPE",
+    "ParamName": "Custom Duty Condition Type",
+    "Sequence": 2,
+    "Description": "Custom Duty Condition Type 2",
+    "Value1": "JSWC",
+    "Value2": "",
+    "Value3": "",
+    "Value4": "",
+    "Value5": ""
+  },
+  {
+    "ParamID": "DOMESTIC_CONTYPE",
+    "ParamName": "Domestic Condition Type",
+    "Sequence": 1,
+    "Description": "Domestic Condition Type 1",
+    "Value1": "ZFR1",
+    "Value2": "",
+    "Value3": "",
+    "Value4": "",
+    "Value5": ""
+  }
+]
+
+
+###
+#
+# Get Custom Master Data
+#
+GET http://localhost:4004/odata/v4/custom-duty-app-srv/CustomDutyHdr('bb0f3c16-7b27-4a43-9627-fe9749670533')?$expand=to_CustomDutyLog
 
 ####
 #Post Supplier
@@ -273,7 +367,7 @@ POST http://localhost:4004/odata/v4/custom-duty-app-srv/PostInvoice
 Content-Type: application/json
 
 {
-"ID": "83f71123-a3ce-4fc2-b314-ee69d2d7a9f8"
+"ID": "cbbcd771-ecda-488e-96a2-03d7dc6d9f43"
 }
 
 
@@ -286,60 +380,66 @@ Content-Type: application/json
 
 {
   "CustomDutyData": {
-    "BENoKey": "5380006",
+    "@odata.context": "$metadata#CustomDutyHdr/$entity",
+    "ID": "cbbcd771-ecda-488e-96a2-03d7dc6d9f43",
     "Plant": "IN10",
-    "POVendor": "4000000",
-    "OverallStatus": "Saved",
+    "BENoKey": "5845344",
+    "POVendor": "1620",   
+    "CustomVendor": "3000249",
     "CustomVendInv": "",
-    "CustomVendor": "3000007",
-    "CustomVendInvStat": "Sucesss",
-    "OverSeasVendInv": "",
-    "OverSeasVendInvStat": "Sucesss",
-    "OverSeasVendor": "5000006",
-    "DomesticVendInv": "3000373",
-    "DomesticVendInvStat": "Saved",
+    "OverallStatus": "Completed",
+    "DomesticInvHdr": null,
     "DomesticVendor": "",
-    "to_CustomDutyItem": [    
-    {
-            "ID": "a4491f4e-175b-486a-942b-9de13dafb7d6",
-            "BENo": "5380006",
-            "IGST": 59.63,
-            "RITC": "39169010",
+    "OverSeasInvHdr": null,
+    "OverSeasVendor": "",
+    "DomesticVendInv": "",
+    "OverSeasVendInv": "",
+    "CustomVendInvMsg": "Error during request to remote service: Balance not zero: 2,687,800.20  debits: 1,453,651.80  credits: 4,141,452.00",
+    "CustomVendInvStat": "Error",
+    "to_CustomDutyItem": [
+        {
+            "ID": "5274a0bf-449b-4e76-a304-d128db42f491",
+            "BENo": "5845344",
+            "IGST": 2909543.7,
+            "RITC": null,
             "Unit": "PC",
-            "BEDate": "2024-11-08",
+            "BEDate": "2024-11-30",
+            "IGSTNo": "27AAFCA7103G1ZZ",
             "status": null,
             "Remarks": null,
-            "ItemSrNo": 5,
-            "Material": "63117089300",
-            "Quantity": 1,
-            "TotalBCD": 331.26,
+            "ItemSrNo": 1,
+            "Material": "11190113051",
+            "Quantity": 1920,
+            "TotalBCD": 4141452.1,
             "TotalSWS": null,
-            "BCDAmount": 29.84,
+            "BCDAmount": 1119916.7,
             "OpenPOQty": null,
             "TotalIGST": null,
-            "UnitPrice": 1011,
-             "InsInvoNum": "",
-            "Invoicedate": "2024-11-08",
+            "UnitPrice": 637.07,           
+            "InsInvoNum": "",           
+            "Invoicedate": "2024-11-28",
             "TotalAmount": null,
             "HAWB_HBLDate": null,
-            "PortofOrigin": "Norfolk",
-            "CustomInvoice": "5105600384",
-            "FreightAmount": 63325,
+            "PortofOrigin": "Qingdao",
+            "CustomInvoice": "",
+            "FreightAmount": 177134.34,
             "FreightExrate": 1,
-            "HSNCodeSystem": "85318000",
-            "InvoiceNumber": "90524224",
-            "MiscAmountCHA": 1498,
-            "PurchaseOrder": "4500000313",
-            "HSNCodefromCHA": "",
-            "InvoiceValueFC": 1011,
+            "HSNCodeSystem": "84678100",
+            "InvoiceNumber": "94057901",
+            "MiscAmountCHA": 12077.34,
+            "PurchaseOrder": "4500000359",
+            "CustomDutyTAX1": "A3",
+            "CustomDutyTAX2": "",
+            "HSNCodefromCHA": "84678100",
+            "InvoiceValueFC": null,
             "MiscAmountTAX1": "",
             "MiscAmountTAX2": "",
             "MiscChargesVen": "",
             "TermsofInvoice": "FOB",
-            "AssessableValue": 298.43,
-            "CountryOfOrigin": "UNITED STATES",
+            "AssessableValue": null,
+            "CountryOfOrigin": "BRAZIL",
             "IGSTRateDutyPer": 18,
-            "InsuranceAmtCHA": 1943,
+            "InsuranceAmtCHA": 3759.93,
             "InsuranceExrate": null,
             "InsuranceVendor": "",
             "InvoiceValueINR": null,
@@ -349,11 +449,11 @@ Content-Type: application/json
             "InsuranceAmTCALC": null,
             "InsuranceAmTTAX1": "",
             "InsuranceAmTTAX2": "",
-            "RateofBCDPercent": 10,
-            "SocWelSurDutyAmt": 2.98,
-            "SocWelSurDutyPer": 10,
+            "RateofBCDPercent": 18,
+            "SocWelSurDutyAmt": 111991.6,
+            "SocWelSurDutyPer": null,
             "DomFreightInvoice": "",
-            "ExcRateforInvoice": 84.85,
+            "ExcRateforInvoice": 84.03,
             "FreightPercentage": null,
             "InsuranceAmTCALC1": 0,
             "InsuranceAmTCALC2": 0,
@@ -361,31 +461,35 @@ Content-Type: application/json
             "OverFreighInvoice": "",
             "OverFreightVendor": "",
             "PurchaseorderItem": "10",
-            "DomesticFrtAmtTAX1": "A3",
-            "DomesticFrtAmtTAX2": "A3",
+            "DomesticFrtAmtTAX1": "",
+            "DomesticFrtAmtTAX2": "",
             "Inschargesperitem1": 0,
             "Inschargesperitem2": 0,
-            "OverseasFrtAmtTAX1": "A3",
-            "OverseasFrtAmtTAX2": "A3",
-            "ProductDescription": "Washer (63117089300) (QTY 1 PC/UNIT PRICE USD 1011) (USE FOR AGRICULTURE) ",
-            "CustomInvoiceVendor": "3456",
-            "DomesticFrtAmtCALC1": 100,
-            "DomesticFrtAmtCALC2": 200,
+            "OverseasFrtAmtTAX1": "",
+            "OverseasFrtAmtTAX2": "",
+            "ProductDescription": "MS 382 3/8\" P Chainsaw (11190113051)",
+            "CustomInvoiceVendor": "3000249",
+            "DomesticFrtAmtCALC1": 0,
+            "DomesticFrtAmtCALC2": 0,
             "InsurancePercentage": null,
             "Miscchargesperitem1": 0,
             "Miscchargesperitem2": 0,
-            "OverFreightperitem1": 300,
-            "OverFreightperitem2": 400,
-            "OverseasFrtAmtCALC1": 300,
-            "OverseasFrtAmtCALC2": 400,
+            "OverFreightperitem1": 0,
+            "OverFreightperitem2": 0,
+            "OverseasFrtAmtCALC1": 0,
+            "OverseasFrtAmtCALC2": 0,
             "FreightCurrency_code": null,
             "InvoiceCurrency_code": null,
             "InsuranceCurrency_code": null,
-            "DomesticFreightperitem1": 100,
-            "DomesticFreightperitem2": 200
+            "DomesticFreightperitem1": 0,
+            "DomesticFreightperitem2": 0
         }
-  ]
-  }
+    ],
+    "DomesticVendInvMsg": null,
+    "OverSeasVendInvMsg": null,
+    "DomesticVendInvStat": null,
+    "OverSeasVendInvStat": null
+}
 }
 
 
