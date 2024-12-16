@@ -44,13 +44,13 @@
         "model": "srv/external/CustomDutyInvoiceSrv",
         "[production]": {
           "credentials": {
-            "destination": "STIHL_B2B_K4Q100_BASIC",
+            "destination": "STIHL_B2B_KT6100_BASIC",
             "path": "/sap/opu/odata4/sap/zapi_mm_customsinvdetails_v4/srvd_a2x/sap/zapi_mm_customdutyinvdetails/0001"
           }
         },
         "[hybrid]": {
           "credentials": {
-            "destination": "STIHL_B2B_K4Q100_BASIC",
+            "destination": "STIHL_B2B_KT6100_BASIC",
             "path": "/sap/opu/odata4/sap/zapi_mm_customsinvdetails_v4/srvd_a2x/sap/zapi_mm_customdutyinvdetails/0001"
           }
         },
@@ -64,14 +64,14 @@
         "csrfInBatch": true,
         "[production]": {
           "credentials": {
-            "destination": "STIHL_B2B_K4Q100_BASIC",
+            "destination": "STIHL_B2B_KT6100_BASIC",
             "path": "/sap/opu/odata/sap/API_SUPPLIERINVOICE_PROCESS_SRV",
             "requestTimeout": 1200000
           }
         },
         "[hybrid]": {
           "credentials": {
-            "destination": "STIHL_B2B_K4Q100_BASIC",
+            "destination": "STIHL_B2B_KT6100_BASIC",
             "path": "/sap/opu/odata/sap/API_SUPPLIERINVOICE_PROCESS_SRV",
             "requestTimeout": 1200000
           }

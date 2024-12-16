@@ -28,6 +28,7 @@ entity CustomDutyHdr : managed, cuid {
         DomesticVendor      : String(10);
         DomesticVendInvStat : String(20);
         DomesticVendInvMsg  : String;
+        InvoicedateHDR      : Date;
         to_CustomDutyItem   : Composition of many CustomDutyItem
                                   on to_CustomDutyItem.BENoKey = $self;
         to_CustomDutyLog    : Composition of many CustomDutyLog
@@ -192,6 +193,6 @@ entity UploadHSN : managed, cuid {
     key ID              : UUID;
         SupplierCountry : String(2);
         HSNCode         : String(10);
-        TaxRate         : Decimal(5,0);
+        TaxRate         : Decimal(5,2);
         TaxCode         : String(10);
 }

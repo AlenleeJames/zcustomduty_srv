@@ -24,6 +24,7 @@ type DutyMasterHdr :{
     DomesticVendor         : String(10);
     DomesticVendInvStat    : String(20);
     DomesticVendInvMsg     : String;
+    InvoicedateHDR         : Date;
     to_CustomDutyItem : many DutyMasterItem;
     to_CustomDutyLog : many CustomMasterLog;
     to_ValidationLog : many CustomValidationLog;

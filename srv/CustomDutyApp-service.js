@@ -125,7 +125,7 @@ module.exports = async (srv) => {
         DomPayload.Process = 'Domestic';
         DomPayload.FiscalYear = new Date().getFullYear().toString();
         DomPayload.CompanyCode = 'IN10';
-        DomPayload.DocumentDate = new Date(); //item[0].Invoicedate;
+        DomPayload.DocumentDate = header.InvoicedateHDR; //item[0].Invoicedate;
         DomPayload.PostingDate = new Date(); //item[0].Invoicedate;
         DomPayload.SupplierInvoiceIDByInvcgParty = item[0].BENo;
         DomPayload.InvoicingParty = header.DomesticVendor;
@@ -269,7 +269,7 @@ module.exports = async (srv) => {
         OverseasPayload.Process = 'Overseas';
         OverseasPayload.FiscalYear = new Date().getFullYear().toString();
         OverseasPayload.CompanyCode = 'IN10';
-        OverseasPayload.DocumentDate = new Date(); //item[0].Invoicedate;
+        OverseasPayload.DocumentDate = header.InvoicedateHDR; //item[0].Invoicedate;
         OverseasPayload.PostingDate = new Date(); //item[0].Invoicedate;
         OverseasPayload.SupplierInvoiceIDByInvcgParty = item[0].BENo;
         OverseasPayload.InvoicingParty = header.OverSeasVendor;
@@ -412,7 +412,7 @@ module.exports = async (srv) => {
         CustomPayload.Process = 'Custom';
         CustomPayload.FiscalYear = new Date().getFullYear().toString();
         CustomPayload.CompanyCode = 'IN10';
-        CustomPayload.DocumentDate = new Date(); //item[0].Invoicedate;
+        CustomPayload.DocumentDate = header.InvoicedateHDR; //item[0].Invoicedate;
         CustomPayload.PostingDate = new Date(); //item[0].Invoicedate;
         CustomPayload.SupplierInvoiceIDByInvcgParty = item[0].BENo;
         CustomPayload.InvoicingParty = header.CustomVendor;
